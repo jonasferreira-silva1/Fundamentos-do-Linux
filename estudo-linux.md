@@ -4,9 +4,11 @@
 - [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](#-sistemas-operacionais-modulo-2--capitulo-02)
 - [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](#-trabalhando-no-linux-modulo-3--capitulo-03)
 - [📚 Capítulo 4 – O Mundo Open Source](#capitulo-4--o-mundo-open-source)
-- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/bf59736bf14b6d5e236ad4f04b66458c3c559ea3/estudo-linux.md#-cap%C3%ADtulo-5--trabalhando-com-o-shell-cli)
+- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli)
 - [🧠 Capítulo 6 – Encontrando Ajuda no Linux](#-capitulo-6--encontrando-ajuda-no-linux)
 - [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](#-laboratorio-pratico--capitulo-7-navegando-e-explorando-o-sistema-de-arquivos)
+- [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](#capitulo-8--manipulando-arquivos-e-diretorios)
+- [🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios](#laboratorio-pratico--capitulo-8-gerenciando-arquivos-e-diretorios)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -174,7 +176,7 @@ Patrocínio de projetos: empresas grandes investem em projetos de que dependem (
 
 📌 Resumo do Capítulo 4: O software livre libera o conhecimento, gera comunidades inovadoras e cria novas formas de negócio, onde o lucro não vem da exclusividade, mas do valor agregado — seja por suporte, personalização ou integração.
 
-Claro, Jonas! Vamos atualizar o nosso documento agora com os conteúdos do **Capítulo 5 – Trabalhando com o Shell (CLI)**, mantendo o estilo didático com analogias e exemplos simples para facilitar a assimilação:
+**Capítulo 5 – Trabalhando com o Shell (CLI)**, mantendo o estilo didático com analogias e exemplos simples para facilitar a assimilação:
 
 ---
 
@@ -402,7 +404,7 @@ ls /erro || echo "Pasta não encontrada"
 📌 **Resumo do Capítulo 5:**  
 O shell é uma linguagem poderosa que transforma o usuário em **comandante direto do sistema**. Aprender sua lógica — comandos, variáveis, operadores, funções — é como pegar as chaves do carro da administração do Linux.
 
-Claro, Jonas! Aqui está um **resumo atualizado e completo do Capítulo 5** do laboratório, com explicações práticas baseadas em todos os passos que você explorou:
+**resumo atualizado e completo do Capítulo 5** do laboratório, com explicações práticas baseadas em todos os passos que você explorou:
 
 ---
 
@@ -900,7 +902,7 @@ No Linux, **tudo é tratado como arquivo**: documentos, imagens, programas, dire
 
 ---
 
-Claro, Jonas! Aqui está o **resumo oficial do módulo prático do laboratório do Capítulo 7**, com um título claro para destacar que se trata da parte **executada dentro do terminal**, com comandos e saídas reais:
+**resumo oficial do módulo prático do laboratório do Capítulo 7**, com um título claro para destacar que se trata da parte **executada dentro do terminal**, com comandos e saídas reais:
 
 ---
 
@@ -1047,3 +1049,135 @@ Você será capaz de:
 - Mostra arquivos que começam com "a", "b", "c" ou "d".
 
 ---
+
+📘 Capítulo 8 – Manipulando Arquivos e Diretorios
+
+✴️ 8.1 – Introdução
+O Linux é confidencial a autoridades e minúsculas: hello.txt≠ Hello.txt.
+Usa o padrão UTF-8 , com base na tabela ASCII.
+Dominar o terminal permite automação e controle fino sobre o sistema.
+🧠 Analogia: Diferenciar arquivos por capitalização é como saber que "João" e "joão" não são a mesma pessoa em uma chamada de presença.
+
+🎯 8.2 – Globbing (Uso de Coringas)
+Permite usar padrões de cura para manipular grupos de arquivos:
+
+Curinga Significado Exemplo Analogia
+
+- Qualquer número de caracteres *.txt→ todos os.txt Como selecionar "todos os livros com capa azul"
+  ? Um caractere exato a??.jpg→ arquivos com 3 letras após "a" Cada ?é uma lacuna obrigatória da palavra cruzada
+  [abc] Letras específicas [ab]*→ começa com aoub Filtro de nomes
+  [a-d] Intervalo de letras [a-d]* Da letra A até D
+  [!x] Nega o conjunto [!DP]*→ não começa com D ou P Dizendo: "qualquer um, menos esses"
+  ✅ Use echopara ver a expansão dos padrões , sem executar ações reais.
+
+📁 8.3 – Copiando Arquivos comcp
+Cópias arquivadas:
+cp origem destino
+Exemplo:
+cp /etc/hosts ~
+Modo detalhado:
+cp -v arquivo destino
+Evitando sobrescrita:
+-i→ pergunta antes de escrever
+-n→ nunca sobrescreva
+Copiar massas:
+cp -r pasta destino/
+🧠 Analogia: Copiar é como fazer uma fotocópia — o original permanece, a nova cópia vai pro local indicado.
+
+🔀 8.4 – Movendo e Renomeando commv
+Mover:
+mv arquivo pasta/
+Renomeia:
+mv antigo.txt novo.txt
+Opções úteis:
+-i→ pergunta antes de escrever
+-n→ impedir sobrescritas
+-v→ mostra o que foi movido
+🧠 Analogia: Mover é como carregar a caixa de um cômodo para outro. Renomear é mudar a etiqueta dela.
+
+🆕 8.5 – Criando Arquivos comtouch
+Comando:
+touch novo_arquivo.txt
+Crie um arquivo vazio com 0 bytes.
+🧠 Analogia: Colocar uma folha em branco na mesa: pronta para ser usada depois.
+
+❌ 8.6 – Removendo Arquivos comrm
+Remover arquivos:
+rm nome.txt
+⚠️Não há lixeira. Apagou? Já era.
+Segurança:
+-i→ confirme antes de excluir
+\*.txt→ cuidado com globbing destrutivo
+🧠 Analogia: Jogar no triturador: sem botão de desfazer . Com -i, o sistema pergunta "Tem certeza?".
+
+🗂️ 8.6.1 – Removendo diretórios
+rm -r→ apaga pasta e tudo dentro
+rm -ir→ versão mais segura
+rmdir pasta→ só remova se estiver vazio
+🧠 Analogia: rm -r retire a casa e tudo dentro . rmdirapenas remova uma caixa vazia .
+
+📦 8.7 – Criando Diretórios commkdir
+Cria massas:
+mkdir nova_pasta
+🧠 Analogia: Crie uma caixa vazia para organizar seus futuros arquivos.
+
+🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios
+Este laboratório conduz as principais operações de manipulação de arquivos e pastas no Linux — como copiar, mover, renomear, remover e listar conteúdos — usando comandos essenciais com atenção a permissões, segurança e estrutura.
+
+🔹 8.3 – Copiar, mover e renomear arquivos e diretórios
+Você começa a trabalhar com os comandos fundamentais:
+
+cp→ cópia arquivada
+mv→ mover ou renomear arquivos e diretórios
+rm→ remover aréolas e pastas
+mkdir→ cria diretórios
+touch→ cria arquivos vazios
+🧠 Analogia: É como aprender a usar pastas físicas para guardar, mover e renomear documentos numa estante — com a diferença de que aqui, tudo acontece com digitação e resultados!
+
+🔸 8.3.1 – Copiar um Arquivo Simplesmente
+cp /etc/hosts hosts
+📌 Copie o arquivo original para seu diretório atual com o mesmo nome.
+
+🧠 Analogia: Faça uma fotocópia e guarde no seu armário pessoal.
+
+🔸 8.3.2 – Copiar com Visualização ( -v)
+cp -v /etc/hosts hosts
+📌Mostre o que está sendo copiado e para onde.
+
+🧠 Analogia: Um assistente narrando: "copiando isso para lá".
+
+🔸 8.3.3 – Usando .para indicar "aqui"
+cp -v /etc/hosts .
+📌 Usa o ponto .como destino, desça o diretório atual .
+
+🧠 Analogia: Dizer: "pode ​​deixar aqui mesmo na minha mesa".
+
+🔸 8.3.4 – Preservar Atributos com-p
+cp -p /etc/hosts ~
+📌 Mantém permissões, dono e dados de modificação do arquivo.
+
+🧠 Analogia: Cópia fiel do documento original, com selo e dados intactos.
+
+🔸 8.3.5 – Copiar com Nome Diferente
+cp hosts newname
+📌 Cria uma cópia com um novo nome , mas com novos dados , pois -pnão foi usada.
+
+🧠 Analogia: Fazer uma cópia e dar um novo título e carimbo de hora.
+
+🔸 8.3.6 – Copiar Diretório com -R(Recursivo)
+mkdir Myetc
+cp -R /etc/udev Myetc
+📌 Copie toda a estrutura do diretório /etc/udevpara dentro da pasta Myetc.
+
+🧠 Analogia: Transportar uma gaveta cheia, mantendo tudo nas mesmas divisórias.
+
+🔸 8.3.7 – Remover Diretórios comrm -r
+rm -r Myetc
+📌 Remova o diretório e todo o conteúdo dele.
+
+🧠 Analogia: Jogar fora uma caixa cheia — sem abrir para conferir.
+
+📌Lembrete : rmdir só funciona se a pasta estiver vazia .
+
+🔸 8.3.8 – Mover/Renomear Arquivo commv
+mv premove postmove
