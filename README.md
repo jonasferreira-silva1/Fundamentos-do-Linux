@@ -45,7 +45,7 @@ Este repositório segue a filosofia open source. O conteúdo pode ser utilizado 
 
 ---
 
-**Autor:** Jonas
+**Autor:** Jonas Silva
 
 ---
 
