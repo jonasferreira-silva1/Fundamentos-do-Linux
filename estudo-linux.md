@@ -3,10 +3,10 @@
 - [🏁 Introdução ao Linux (Módulo 1 – Capítulo 01)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-antes-de-come%C3%A7ar-e-introdu%C3%A7%C3%A3o-ao-linux-m%C3%B3dulo-1--cap%C3%ADtulo-01)
 - [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-sistemas-operacionais-m%C3%B3dulo-2--cap%C3%ADtulo-02)
 - [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-trabalhando-no-linux-m%C3%B3dulo-3--cap%C3%ADtulo-03)
-- [📚 Capítulo 4 – O Mundo Open Source](#capitulo-4--o-mundo-open-source)
-- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli)
-- [🧠 Capítulo 6 – Encontrando Ajuda no Linux](#-capitulo-6--encontrando-ajuda-no-linux)
-- [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](#-laboratorio-pratico--capitulo-7-navegando-e-explorando-o-sistema-de-arquivos)
+- [📚 Capítulo 4 – O Mundo Open Source](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-4--o-mundo-open-source)
+- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-5--trabalhando-com-o-shell-cli)
+- [🧠 Capítulo 6 – Encontrando Ajuda no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-6--encontrando-ajuda-no-Linux)
+- [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-7--trabalhando-com-o-sistema-de-arquivos )
 - [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](#capitulo-8--manipulando-arquivos-e-diretorios)
 - [🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios](#laboratorio-pratico--capitulo-8-gerenciando-arquivos-e-diretorios)
 
@@ -1050,7 +1050,7 @@ Você será capaz de:
 
 ---
 
-📘 Capítulo 8 – Manipulando Arquivos e Diretorios
+## 📘 Capítulo 8 – Manipulando Arquivos e Diretorios
 
 ✴️ 8.1 – Introdução
 O Linux é confidencial a autoridades e minúsculas: hello.txt≠ Hello.txt.
