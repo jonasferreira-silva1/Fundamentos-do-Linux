@@ -4,7 +4,7 @@
 - [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](#-sistemas-operacionais-modulo-2--capitulo-02)
 - [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](#-trabalhando-no-linux-modulo-3--capitulo-03)
 - [📚 Capítulo 4 – O Mundo Open Source](#capitulo-4--o-mundo-open-source)
-- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli)
+- [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/bf59736bf14b6d5e236ad4f04b66458c3c559ea3/estudo-linux.md#-cap%C3%ADtulo-5--trabalhando-com-o-shell-cli)
 - [🧠 Capítulo 6 – Encontrando Ajuda no Linux](#-capitulo-6--encontrando-ajuda-no-linux)
 - [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](#-laboratorio-pratico--capitulo-7-navegando-e-explorando-o-sistema-de-arquivos)
 
