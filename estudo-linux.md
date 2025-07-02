@@ -1,7 +1,7 @@
 ## 📚 Índice
 
 - [🏁 Introdução ao Linux (Módulo 1 – Capítulo 01)](#-antes-de-comecar-e-introducao-ao-linux-modulo-1--capitulo-01)
-- [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](#-sistemas-operacionais-modulo-2--capitulo-02)
+- [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-sistemas-operacionais-m%C3%B3dulo-2--cap%C3%ADtulo-02)
 - [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](#-trabalhando-no-linux-modulo-3--capitulo-03)
 - [📚 Capítulo 4 – O Mundo Open Source](#capitulo-4--o-mundo-open-source)
 - [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli)
