@@ -7,7 +7,7 @@
 - [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-5--trabalhando-com-o-shell-cli)
 - [🧠 Capítulo 6 – Encontrando Ajuda no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-6--encontrando-ajuda-no-Linux)
 - [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-7--trabalhando-com-o-sistema-de-arquivos )
-- [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](#capitulo-8--manipulando-arquivos-e-diretorios)
+- [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-8--manipulando-arquivos-e-diretorios)
 - [🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios](#laboratorio-pratico--capitulo-8-gerenciando-arquivos-e-diretorios)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
