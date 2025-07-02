@@ -1,8 +1,8 @@
 ## 📚 Índice
 
-- [🏁 Introdução ao Linux (Módulo 1 – Capítulo 01)](#-antes-de-comecar-e-introducao-ao-linux-modulo-1--capitulo-01)
+- [🏁 Introdução ao Linux (Módulo 1 – Capítulo 01)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-antes-de-come%C3%A7ar-e-introdu%C3%A7%C3%A3o-ao-linux-m%C3%B3dulo-1--cap%C3%ADtulo-01)
 - [🧠 Sistemas Operacionais (Módulo 2 – Capítulo 02)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-sistemas-operacionais-m%C3%B3dulo-2--cap%C3%ADtulo-02)
-- [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](#-trabalhando-no-linux-modulo-3--capitulo-03)
+- [💻 Trabalhando no Linux (Módulo 3 – Capítulo 03)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-trabalhando-no-linux-m%C3%B3dulo-3--cap%C3%ADtulo-03)
 - [📚 Capítulo 4 – O Mundo Open Source](#capitulo-4--o-mundo-open-source)
 - [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](#-capitulo-5--trabalhando-com-o-shell-cli)
 - [🧠 Capítulo 6 – Encontrando Ajuda no Linux](#-capitulo-6--encontrando-ajuda-no-linux)
@@ -120,7 +120,7 @@
 
 ---
 
-📚 Capítulo 4 – O Mundo Open Source
+### 📚 Capítulo 4 – O Mundo Open Source
 4.1 Introdução ao Código Aberto
 👉 Analogia: O código-fonte é como a receita de um bolo: legível para humanos, cheia de ingredientes e instruções.
 
