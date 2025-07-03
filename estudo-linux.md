@@ -10,7 +10,7 @@
 - [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-8--manipulando-arquivos-e-diretorios)
 - [🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios](#laboratorio-pratico--capitulo-8-gerenciando-arquivos-e-diretorios)
 - [🧭 Capítulo 9 — Arquivamento e Compressão de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-9--arquivamento-e-compress%C3%A3o-de-arquivos)
-- [🧪 Laboratório 9 — Arquivamento e Compressão na Prática](#laboratorio-9--arquivamento-e-compressao-na-pratica)
+- [🧪 Laboratório 9 — Arquivamento e Compressão na Prática](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-9--arquivamento-e-compress%C3%A3o-na-pr%C3%A1tica)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
