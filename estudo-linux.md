@@ -6,11 +6,13 @@
 - [📚 Capítulo 4 – O Mundo Open Source](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-4--o-mundo-open-source)
 - [🔧 Capítulo 5 – Trabalhando com o Shell (CLI)](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-5--trabalhando-com-o-shell-cli)
 - [🧠 Capítulo 6 – Encontrando Ajuda no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-6--encontrando-ajuda-no-Linux)
-- [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-7--trabalhando-com-o-sistema-de-arquivos )
+- [🧪 Laboratório Capítulo 7 – Navegando no Sistema de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-7--trabalhando-com-o-sistema-de-arquivos)
 - [📘 Capítulo 8 – Manipulando Arquivos e Diretorios](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-8--manipulando-arquivos-e-diretorios)
 - [🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios](#laboratorio-pratico--capitulo-8-gerenciando-arquivos-e-diretorios)
 - [🧭 Capítulo 9 — Arquivamento e Compressão de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-9--arquivamento-e-compress%C3%A3o-de-arquivos)
 - [🧪 Laboratório 9 — Arquivamento e Compressão na Prática](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-9--arquivamento-e-compress%C3%A3o-na-pr%C3%A1tica)
+- [📁 Capítulo 10 — Trabalhando com Texto e Redirecionamento](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#capitulo-10--trabalhando-com-texto-e-redirecionamento)
+- [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#laboratorio--capitulo-10-visualizando-e-buscando-dados-de-texto-no-linux)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -123,6 +125,7 @@
 ---
 
 ### 📚 Capítulo 4 – O Mundo Open Source
+
 4.1 Introdução ao Código Aberto
 👉 Analogia: O código-fonte é como a receita de um bolo: legível para humanos, cheia de ingredientes e instruções.
 
@@ -1460,5 +1463,239 @@ unzip udev.zip
 | `xz`         | ❌      | ✅       | `.xz`           | ❌               | ❌                     |
 | `zip`        | ✅      | ✅       | `.zip`          | ✅               | ❌ (precisa `-r`)      |
 | `unzip`      | ❌      | ❌       | (extrai `.zip`) | —                | ✅                     |
+
+---
+
+## 📁 **Capítulo 10 — Trabalhando com Texto e Redirecionamento**
+
+Imagine que o **terminal Linux é como uma sala cheia de canos e torneiras**. Os comandos são fontes de água (informação), e você pode canalizar essa água (a saída) para onde quiser — outro comando, um balde (arquivo), ou até filtrá-la com uma peneira (grep)! Vamos ver como:
+
+---
+
+### 🔹 10.1 | **Introdução aos Arquivos de Texto e Redirecionamento**
+
+- **Linux é um mundo de arquivos texto** — quase tudo é um .txt disfarçado.
+- O terminal é como uma fábrica: você pode pegar dados, manipulá-los e entregar num relatório limpo usando comandos e redirecionamentos (`>`, `<`, `|`).
+
+---
+
+### 🔹 10.1.1 | **Visualizando com `cat`**
+
+- `cat` é tipo um **megafone** — ele grita o conteúdo do arquivo direto no terminal.
+- Ideal para arquivos curtos. Pode também ser usado para **colar arquivos** ou criar novos rapidamente.
+
+---
+
+### 🔹 10.1.2 | **Paginadores (`more` e `less`)**
+
+- `more` e `less` são como **elevadores**: você entra e desce (ou sobe) andar por andar em um texto gigante.
+- `less` é o modelo mais moderno, com mais botões (atalhos).
+
+---
+
+### 🔹 10.1.2.1–2 | **Movimento e Busca com `less`**
+
+- Navegar com `less` = andar com **atalhos no teclado**: `Espaço`, `b`, `q`.
+- Buscar no `less` é como usar uma **lupa digital**: `/palavra` ou `?palavra`. Use `n` e `Shift+N` pra ir navegando nas ocorrências!
+
+---
+
+### 🔹 10.1.3 | **`head` e `tail`**
+
+- Como se você lesse só o **começo ou o fim de um livro**.
+- `head`: primeiros capítulos. `tail`: os últimos.
+- Pode monitorar mudanças ao vivo com `tail -f`, tipo um **telão de log ao vivo**.
+
+---
+
+### 🔹 10.2 | **Pipes `|`: Canos do Terminal**
+
+- O símbolo `|` é um **cano** que liga um comando ao outro.
+- Ex: `ls | head` → lista arquivos e mostra só os primeiros.
+- Pode encadear vários: tipo **um túnel de dados passando de mão em mão** até o resultado final.
+
+---
+
+### 🔹 10.3 | **Redirecionamento: Mudando o Caminho do Fluxo**
+
+- Imagine que comandos são torneiras:
+  - `>` → manda a água (saída) para um balde (arquivo)
+  - `<` → o comando bebe de um arquivo, não do teclado
+  - `2>` → canaliza apenas os **erros** para outro balde
+  - `&>` → mistura tudo (água limpa e suja) e manda pro mesmo lugar
+
+---
+
+### 🔹 10.4 | **`sort`: Organizando a Bagunça**
+
+- É o **alfabetizador do terminal**: reorganiza linhas em ordem alfabética ou numérica.
+- Com `-t`, `-k`, `-n`, você diz onde está a "etiqueta" a ser usada pra ordenar — como arrumar pastas por nome, data ou categoria.
+
+---
+
+### 🔹 10.5 | **`wc`: O Estatístico**
+
+- `wc` é um contador esperto:
+  - Linhas (`-l`)
+  - Palavras (`-w`)
+  - Caracteres (`-c`)
+- Útil como um **inspetor** que checa quantos itens um relatório tem.
+
+---
+
+### 🔹 10.6 | **`cut`: Cortador de Colunas**
+
+- Ele é a **faca de cozinha do terminal**: corta colunas por delimitador (`-d`) ou posição (`-c`).
+- Ideal para extrair só o que interessa de arquivos `.csv`, logs etc.
+
+---
+
+### 🔹 10.7 | **`grep`: O Detector de Padrões**
+
+- O **detetive textual**: procura palavras ou padrões.
+- Opções:
+  - `-i` ignora maiúsculas
+  - `-c` conta ocorrências
+  - `-n` mostra número da linha
+  - `-v` inverte (mostra o que **não** bate)
+  - `-w` filtra apenas palavras inteiras
+
+---
+
+### 🔹 10.8 | **Expressões Regulares (Regex): Máquinas de Padrão**
+
+- Regex é como ter **óculos de raio-X** para identificar padrões complexos!
+
+#### 🧩 Básicas:
+
+| Símbolo | Significado                        | Analogia                      |
+| ------- | ---------------------------------- | ----------------------------- |
+| `.`     | Qualquer caractere                 | “Um curinga”                  |
+| `[]`    | Lista ou intervalo de letras       | “Catálogo de opções”          |
+| `*`     | Repetição zero ou mais do anterior | “Estique até cansar”          |
+| `^`     | Início da linha                    | “Começo da fita”              |
+| `$`     | Fim da linha                       | “Finalzinho do texto”         |
+| `\`     | Escapa símbolo especial            | “Cinto de segurança do regex” |
+
+#### 🧠 Exemplo:
+
+- `'r..t'` → algo que comece com “r”, tenha dois caracteres, e termine com “t”
+- `'colou?r'` → pega tanto `color` quanto `colour`
+
+---
+
+### 📌 Dica de ouro:
+
+Use `grep -E` pra ativar os **superpoderes estendidos** do regex: `?` (opcional), `+` (um ou mais), `|` (ou).
+
+---
+
+# 🧪 **Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux**
+
+Este laboratório é a oficina prática onde você bota pra funcionar tudo o que aprendeu no capítulo: desde visualizar arquivos imensos sem se perder, até fazer buscas com precisão cirúrgica usando expressões regulares. Vamos nessa? 🧰🐧💻
+
+---
+
+## 📄 **10.2 – Quebrando, Ordenando e Controlando a Saída**
+
+### **`cut` + `sort` + `more` = Pipeline da Organização**
+
+- `cut`: como se cortasse colunas de uma tabela.
+- `sort`: coloca em ordem (alfabética ou numérica).
+- `more`: mostra aos poucos, sem atropelar a tela.
+
+🛠️ Exemplo:
+
+```bash
+cut -d: -f1 /etc/passwd | sort | more
+```
+
+📖 Analogia: É como organizar uma lista caótica de nomes em ordem A–Z e lê-la calmamente, página por página.
+
+---
+
+## 📖 **10.3 – Visualizando Arquivos Grandes**
+
+### 🐘 `cat`, `more` e `less` — qual escolher?
+
+| Comando | Funciona como...                       | Quando usar?                     |
+| ------- | -------------------------------------- | -------------------------------- |
+| `cat`   | Derruba tudo de uma vez no terminal    | Arquivos pequenos                |
+| `more`  | Leitor de texto paginado               | Navegar para frente              |
+| `less`  | Kindle do terminal: rola, busca, volta | Navegação total, com controle 🔍 |
+
+---
+
+### 🧩 Comandos-Chave do Laboratório:
+
+- `more /etc/passwd` → navegação simples
+- `less /etc/passwd` → rola, busca (`/palavra`) e volta (`b`, `N`)
+- `q` → sai do paginador
+- `h` → abre ajuda (no `more`)
+
+---
+
+### ✂️ Comandos para fatias específicas:
+
+| Comando                   | O que faz                                             |
+| ------------------------- | ----------------------------------------------------- |
+| `head arquivo`            | Mostra as **10 primeiras linhas**                     |
+| `tail arquivo`            | Mostra as **10 últimas linhas**                       |
+| `head -n 5` / `tail -n 3` | Quantidade personalizada                              |
+| `tail -f arquivo.log`     | Exibe conteúdo **ao vivo** enquanto o arquivo muda 🔄 |
+| `head -n -20 arquivo`     | Exibe tudo **menos as últimas 20 linhas**             |
+
+📘 Analogia: `head` é o início do livro, `tail` é o final, e `tail -f` é como assistir alguém escrevendo ao vivo nas últimas páginas.
+
+---
+
+## 🔍 **10.4 – Localizando padrões com expressões regulares**
+
+### 🛠️ `grep` — O scanner de padrões:
+
+```bash
+grep padrão arquivo
+```
+
+| Variante  | Função                                |
+| --------- | ------------------------------------- |
+| `grep`    | Regex básicas (BRE)                   |
+| `grep -E` | Regex estendidas (ERE)                |
+| `egrep`   | Igual a `grep -E`                     |
+| `fgrep`   | Busca literal (ignora metacaracteres) |
+
+---
+
+### 🔠 Metacaracteres testados no laboratório:
+
+| Padrão       | Significado                     | Analogia                           |
+| ------------ | ------------------------------- | ---------------------------------- | ---------------------- | --- |
+| `^root`      | Início da linha                 | Linhas que **começam** com “root”  |
+| `sync$`      | Fim da linha                    | Linhas que **terminam** com “sync” |
+| `.y`         | Qualquer caractere antes de “y” | “cy”, “my”, “sy”, etc.             |
+| `'sshd       | root'`                          | Não funciona sem `-E`              | “grep” não entende `   | `   |
+| `-E 'sshd    | root'`                          | Alternância correta com `grep -E`  | “um OU outro OU outro” |
+| `'no(b       | n)'`                            | Agrupamento com alternância        | “nob” ou “non”         |
+| `'[0-9]'`    | Qualquer número entre 0 e 9     | Detecta números simples            |
+| `'[0-9]{3}'` | Sequência de três dígitos       | Captura “100”, “655”, “123”        |
+
+---
+
+### ✅ Dicas do laboratório:
+
+- Use **aspas simples** em expressões (`'regex'`), para evitar interferência do shell.
+- **Use `-E`** ao empregar `|`, `{}`, `()` e quantificadores.
+
+---
+
+## 🧠 Conclusão prática:
+
+Com este laboratório, você treinou:
+
+- Leitura e navegação fluida por arquivos grandes
+- Aplicação de filtros com `head`, `tail` e `cut`
+- Uso de expressões regulares simples e avançadas
+- Alternância e agrupamento com `grep -E` ou `egrep`
+- Localização precisa de padrões dentro do `/etc/passwd`
 
 ---
