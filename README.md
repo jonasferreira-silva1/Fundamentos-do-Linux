@@ -19,6 +19,7 @@ O principal conteúdo está no arquivo [`estudo-linux.md`](estudo-linux.md), org
 - Ajuda e documentação no Linux
 - Estrutura de arquivos e diretórios
 - Arquivamento e compressão de arquivos (tar, gzip, zip, etc.) e laboratório prático
+- Trabalho com texto, redirecionamento e expressões regulares (grep, pipes, etc.) e laboratório prático
 - Práticas de laboratório e exercícios reais
 - Conceitos de código aberto, licenciamento e modelos de negócio
 
