@@ -306,62 +306,81 @@ Você pode ter a receita de bolo grátis, mas ganhar dinheiro vendendo o bolo pr
 
 ---
 
-## 🔧 Capítulo 5 – Trabalhando com o Shell (CLI)
+## 🔧 **Capítulo 5 – Trabalhando com o Shell (CLI)**
 
 ### **5.1 Introdução ao CLI**
 
-👉 _Analogia:_ A linha de comando é como uma **linguagem secreta do sistema**.  
-Pode parecer intimidadora no início, mas permite **velocidade, automação e controle total** do sistema.  
-✅ Comandos são universais entre distros — quem domina o terminal, domina qualquer Linux.
+**O que é a linha de comando (CLI)?**
+A linha de comando é uma interface de texto que permite controlar o sistema através de comandos digitados. É uma forma direta e poderosa de interagir com o Linux.
+
+👉 _Analogia:_ A linha de comando é como uma **linguagem secreta do sistema** — pode parecer intimidadora no início, mas permite velocidade, automação e controle total.
+
+**Por que aprender comandos é importante?**
+Comandos são universais entre distribuições Linux — quem domina o terminal, domina qualquer Linux. Permite automação, controle fino e acesso a recursos avançados.
+
+✅ _Vantagem:_ Comandos são universais entre distros — quem domina o terminal, domina qualquer Linux.
 
 ---
 
 ### **5.3 Comandos**
 
-- **O que é um comando?**  
-  👉 Um comando é como um **verbo** no idioma do Linux. Ex: `ls` = listar.
+**O que é um comando?**
+Um comando é uma instrução que você dá ao sistema para executar uma tarefa específica. É como um "verbo" no idioma do Linux.
 
-- **Formato padrão:**
-  ```bash
-  comando [opções] [argumentos]
-  ```
+👉 _Analogia:_ Um comando é como um **verbo** no idioma do Linux. Ex: `ls` = listar.
+
+**Qual é o formato padrão de um comando?**
+
+```bash
+comando [opções] [argumentos]
+```
 
 ---
 
 ### **5.3.1 Argumentos**
 
-- São os **alvos da ação** do comando.  
-  👉 Exemplo: `ls /etc/ppp` → lista os arquivos dessa pasta.
+**O que são argumentos?**
+Argumentos são os alvos da ação do comando — especificam sobre o que o comando deve atuar.
 
-- Com múltiplos argumentos:
-  ```bash
-  ls /etc/ppp /etc/ssh
-  ```
+👉 _Exemplo:_ `ls /etc/ppp` → lista os arquivos dessa pasta.
+
+**Como usar múltiplos argumentos?**
+
+```bash
+ls /etc/ppp /etc/ssh
+```
 
 ---
 
 ### **5.3.2 Opções**
 
-- Ajustam o **modo de execução** do comando.  
-  👉 Exemplo: `ls -l` mostra detalhes como tamanho, permissões e data.
+**O que são opções?**
+Opções ajustam o modo de execução do comando, modificando seu comportamento.
 
-- Combinando opções:
-  ```bash
-  ls -lh   # Detalhado e legível
-  ls -lr   # Detalhado + ordem reversa
-  ```
+👉 _Exemplo:_ `ls -l` mostra detalhes como tamanho, permissões e data.
+
+**Como combinar opções?**
+
+```bash
+ls -lh   # Detalhado e legível
+ls -lr   # Detalhado + ordem reversa
+```
 
 ---
 
 ### **5.3.3 Histórico de Comandos**
 
-- Use `↑` para navegar no histórico.
-- Execute novamente com:
-  - `!!` → último comando
-  - `!3` → comando nº 3 da lista
-  - `!-2` → 2º do fim
-- Veja a lista: `history`  
-  👉 _Exemplo:_ `!ls` executa o último comando `ls`.
+**Como navegar no histórico?**
+Use `↑` para navegar no histórico de comandos anteriores.
+
+**Como reexecutar comandos?**
+
+- `!!` → último comando
+- `!3` → comando nº 3 da lista
+- `!-2` → 2º do fim
+- `history` → veja a lista completa
+
+👉 _Exemplo:_ `!ls` executa o último comando `ls`.
 
 ---
 
@@ -369,39 +388,47 @@ Pode parecer intimidadora no início, mas permite **velocidade, automação e co
 
 #### **5.4.1 Variáveis Locais**
 
-- Criadas assim:
-  ```bash
-  cor='azul'
-  echo $cor
-  ```
-- Só existem na sessão atual do terminal.
+**O que são variáveis locais?**
+Variáveis locais são criadas na sessão atual do terminal e só existem durante essa sessão.
+
+**Como criar variáveis locais?**
+
+```bash
+cor='azul'
+echo $cor
+```
 
 #### **5.4.2 Variáveis de Ambiente**
 
-- Afetam o sistema todo. Exemplos: `$PATH`, `$HOME`, `$HISTSIZE`
-- Promova uma variável local:
+**O que são variáveis de ambiente?**
+Variáveis de ambiente afetam o sistema todo e persistem entre sessões. Exemplos: `$PATH`, `$HOME`, `$HISTSIZE`.
 
-  ```bash
-  export minha_var='teste'
-  ```
+**Como promover uma variável local?**
 
-- Remova:
-  ```bash
-  unset minha_var
-  ```
+```bash
+export minha_var='teste'
+```
 
----
+**Como remover uma variável?**
 
-### **5.4.3 A variável PATH**
+```bash
+unset minha_var
+```
 
-👉 _Analogia:_ Um mapa de pastas onde o terminal busca comandos.  
-✅ Exemplo:
+#### **5.4.3 A variável PATH**
+
+**O que é a variável PATH?**
+A variável PATH é um mapa de pastas onde o terminal busca comandos.
+
+👉 _Analogia:_ Um mapa de pastas onde o terminal busca comandos.
+
+**Como ver o PATH?**
 
 ```bash
 echo $PATH
 ```
 
-✅ Adicionando diretórios:
+**Como adicionar diretórios ao PATH?**
 
 ```bash
 PATH=/meu/novo/caminho:$PATH
@@ -413,9 +440,10 @@ PATH=/meu/novo/caminho:$PATH
 
 #### **5.5.1 Comandos Internos (built-in)**
 
-👉 Já estão embutidos no shell. Ex: `cd`
+**O que são comandos internos?**
+Comandos internos já estão embutidos no shell. Ex: `cd`.
 
-Verifique:
+**Como verificar se é interno?**
 
 ```bash
 type cd   # cd is a shell builtin
@@ -423,79 +451,100 @@ type cd   # cd is a shell builtin
 
 #### **5.5.2 Comandos Externos**
 
-👉 São arquivos em `/bin`, `/usr/bin`, etc. Ex: `ls`
+**O que são comandos externos?**
+São arquivos executáveis em `/bin`, `/usr/bin`, etc. Ex: `ls`.
 
-Veja o caminho:
+**Como ver o caminho?**
 
 ```bash
 which ls
 type -a ls
 ```
 
----
+#### **5.5.3 Aliases**
 
-### **5.5.3 Aliases**
+**O que são aliases?**
+Aliases são atalhos personalizados para comandos.
 
 👉 _Analogia:_ Atalhos personalizados.
 
-- Exemplo:
+**Como criar aliases?**
 
-  ```bash
-  alias l='ls -CF'
-  alias mycal='cal 2030'
-  ```
+```bash
+alias l='ls -CF'
+alias mycal='cal 2030'
+```
 
-- Veja todos: `alias`
-- Temporários (somem ao fechar o terminal)
-- Permanentes: adicionar no `.bashrc`
+**Como ver todos os aliases?**
 
----
+```bash
+alias
+```
 
-### **5.5.4 Funções**
+**Aliases são temporários ou permanentes?**
+Aliases são temporários (somem ao fechar o terminal). Para permanentes, adicione no `.bashrc`.
+
+#### **5.5.4 Funções**
+
+**O que são funções?**
+Funções são blocos de comandos que você pode definir e executar como um comando único.
 
 👉 _Analogia:_ Um botão que executa **vários comandos**.
 
-- Exemplo:
+**Como criar uma função?**
 
-  ```bash
-  relatorio () {
-    ls Documents
-    date
-    echo "Documentos listados"
-  }
-  ```
+```bash
+relatorio () {
+  ls Documents
+  date
+  echo "Documentos listados"
+}
+```
 
-- Execute com: `relatorio`
-- Também são temporárias, a não ser que salve no `.bashrc`
+**Como executar?**
+
+```bash
+relatorio
+```
+
+**Funções são temporárias ou permanentes?**
+Também são temporárias, a não ser que salve no `.bashrc`.
 
 ---
 
 ### **5.6 Aspas e Substituições**
 
-#### **5.6.1 Aspas Duplas (`" "`):**
+#### **5.6.1 Aspas Duplas (`" "`)**
 
-- Protegem glob (`*`, `?`)
-- Ainda interpretam:
-  - Variáveis: `$PATH`
-  - Comandos: `$(date)`
+**O que fazem as aspas duplas?**
+Protegem glob (`*`, `?`) mas ainda interpretam variáveis e comandos.
 
-#### **5.6.2 Aspas Simples (`' '`):**
+**O que ainda é interpretado?**
 
-- Protegem **tudo**, inclusive variáveis.  
-  👉 Exemplo:
-  ```bash
-  echo '$USER'   # Exibe: $USER
-  ```
+- Variáveis: `$PATH`
+- Comandos: `$(date)`
 
-#### **5.6.4 Crase / Backquotes (`` ` ` ``):**
+#### **5.6.2 Aspas Simples (`' '`)**
 
-👉 Usado para substituir o conteúdo de um comando:
+**O que fazem as aspas simples?**
+Protegem **tudo**, inclusive variáveis.
+
+👉 _Exemplo:_
+
+```bash
+echo '$USER'   # Exibe: $USER
+```
+
+#### **5.6.4 Crase / Backquotes (`` ` ` ``)**
+
+**Para que servem as crases?**
+Usado para substituir o conteúdo de um comando:
 
 ```bash
 echo Hoje é `date`
 ```
 
-➡️ Melhor usar: `$(date)`
+➡️ _Melhor usar:_ `$(date)`
 
 ---
 
@@ -503,7 +552,8 @@ echo Hoje é `date`
 
 #### **5.7.1 `;` (ponto e vírgula)**
 
-- Executa todos, na ordem, mesmo que algum falhe:
+**O que faz o ponto e vírgula?**
+Executa todos os comandos, na ordem, mesmo que algum falhe:
 
 ```bash
 comando1; comando2; comando3
@@ -511,7 +561,8 @@ comando1; comando2; comando3
 
 #### **5.7.2 `&&` (E lógico)**
 
-- Executa o segundo **só se o primeiro der certo**
+**O que faz o E lógico?**
+Executa o segundo comando **só se o primeiro der certo**:
 
 ```bash
 mkdir pasta && cd pasta
@@ -519,7 +570,8 @@ mkdir pasta && cd pasta
 
 #### **5.7.3 `||` (OU lógico)**
 
-- Executa o segundo **só se o primeiro falhar**
+**O que faz o OU lógico?**
+Executa o segundo comando **só se o primeiro falhar**:
 
 ```bash
 ls /erro || echo "Pasta não encontrada"
@@ -527,93 +579,122 @@ ls /erro || echo "Pasta não encontrada"
 
 ---
 
-📌 **Resumo do Capítulo 5:**  
-O shell é uma linguagem poderosa que transforma o usuário em **comandante direto do sistema**. Aprender sua lógica — comandos, variáveis, operadores, funções — é como pegar as chaves do carro da administração do Linux.
-
-**resumo atualizado e completo do Capítulo 5** do laboratório, com explicações práticas baseadas em todos os passos que você explorou:
+📌 **Resumo do Capítulo 5:** O shell é uma linguagem poderosa que transforma o usuário em **comandante direto do sistema**. Aprender sua lógica — comandos, variáveis, operadores, funções — é como pegar as chaves do carro da administração do Linux.
 
 ---
 
-## 🧩 **Capítulo 5 – Trabalhando com o Shell e Comandos**
+## 🧩 **Capítulo 5 – Trabalhando com o Shell e Comandos (Laboratório)**
 
 ### **5.3 – Histórico de Comandos**
 
-- **`history`** exibe os comandos utilizados. Você pode limitar, como em `history 5` (últimos 5 comandos).
-- Para **reexecutar um comando antigo**:
-  - `!9` → executa o 9º comando da lista
-  - `!!` → repete o último
-  - `!ls` → executa o último comando que começa com `ls`
-- Use as **setas ↑ e ↓** para navegar entre comandos anteriores e editá-los facilmente.
+**Como funciona o comando history?**
+O comando `history` exibe os comandos utilizados. Você pode limitar, como em `history 5` (últimos 5 comandos).
 
----
+**Como reexecutar comandos antigos?**
+
+- `!9` → executa o 9º comando da lista
+- `!!` → repete o último
+- `!ls` → executa o último comando que começa com `ls`
+
+**Como navegar no histórico?**
+Use as setas ↑ e ↓ para navegar entre os comandos anteriores e editá-los facilmente.
+
+👉 _Analogia:_ Como usar um gravador que guarda tudo que você falou e permite voltar e repetir.
 
 ### **5.4 – Variáveis de Ambiente**
 
-- O comando **`echo`** exibe textos, variáveis ou resultados de comandos.
-- Use `echo $HISTSIZE` para ver quantos comandos são guardados no histórico (ex: 1000).
-- `echo $PATH` mostra onde o sistema procura executáveis.
-- O comando **`which`** identifica o caminho de um executável (ex: `which date` → `/bin/date`).
+**O que faz o comando echo?**
+O comando `echo` exibe textos, variáveis ou resultados de comandos.
 
----
+**Como ver configurações do histórico?**
+Use `echo $HISTSIZE` para ver quantos comandos são salvos no histórico (ex: 1000).
+
+**Como ver onde o sistema busca comandos?**
+`echo $PATH` mostra onde o sistema procura executáveis.
+
+**Como encontrar o caminho de um comando?**
+O comando `which` identifica o caminho de um executável (ex: `which date` → `/bin/date`).
+
+👉 _Analogia:_ Como um GPS que mostra onde cada comando está localizado no sistema.
 
 ### **5.5 – Tipos de Comandos**
 
-Existem **quatro tipos principais**:
+**Quais são os tipos principais de comandos?**
+Existem quatro tipos principais:
 
-1. **Internos (built-in)**  
-   Ex: `cd` → parte do shell Bash
+**1. Internos (embutidos)**
+Ex: `cd` → parte do shell Bash
 
-2. **Externos (executáveis)**  
-   Ex: `ls`, `vi`, `cp` → armazenados em diretórios como `/bin`
+**2. Externos (executáveis)**
+Ex: `ls`, `vi`, `cp` → armazenados em diretórios como `/bin`
 
-3. **Aliases (atalhos)**  
-   Ex: `alias ll='ls -alF'` → atalho para comandos longos
+**3. Aliases (atalhos)**
+Ex: `alias ll='ls -alF'` → atalho para comandos longos
 
-4. **Funções**  
-   Blocos de comandos definidos pelo usuário.
+**4. Funções**
+Blocos de comandos definidos pelo usuário.
 
-Use:
+**Como identificar o tipo de comando?**
 
-- `type comando` para identificar o tipo.
-- `type -a comando` para ver todas as origens (alias + binário).
-- `alias` → lista os aliases atuais.
+- `type comando` para identificar o tipo
+- `type -a comando` para ver todas as origens (alias + binário)
+- `alias` → lista os aliases atuais
 
----
+👉 _Analogia:_ Como saber se uma ferramenta veio com o carro (interna), foi comprada separadamente (externa), é um apelido (alias) ou foi feita sob medida (função).
 
 ### **5.6 – Uso de Aspas (Quoting)**
+
+**Por que usar aspas?**
+Aspas protegem caracteres especiais e controlam como o shell interpreta o texto.
 
 **Tipos de aspas:**
 
 | Tipo                    | Interpreta variáveis? | Interpreta `*`? | Executa comandos? | Exemplo                       |
 | ----------------------- | --------------------- | --------------- | ----------------- | ----------------------------- |
-| **Aspas simples** `' '` | ❌                    | ❌              | ❌                | `'Olá $USER' → Olá $USER`     |
-| **Aspas duplas** `" "`  | ✅                    | ❌              | ✅                | `"Olá $USER"` → Olá jonas     |
+| **Aspas simples** `' '` | ❌                    | ❌              | ❌                | `'Olá $USER'` → Olá $USER     |
+| **Aspas duplas** `" "`  | ✅                    | ❌              | ✅                | `"Olá $USER"` → Olá Jonas     |
 | **Crases** `` ` ` ``    | ❌                    | ❌              | ✅                | `` `date` `` → executa `date` |
 
-- Também é possível **escapar caracteres individuais** com `\`, como em `\*` ou `` \` ``.
+**Como escapar caracteres?**
+Também é possível escapar caracteres individuais com `\`, como em `\*` ou `` \` ``.
 
----
+👉 _Analogia:_ Como usar diferentes tipos de proteção — plástico filme (aspas simples), saco com fecho (aspas duplas) ou caixa especial (crases).
 
 ### **5.7 – Separadores Lógicos de Comando**
 
-Você pode **encadear comandos** na mesma linha com:
+**Como encadear comandos?**
+Você pode encadear comandos na mesma linha com diferentes operadores:
 
-- **`;`** → executa todos em sequência, mesmo se algum falhar  
-  `echo A; echo B; echo C`
+**`;` (ponto e vírgula)**
+Executa todos em sequência, mesmo se algum falhar:
 
-- **`&&`** → executa o próximo **só se o anterior tiver sucesso**  
-  `mkdir pasta && cd pasta`
+```bash
+echo A; echo B; echo C
+```
 
-- **`||`** → executa o próximo **só se o anterior falhar**  
-  `cd inexistente || echo "Erro: pasta não existe"`
+**`&&` (E lógico)**
+Executa o próximo só se o anterior tiver sucesso:
 
-Exemplos:
+```bash
+mkdir pasta && cd pasta
+```
+
+**`||` (OU lógico)**
+Executa o próximo só se o anterior falhar:
+
+```bash
+cd inexistente || echo "Erro: pasta não existe"
+```
+
+**Exemplos práticos:**
 
 ```bash
 false; echo A       # Executa ambos
 false && echo B     # Só executa false
 false || echo C     # Executa echo C
 ```
+
+👉 _Analogia:_ Como usar diferentes tipos de interruptores — sequencial (;), dependente (&&) ou alternativo (||).
 
 ---
 
