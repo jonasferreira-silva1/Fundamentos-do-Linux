@@ -208,62 +208,99 @@ Use senhas fortes (como cofre com código), ative o firewall (porteiro da sua ca
 
 ---
 
-### 📚 Capítulo 4 – O Mundo Open Source
+## 📚 **Capítulo 4 – O Mundo Open Source**
 
-4.1 Introdução ao Código Aberto
-👉 Analogia: O código-fonte é como a receita de um bolo: legível para humanos, cheia de ingredientes e instruções.
+### **4.1 Introdução ao Código Aberto**
 
-Compilador: transforma a receita (código-fonte) em um bolo (programa executável) que o computador entende.
+**O que é código-fonte?**
+Código-fonte é o conjunto de instruções escritas em linguagem de programação que os desenvolvedores criam para fazer o computador executar tarefas específicas. É o "texto" que descreve como o programa deve funcionar.
 
-Software proprietário: você recebe o bolo pronto, mas nunca vê a receita.
+👉 _Analogia:_ O código-fonte é como a **receita de um bolo**: legível para humanos, cheia de ingredientes e instruções.
 
-Software open source: você recebe o bolo e a receita completa — pode adaptar, melhorar e compartilhar.
+**O que é um compilador?**
+Um compilador é um programa que traduz o código-fonte (escrito por humanos) em linguagem de máquina (entendida pelo computador), criando um programa executável.
 
-💡 Curiosidade: O Linux nasceu dentro dessa filosofia — feito em C, inspirado no UNIX, com colaboração global impulsionada pela internet.
+👉 _Analogia:_ Transforma a receita (código-fonte) em um bolo (programa executável) que o computador entende.
 
-4.2 Licenciamento Open Source
-👉 Pense assim: Quando você "compra" software, você não compra o código, e sim uma licença de uso, como um ingresso que determina:
+**Qual a diferença entre software proprietário e open source?**
+Software proprietário: você recebe o programa pronto, mas nunca vê como foi feito. Software open source: você recebe o programa E o código-fonte completo — pode adaptar, melhorar e compartilhar.
 
-Onde pode usar,
+👉 _Analogia:_
 
-Se pode compartilhar,
+- **Proprietário:** você recebe o bolo pronto, mas nunca vê a receita
+- **Open source:** você recebe o bolo e a receita completa
 
-E se pode modificar.
+**Como o Linux se relaciona com o open source?**
+O Linux nasceu dentro da filosofia open source — feito em C, inspirado no UNIX, com colaboração global impulsionada pela internet.
 
-Licenças:
-GPL (Free Software Foundation): você pode modificar, mas tem que manter o código aberto (copyleft).
+💡 _Curiosidade:_ O Linux é um exemplo perfeito de como o open source pode criar sistemas poderosos através da colaboração.
 
-BSD/MIT (OSI): mais permissiva — você pode fechar o código modificado, desde que dê crédito ao autor.
+---
 
-🎭 FLOSS ou FOSS?
+### **4.2 Licenciamento Open Source**
 
-FOSS = Free and Open Source Software
+**O que é uma licença de software?**
+Quando você "compra" software, você não compra o código, e sim uma licença de uso que determina onde pode usar, se pode compartilhar e se pode modificar.
 
-FLOSS = Free/Libre/Open Source Software 📌 "Free" pode ser "livre" ou "de graça" — por isso a confusão!
+👉 _Analogia:_ Como um ingresso que determina o que você pode fazer com o software.
 
-4.2.2 The Open Source Initiative (OSI)
-Criada por Bruce Perens e Eric Raymond em 1998.
+**O que é a licença GPL?**
+A GPL (Free Software Foundation) permite que você modifique o código, mas obriga a manter o código aberto (copyleft) — qualquer modificação também deve ser open source.
 
-Rejeita ideias muito rígidas da FSF, mas defende a liberdade de usar e modificar o código sem restrições de uso.
+👉 _Analogia:_ Como uma receita que você pode modificar, mas tem que compartilhar suas melhorias.
 
-A OSI não cria licenças, mas reconhece as que seguem seus princípios.
+**O que são licenças BSD/MIT?**
+Licenças BSD/MIT são mais permissivas — você pode fechar o código modificado, desde que dê crédito ao autor original.
 
-👉 Licenças BSD: > "Use como quiser, só não diga que foi você quem criou."
+👉 _Analogia:_ "Use como quiser, só não diga que foi você quem criou."
 
-4.3 Modelos de Negócio com Open Source
-👉 Analogia: Você pode ter a receita de bolo grátis, mas pode ganhar dinheiro vendendo o bolo pronto, decorado e com entrega expressa.
+**O que significa FOSS e FLOSS?**
 
-Formas de monetização:
+**FOSS = Free and Open Source Software**
 
-Suporte e garantias: Red Hat, Canonical (Ubuntu) vendem ajuda técnica premium.
+- **Free:** Livre (liberdade de uso, modificação, distribuição)
+- **Open Source:** Código Aberto (código-fonte disponível)
+- **Software:** Programa de computador
 
-Produtos derivados: DVRs, câmeras, roteadores e outros dispositivos usam Linux por trás.
+**FLOSS = Free/Libre/Open Source Software**
 
-Consultoria e integrações: empresas contratam especialistas em Linux/Open Source para implementar soluções sob medida.
+- **Free:** Livre (liberdade de uso, modificação, distribuição)
+- **Libre:** Livre em espanhol/francês (mesmo significado)
+- **Open Source:** Código Aberto (código-fonte disponível)
+- **Software:** Programa de computador
 
-Patrocínio de projetos: empresas grandes investem em projetos de que dependem (como bancos, Google, Amazon etc).
+📌 _Nota:_ "Free" pode significar "livre" (liberdade) ou "gratuito" (sem custo) — por isso a confusão! O FLOSS esclarece isso usando "Libre" para deixar claro que se refere à liberdade, não ao preço.
 
-📌 Resumo do Capítulo 4: O software livre libera o conhecimento, gera comunidades inovadoras e cria novas formas de negócio, onde o lucro não vem da exclusividade, mas do valor agregado — seja por suporte, personalização ou integração.
+---
+
+### **4.2.2 The Open Source Initiative (OSI)**
+
+**O que é a OSI?**
+Criada por Bruce Perens e Eric Raymond em 1998, a OSI rejeita ideias muito rígidas da FSF, mas defende a liberdade de usar e modificar o código sem restrições de uso.
+
+**O que a OSI faz?**
+A OSI não cria licenças, mas reconhece as que seguem seus princípios, promovendo o uso do open source de forma pragmática.
+
+---
+
+### **4.3 Modelos de Negócio com Open Source**
+
+**Como é possível ganhar dinheiro com software gratuito?**
+Você pode ter a receita de bolo grátis, mas ganhar dinheiro vendendo o bolo pronto, decorado e com entrega expressa.
+
+**Quais são as formas de monetização do open source?**
+
+**Suporte e garantias:** Red Hat, Canonical (Ubuntu) vendem ajuda técnica premium.
+
+**Produtos derivados:** DVRs, câmeras, roteadores e outros dispositivos usam Linux por trás.
+
+**Consultoria e integrações:** empresas contratam especialistas em Linux/Open Source para implementar soluções sob medida.
+
+**Patrocínio de projetos:** empresas grandes investem em projetos de que dependem (como bancos, Google, Amazon etc).
+
+---
+
+📌 **Resumo do Capítulo 4:** O software livre libera o conhecimento, gera comunidades inovadoras e cria novas formas de negócio, onde o lucro não vem da exclusividade, mas do valor agregado — seja por suporte, personalização ou integração.
 
 **Capítulo 5 – Trabalhando com o Shell (CLI)**, mantendo o estilo didático com analogias e exemplos simples para facilitar a assimilação:
 
