@@ -583,7 +583,7 @@ ls /erro || echo "Pasta não encontrada"
 
 ---
 
-## 🧩 **Capítulo 5 – Trabalhando com o Shell e Comandos (Laboratório)**
+## 🧪 **Laboratório Prático – Capítulo 5: Trabalhando com o Shell e Comandos**
 
 ### **5.3 – Histórico de Comandos**
 
@@ -702,106 +702,105 @@ false || echo C     # Executa echo C
 
 ## 6.1 Introdução
 
-**Resumo:**  
-A linha de comando é muito poderosa, mas também complexa. Portanto, **saber encontrar ajuda é essencial**.
+**Por que saber encontrar ajuda é importante no Linux?**
+A linha de comando é muito poderosa, mas também complexa. Portanto, saber encontrar ajuda é essencial para usar o sistema de forma eficiente e resolver dúvidas.
 
-**Analogia:**  
-👉 Como dirigir um carro esportivo cheio de botões — potência sem manual pode te deixar travado. O sistema de ajuda é esse manual!
+👉 _Analogia:_ Como dirigir um carro esportivo cheio de botões — potência sem manual pode te deixar travado. O sistema de ajuda é esse manual!
 
 ---
 
-## 6.2 Páginas de Manual (man pages)
+### 6.2 Páginas de manual (man pages)
 
-### 6.2.1 Visualizando man pages
+**O que são man pages?**
+Man pages são páginas de manual integradas ao Linux, que explicam como usar comandos, suas opções e exemplos de uso.
+
+#### 6.2.1 Visualizando páginas de manual
+
+**Como visualizar páginas de manual?**
+Use o comando:
 
 ```bash
 man comando
 ```
 
-**Analogia:**  
-👉 É como abrir o manual impresso do produto. Explica o básico, recursos e como usar cada botão.
+👉 _Analogia:_ É como abrir o manual impresso do produto. Explica o básico, recursos e como usar cada botão.
 
----
+#### 6.2.2 Seções dentro das páginas de manual
 
-### 6.2.2 Seções dentro das man pages
+**Quais seções existem nas man pages?**
 
-- NAME → nome e descrição breve
-- SYNOPSIS → como usar
-- DESCRIPTION → o que faz
+- NOME → nome e descrição breve
+- SINOPSE → como usar
+- DESCRIÇÃO → o que faz
 - OPTIONS → parâmetros disponíveis
-- AUTHOR, FILES, SEE ALSO...
+- AUTOR, ARQUIVOS, VEJA TAMBÉM...
 
-**Analogia:**  
-👉 Igual ao índice de um livro técnico, cada parte da página tem seu foco — só precisa saber onde procurar.
+👉 _Analogia:_ Igual ao índice de um livro técnico, cada parte da página tem seu foco — só precisa saber onde procurar.
 
----
+#### 6.2.3 Buscando termos nas páginas de manual
 
-### 6.2.3 Buscando termos dentro de man pages
+**Como buscar termos nas man pages?**
+Use `/palavra` para procurar uma palavra na página de manual, `n` para próxima ocorrência e `Shift + N` para voltar.
 
-Use `/palavra` para procurar uma palavra na man page, `n` para próxima ocorrência e `Shift + N` para voltar.
+👉 _Analogia:_ Como usar "Ctrl + F" num PDF gigante.
 
-**Analogia:**  
-👉 Como usar "Ctrl + F" num PDF gigante.
+#### 6.2.4 Seções por número
 
----
-
-### 6.2.4 Seções por número
-
-Se um mesmo nome tem man pages diferentes, use o número da seção:
+**O que fazer se o mesmo nome tiver páginas de manual diferentes?**
+Use o número da seção:
 
 ```bash
 man 5 passwd
 ```
 
-**Analogia:**  
-👉 Como procurar "banco" no dicionário: pode ser assento (seção 1) ou instituição financeira (seção 5).
+👉 _Analogia:_ Como procurar "banco" no dicionário: pode ser assento (seção 1) ou instituição financeira (seção 5).
 
 ---
 
-## 6.3 Encontrando comandos e documentação
+### 6.3 Encontrando comandos e documentação
 
-### 6.3.1 Comando `whereis`
+#### 6.3.1 Comando whereis
 
-Mostra onde o comando e suas man pages estão no sistema:
+**Como encontrar onde está um comando e sua documentação?**
+Use o comando:
 
 ```bash
 whereis ls
 ```
 
-**Analogia:**  
-👉 Como perguntar pro sistema: "onde estão os arquivos e o manual desse comando?"
+👉 _Analogia:_ Como perguntar pro sistema: "onde estão os arquivos e o manual desse comando?"
 
----
+#### 6.3.2 Comando locate
 
-### 6.3.2 Comando `locate`
-
-Busca por qualquer arquivo, muito rápido, usando um banco de dados:
+**Como buscar arquivos rapidamente?**
+Use o comando:
 
 ```bash
 locate passwd
 ```
 
-**Analogia:**  
-👉 Um "Google offline" do seu sistema — mas ele não sabe das novidades do dia, a menos que seja atualizado.
+👉 _Analogia:_ Um "Google offline" do seu sistema — mas ele não sabe das novidades do dia, a menos que esteja atualizado.
 
 ---
 
-## 6.4 Documentação `info`
+### 6.4 Documentação info
 
-### 6.4.1 Visualizando com `info`
+#### 6.4.1 Visualizando com info
+
+**O que é o comando info?**
+O comando `info` apresenta explicações mais completas e estruturadas sobre comandos e programas.
+
+**Como visualizar info?**
 
 ```bash
 info ls
 ```
 
-Apresenta explicações mais completas e estruturadas.
+👉 _Analogia:_ É como ler um livro com índice clicável e capítulos explicativos — mais fácil de entender do que o manual técnico (`man`).
 
-**Analogia:**  
-👉 É como ler um livro com índice clicável e capítulos explicativos — mais fácil de entender do que o manual técnico (`man`).
+#### 6.4.2 Navegação no info
 
----
-
-### 6.4.2 Navegação no `info`
+**Como navegar no info?**
 
 - `n` → próximo capítulo
 - `p` → anterior
@@ -810,37 +809,33 @@ Apresenta explicações mais completas e estruturadas.
 - `Enter` → seguir link
 - `q` → sair
 
-**Analogia:**  
-👉 Um e-book interativo, com índice e botão "voltar".
+👉 _Analogia:_ Um e-book interativo, com índice e botão "voltar".
 
----
+#### 6.4.3 Explorando o info
 
-### 6.4.3 Explorando o `info`
-
+**O que acontece ao executar info sem argumentos?**
 Executar `info` sem argumentos abre o "livro-mãe" da documentação.
 
-**Analogia:**  
-👉 Como abrir a enciclopédia Linux. Você pode passear livremente pelos temas e aprender algo novo mesmo sem estar buscando nada específico.
+👉 _Analogia:_ Como abrir uma enciclopédia Linux. Você pode passear livremente pelos temas e aprender algo novo mesmo sem estar buscando nada específico.
 
 ---
 
-## 6.5 Outras fontes de ajuda
+### 6.5 Outras fontes de ajuda
 
-### 6.5.1 Opção `--help`
+#### 6.5.1 Opção --help
 
-Mostra uma descrição simples do comando diretamente no terminal:
+**Como obter ajuda rápida de um comando?**
+Use a opção `--help`:
 
 ```bash
 comando --help
 ```
 
-**Analogia:**  
-👉 É como o adesivo que vem colado no produto, com as instruções rápidas — não tão completo quanto o manual, mas suficiente pra começar.
+👉 _Analogia:_ É como o adesivo que vem colado no produto, com as instruções rápidas — não tão completo quanto o manual, mas suficiente pra começar.
 
----
+#### 6.5.2 Documentação extra do sistema
 
-### 6.5.2 Documentação extra do sistema
-
+**Onde encontrar documentação extra no sistema?**
 Arquivos locais de ajuda nos diretórios:
 
 ```bash
@@ -849,32 +844,35 @@ Arquivos locais de ajuda nos diretórios:
 
 Arquivos como `README`, `INSTALL`, `CHANGELOG`, etc.
 
-**Analogia:**  
-👉 Como o encarte dentro da caixa de um aparelho novo — às vezes tem dicas valiosas não encontradas em mais lugar nenhum.
+👉 _Analogia:_ Como o encarte dentro da caixa de um aparelho novo — às vezes tem dicas valiosas não encontradas em mais lugar nenhum.
 
 ---
 
-# 🧩 Capítulo 6 + Laboratório 6 — A Arte de Obter Ajuda e Encontrar Arquivos no Linux
+📌 **Resumo do Capítulo 6:**
+Neste capítulo, você aprendeu a:
 
-## 6.1 Introdução
+- Usar o manual (`man`) e o info para consultar comandos e programas
+- Buscar rapidamente arquivos e comandos com `whereis` e `locate`
+- Navegar e pesquisar dentro das páginas de manual
+- Obter ajuda rápida com `--help`
+- Encontrar documentação extra no sistema
 
-Saber usar o terminal é importante. Mas **saber pedir ajuda ao terminal é essencial**.  
-Esse módulo ensina a usar ferramentas internas do Linux para encontrar informações sobre comandos, arquivos e funcionamento geral do sistema — sem depender da internet.
+Essas ferramentas tornam você mais independente no Linux, facilitam o aprendizado contínuo e ajudam a resolver dúvidas sem depender da internet!
 
 ---
 
-## 6.2 Como obter ajuda no Linux
+## 🧪 Laboratório Prático – Capítulo 6: A Arte de Obter Ajuda e Encontrar Arquivos no Linux
 
-### 💬 `man` – A página do manual
+### 6.1 Introdução
 
-- Use `man comando` para abrir o manual técnico de um comando.
-- Seções incluem: NAME, SYNOPSIS, DESCRIPTION, OPTIONS…
-- Dentro do `man`, use:
-  - `/palavra` para buscar termos
-  - `n` / `N` para navegar pelos resultados
-  - `q` para sair
+**Por que praticar a busca por ajuda no terminal?**
+Saber usar o terminal é importante. Mas saber pedir ajuda ao terminal é essencial. Este laboratório mostra como usar, na prática, as ferramentas internas do Linux para encontrar informações sobre comandos, arquivos e funcionamento do sistema — sem depender da internet.
 
-**Exemplo prático:**
+---
+
+### 6.2 Como obter ajuda no Linux
+
+**Como consultar o manual técnico de um comando?**
 
 ```bash
 man date
@@ -882,20 +880,13 @@ man date
 
 👨‍🏫 _Analogia:_ O `man` é o "manual técnico de bolso" do Linux.
 
----
+**Como buscar termos dentro do manual?**
 
-### 📘 `info` – A explicação em forma de livro
+- `/palavra` para buscar termos
+- `n`/`N` para navegar pelos resultados
+- `q` para sair
 
-- Use `info comando` para acessar um guia estruturado com capítulos, exemplos e links entre tópicos.
-- Comandos úteis:
-  - `n` → próximo tópico
-  - `u` → subir nível
-  - `l` → voltar ao último ponto
-  - `Enter` → seguir link
-  - `q` → sair
-  - `h` → ajuda da navegação (diferente do `man`!)
-
-**Exemplo prático:**
+**Como usar o info para explicações mais amigáveis?**
 
 ```bash
 info date
@@ -903,23 +894,15 @@ info date
 
 👨‍🏫 _Analogia:_ O `info` é como um livro digital interativo, com navegação por tópicos e explicações mais amigáveis.
 
----
-
-### ⚡ `--help` – O adesivo colado no produto
-
-- Rápido, direto e disponível na maioria dos comandos GNU:
+**Como obter ajuda rápida de um comando?**
 
 ```bash
 date --help
 ```
 
-��‍🏫 _Analogia:_ É a "cola rápida" de como usar o comando, ideal para lembrar as flags e ver exemplos.
+👨‍🏫 _Analogia:_ É a "cola rápida" de como usar o comando, ideal para lembrar as flags e ver exemplos.
 
----
-
-### 🔍 `man -k` e `whatis` – Caça ao comando pelo nome
-
-- Quando você não lembra o nome exato:
+**Como encontrar comandos pelo nome ou descrição?**
 
 ```bash
 man -k senha
@@ -928,11 +911,7 @@ whatis passwd
 
 👨‍🏫 _Analogia:_ São como sumários ou índices automáticos do sistema.
 
----
-
-### 🔢 `man` com seções numeradas
-
-- Um mesmo nome pode ter várias man pages (ex: `passwd (1)`, `passwd (5)`)
+**Como acessar páginas de manual com letras numeradas?**
 
 ```bash
 man 5 passwd
@@ -940,43 +919,29 @@ man 5 passwd
 
 👨‍🏫 _Analogia:_ Como "manga" no dicionário — pode ser fruta ou parte da camisa.
 
----
-
-### 📂 Documentação adicional
-
-- Navegue até:
+**Onde encontrar documentação adicional?**
 
 ```bash
 ls /usr/share/doc
+less /usr/share/doc/README
 ```
-
-- Acesse arquivos como `README`, `changelog`, `COPYING` com `less`.
 
 👨‍🏫 _Analogia:_ É o encarte detalhado que vem na caixa do software.
 
 ---
 
-## 6.3 Encontrando Arquivos e Comandos
+### 6.3 Encontrando Arquivos e Comandos
 
-### 🚀 `locate` – Busca rápida por nome
-
-- Usa um banco de dados indexado:
+**Como buscar arquivos rapidamente pelo nome?**
 
 ```bash
 locate crontab
-```
-
-- Use `-b "\nome"` para buscar somente pelo nome exato:
-
-```bash
 locate -b "\crontab"
 ```
 
 📌 _Atenção:_ Não encontra arquivos criados recentemente, a menos que você atualize o banco com `sudo updatedb`.
 
----
-
-### 🧠 `whereis` – Encontre o comando, suas man pages e localização
+**Como encontrar o comando, suas páginas de manual e localização?**
 
 ```bash
 whereis passwd
@@ -986,226 +951,205 @@ whereis passwd
 
 ---
 
-## 📘 **Capítulo 7 – Trabalhando com o Sistema de Arquivos**
+📌 **Resumo do Laboratório do Capítulo 6:**
+Neste laboratório, você praticou:
+
+- Consultar manuais e explicações detalhadas de comandos
+- Buscar rapidamente arquivos e comandos
+- Navegar e pesquisar dentro das páginas de manual
+- Encontrar documentação extra no sistema
+
+Essas práticas tornam você mais independente no Linux e aceleram seu aprendizado!
 
 ---
 
-### 🗃️ **7.1 – Introdução**
+## 📘 Capítulo 7 – Trabalhando com o Sistema de Arquivos
 
-No Linux, **tudo é tratado como arquivo**: documentos, imagens, programas, diretórios e até dispositivos.
+### 🗃️ 7.1 – Introdução
 
-📦 **Analogia:** Pense em um armário onde tudo — até o próprio armário — é um item armazenado.
+**O que significa dizer que tudo é arquivo no Linux?**
+No Linux, tudo é tratado como arquivo: documentos, imagens, programas, diretórios e até dispositivos.
 
----
-
-### 🌳 **7.2 – Estrutura de Diretórios**
-
-#### 🧭 7.2.1 **Diretório Home**
-
-- Cada usuário tem uma **pasta pessoal** localizada em `/home/nomedousuário`.
-- Ela é representada por `~` e é o local onde o usuário tem **controle total**.
-
-🏡 **Analogia:** É o seu "quarto privado" dentro da casa Linux.
+📦 _Analogia:_ Pense em um armário onde tudo — até o próprio armário — é um item armazenado.
 
 ---
 
-#### 📍 7.2.2 **Diretório Atual**
+### 🌳 7.2 – Estrutura de Diretórios
 
-- Use `pwd` para descobrir **onde você está** no sistema de arquivos.
+**Como é organizada a estrutura de diretórios no Linux?**
+O sistema de arquivos do Linux é hierárquico, começando pela raiz `/` e ramificando-se em várias pastas essenciais.
 
-🧭 **Analogia:** É o "você está aqui" no mapa do shopping.
+#### 🧭 7.2.1 Diretório Home
 
----
+**O que é o diretório home?**
+Cada usuário tem uma pasta pessoal localizada em `/home/nomedousuario`. Ela é representada por `~` e é o local onde o usuário tem controle total.
 
-#### 🔁 7.2.3 **Mudando de Diretório**
+🏡 _Analogia:_ É o seu "quarto privado" dentro da casa Linux.
 
-- Use `cd` para navegar entre pastas.
-- `cd` sozinho retorna ao diretório pessoal (`~`).
-- Se tentar acessar algo que não existe, o terminal avisa.
+#### 📍 7.2.2 Diretório Atual
 
-🚪 **Analogia:** É como abrir portas para entrar em outros cômodos do sistema.
+**Como descobrir onde você está no sistema de arquivos?**
+Use `pwd` para descobrir o diretório atual.
 
----
+🧭 _Analogia:_ É o "você está aqui" no mapa do shopping.
 
-### 🛣️ **7.3 – Caminhos**
+#### 🔁 7.2.3 Mudando de Diretório
 
-#### 📌 7.3.1 **Caminhos Absolutos**
+**Como navegar entre pastas?**
+Use `cd` para navegar entre pastas. `cd` sozinho retorna ao diretório pessoal (`~`). Se tentar acessar algo que não existe, o terminal avisa.
 
-- Começam com `/` e indicam o **trajeto completo** a partir da raiz.
-
-🗺️ **Analogia:** É o endereço completo com CEP.
-
----
-
-#### 🧾 7.3.2 **Caminhos Relativos**
-
-- Começam do diretório atual.
-- Não usam `/` no início.
-
-📍 **Analogia:** "Vire à direita na próxima esquina".
+🚪 _Analogia:_ É como abrir portas para entrar em outros cômodos do sistema.
 
 ---
 
-#### 🔼 7.3.3 **Atalhos `.` e `..`**
+### 🛣️ 7.3 – Caminhos
 
-- `..` = sobe um nível
-- `.` = representa o diretório atual
+#### 📌 7.3.1 Caminhos Absolutos
 
-🧗 **Analogia:** `..` é subir uma escada para o andar de cima; `.` é permanecer onde está.
+**O que são caminhos absolutos?**
+Começam com `/` e indicam a trajetória completa a partir da raiz.
 
----
+🗺️ _Analogia:_ É o endereço completo com CEP.
 
-### 📋 **7.4 – Listando Arquivos**
+#### 🧾 7.3.2 Caminhos Relativos
 
-#### 🔎 7.4.1 **Arquivos Ocultos**
+**O que são caminhos relativos?**
+Começam do diretório atual. Não usam `/` no início.
 
-- Começam com `.` e são exibidos com `ls -a`.
+📍 _Analogia:_ "Vire à direita na próxima esquina".
 
-🎭 **Analogia:** Itens nos bastidores — importantes, mas fora dos holofotes.
+#### 🔼 7.3.3 Atalhos `.` e `..`
 
----
+`..` = sobe um nível
+`.` = representa o diretório atual
 
-#### 🧾 7.4.2 **Listagem Longa (`ls -l`)**
-
-- Mostra detalhes: tipo, permissões, dono, tamanho, data e nome.
-
-🔬 **Analogia:** É como um raio-X completo de cada arquivo.
+🧗 _Analogia:_ `..` é subir uma escada para o andar de cima; `.` é permanecer onde está.
 
 ---
 
-#### 📏 7.4.3 **Tamanhos Legíveis (`-h`)**
+### 📋 7.4 – Listando Arquivos
 
-- `ls -lh` mostra os tamanhos em K, M, G.
+#### 🔎 7.4.1 Arquivos Ocultos
 
-📐 **Analogia:** É como medir a distância entre cidades em quilômetros, não em polegadas.
+**O que são arquivos ocultos?**
+Começam com `.` e são exibidos com `ls -a`.
+
+🎭 _Analogia:_ Itens nos bastidores — importantes, mas fora dos holofotes.
+
+#### 🧾 7.4.2 Listagem Longa (`ls -l`)
+
+**O que mostra a listagem longa?**
+Mostra detalhes: tipo, permissões, dono, tamanho, data e nome.
+
+🔬 _Analogia:_ É como um raio-X completo de cada arquivo.
+
+#### 📏 7.4.3 Tamanhos Legíveis (`-h`)
+
+**Como ver tamanhos legíveis?**
+`ls -lh` mostra os tamanhos em K, M, G.
+
+📐 _Analogia:_ É como medir a distância entre cidades em milhas, não em polegadas.
+
+#### 📁 7.4.4 Listando o próprio diretório (`-d`)
+
+**Como listar apenas o diretório, não seu conteúdo?**
+Exibe informações da pasta em si, e não de seu conteúdo.
+
+📦 _Analogia:_ Ver a caixa, não o que tem dentro dela.
+
+#### 🌳 7.4.5 Listagem Recursiva (`-R`)
+
+**Como listar arquivos e subpastas recursivamente?**
+Mostra todos os arquivos e subpastas.
+
+⚠️ _Cuidado:_ Usar em `/` pode inundar o terminal.
+
+#### 📊 7.4.6 Ordenações
+
+**Como ordenar a listagem de arquivos?**
+
+- `ls -S` → por tamanho (maior primeiro)
+- `ls -lSh` → detalhado, tamanho legível
+- `ls -t` → por data de alteração (mais recente)
+- `ls -t --full-time` → data e hora completas
+- `-r` → inverter a ordem (ex: menor para maior)
+
+🗃️ _Analogia:_ Como reordenar documentos por peso, data ou ordem alfabética.
 
 ---
 
-#### 📁 7.4.4 **Listando o Próprio Diretório (`-d`)**
-
-- Exibe informações da pasta em si, e não de seu conteúdo.
-
-📦 **Analogia:** Ver a caixa, não o que tem dentro dela.
+📌 **Resumo do Capítulo 7:**
+Neste capítulo, você aprendeu sobre a estrutura do sistema de arquivos do Linux, como navegar entre diretórios, diferenciar caminhos absolutos e relativos, listar arquivos de várias formas e interpretar detalhes importantes de cada item.
 
 ---
 
-#### 🌳 7.4.5 **Listagem Recursiva (`-R`)**
+## 🧪 Laboratório Prático – Capítulo 7: Navegando e Explorando o Sistema de Arquivos
 
-- Mostra todos os arquivos **e** subpastas.
+Este módulo coloca em prática os conceitos vistos em teoria, orientando o aluno por meio de comandos reais para navegar, localizar e investigar arquivos e pastas no Linux. Ao final, o usuário ganha confiança para interagir com o sistema **sem interface gráfica**, utilizando apenas o terminal.
 
-⚠️ **Cuidado:** Usar em `/` pode inundar o terminal.
-
----
-
-#### 📊 7.4.6 **Ordenações**
-
-- **`ls -S`** → por tamanho (maior primeiro)
-- **`ls -lSh`** → detalhado, tamanho legível
-- **`ls -t`** → por data de modificação (mais recente)
-- **`ls -t --full-time`** → data e hora completas
-- **`-r`** → inverte a ordem (ex: menor para maior)
-
-🗃️ **Analogia:** Como reordenar documentos por peso, data ou ordem alfabética.
-
----
-
-**resumo oficial do módulo prático do laboratório do Capítulo 7**, com um título claro para destacar que se trata da parte **executada dentro do terminal**, com comandos e saídas reais:
-
----
-
-## 🧪 **Laboratório Prático – Capítulo 7: Navegando e Explorando o Sistema de Arquivos**
-
-Este módulo coloca em prática os conceitos vistos em teoria, guiando o aluno por meio de comandos reais para navegar, localizar e investigar arquivos e pastas no Linux. Ao final, o usuário ganha confiança para interagir com o sistema **sem interface gráfica**, utilizando apenas o terminal.
-
----
-
-### 🗃️ **7.1 – Introdução**
+### 🗃️ 7.1 – Introdução
 
 Você será capaz de:
 
 - Entrar e sair de diretórios com `cd`
 - Descobrir sua localização atual com `pwd`
-- Visualizar conteúdos com `ls`
+- Visualizar conteúdo com `ls`
 
-📦 **Analogia:** É como aprender a andar por uma cidade desconhecida com mapa e lanterna na mão.
+📦 _Analogia:_ É como aprender a andar por uma cidade desconhecida com mapa e lanterna na mão.
 
 ---
 
-### 🧭 **7.2 – Arquivos, Diretórios e Caminhos**
+### 🧭 7.2 – Arquivos, Diretórios e Caminhos
 
 #### 7.2.1 🔍 `pwd` – Mostra onde você está
 
 - Exibe o caminho completo do diretório atual.
 - Exemplo: `/home/sysadmin`
 
----
-
 #### 7.2.2 🚪 `cd /` – Vai para a raiz do sistema
 
 - Sobe ao ponto mais alto da estrutura de diretórios.
 
----
-
-#### 7.2.3 🏡 `cd` – Retorna para sua home
+#### 7.2.3 🏡 `cd` – Voltar para sua casa
 
 - Sem argumentos, `cd` leva direto para seu diretório pessoal (`~`).
-
----
 
 #### 7.2.4 🗺️ `cd /home` – Caminho absoluto
 
 - Caminho completo começando por `/`.
-
----
 
 #### 7.2.5 🌀 `cd ~` – Usando `~` para voltar pra casa
 
 - Atalho que representa o diretório pessoal.
 - Também funciona com `~usuario`.
 
----
-
 #### 7.2.6 📫 `echo ~usuario` – Ver o caminho da home de qualquer usuário
 
 - O sistema expande o `~nome` para mostrar onde fica a pasta home daquele usuário.
-
----
 
 #### 7.2.7 ⛔ `cd ~root` – Tentativa sem permissão
 
 - Usuários comuns não podem acessar `/root`.
 
----
-
 #### 7.2.8 🔧 `cd /usr/bin` – A sala de comandos do sistema
 
 - Diretório cheio de executáveis como `ls`, `pwd`, `mv`, etc.
-
----
 
 #### 7.2.9 📂 `cd /usr` – Subindo um nível
 
 - Passa da pasta de comandos (`/usr/bin`) para sua pasta mãe.
 
----
-
 #### 7.2.10 🧭 `cd /usr/share/doc` – Caminho completo para diretório profundo
 
 - Exemplo de navegação usando **caminho absoluto**.
-
----
 
 #### 7.2.11 🚶 `cd bash` – Caminho relativo
 
 - Funciona dentro de `/usr/share/doc` para entrar em `bash`.
 
----
-
 #### 7.2.12 🔙 `cd ..` – Voltar uma pasta
 
 - Sobe um nível na estrutura de diretórios.
-
----
 
 #### 7.2.13 ↕️ `cd ../dict` – Subir e descer em um só comando
 
@@ -1213,47 +1157,48 @@ Você será capaz de:
 
 ---
 
-### 📁 **7.3 – Listando Arquivos com `ls`**
+### 📁 7.3 – Listando Arquivos com `ls`
 
 #### 7.3.1 👁️ `ls` – Lista arquivos visíveis
 
 - Cores indicam tipo: azul (diretório), verde (executável), ciano (link), branco (arquivo comum).
 
----
-
 #### 7.3.2 🎭 `ls -a` – Inclui arquivos ocultos
 
 - Arquivos que começam com `.` (como `.bashrc`) aparecem.
-
----
 
 #### 7.3.3 🔍 `ls -l` – Listagem detalhada
 
 - Mostra permissões, tamanho, dono e data de modificação.
 
----
-
 #### 7.3.4 🌲 `ls -R` – Listagem recursiva
 
 - Mostra o conteúdo das subpastas também.
-
----
 
 #### 7.3.5 ✳️ `ls -d /etc/s*` – Usando `*` como coringa
 
 - Lista itens do `/etc` que começam com "s".
 
----
-
 #### 7.3.6 ❓ `ls -d /etc/????` – Usando `?` para tamanho exato
 
 - Exibe arquivos com exatamente 4 caracteres no nome.
 
----
-
 #### 7.3.7 🔠 `ls -d /etc/[abcd]*` – Filtrando por letras específicas
 
 - Mostra arquivos que começam com "a", "b", "c" ou "d".
+
+---
+
+📌 **Resumo do Laboratório Prático do Capítulo 7:**
+Neste laboratório, você praticou:
+
+- Navegação entre diretórios com `cd`
+- Identificação do diretório atual com `pwd`
+- Listagem de arquivos e pastas com `ls` e suas variações
+- Interpretação de caminhos absolutos e relativos
+- Visualização de arquivos ocultos e detalhes avançados
+
+Essas práticas são a base para dominar o terminal e explorar o Linux com autonomia!
 
 ---
 
@@ -1525,379 +1470,4 @@ zip -r pacote.zip pasta/
 
 ### 🎯 **Objetivo geral:**
 
-Aprender a **criar, visualizar, extrair, comprimir e descomprimir arquivos** usando ferramentas como `tar`, `gzip`, `bzip2`, `xz`, `zip` e seus complementos.
-
----
-
-## 📦 9.2.1 — Criar um Arquivo `.tar`
-
-```bash
-tar -cvf mybackups/udev.tar /etc/udev
-```
-
-- **Função:** Arquiva (junta) todos os arquivos/pastas de `/etc/udev` em um pacote `.tar`, **sem compressão**.
-- **Analogia:** É como embalar itens em uma caixa de papelão, sem se preocupar em economizar espaço ainda.
-
----
-
-## 🔍 9.2.2 — Ver conteúdo de um `.tar`
-
-```bash
-tar -tvf mybackups/udev.tar
-```
-
-- **Função:** Lista os arquivos arquivados, sem extraí-los.
-- **Analogia:** Como olhar por uma janela para ver o que tem dentro da caixa.
-
----
-
-## 🌀 9.2.3 — Compactar com `gzip`
-
-```bash
-tar -zcvf mybackups/udev.tar.gz /etc/udev
-```
-
-- **Função:** Arquiva e **comprime** em `.tar.gz` usando `gzip`.
-- **Analogia:** A caixa de papelão agora está embalada com plástico a vácuo!
-
----
-
-## 📂 9.2.4 — Extrair com `tar`
-
-```bash
-tar -xvf udev.tar.gz
-```
-
-- **Função:** Descompacta e desarquiva os arquivos no diretório atual.
-- **Analogia:** Você abre a caixa e espalha os itens no chão da sala atual — não devolve para o armário de origem!
-
----
-
-## ➕ 9.2.5 — Adicionar arquivo ao `.tar`
-
-```bash
-tar -rvf udev.tar /etc/hosts
-```
-
-- **Função:** Adiciona `/etc/hosts` ao arquivo `.tar` já existente.
-- **Analogia:** Abriu a caixa só pra colocar mais um item.
-
----
-
-## 🗜️ 9.2.6/7 — Compactar e descompactar com `gzip`/`gunzip`
-
-```bash
-gzip words      # compacta
-gunzip words.gz # descompacta
-```
-
-- **Função:** Reduz e restaura o arquivo `words`.
-- **Analogia:** É como usar um saco de vácuo para guardar um cobertor — depois você o retira para usar de novo.
-
----
-
-## 🧵 9.2.8/9 — Compactar e descompactar com `bzip2`/`bunzip2`
-
-```bash
-bzip2 words
-bunzip2 words.bz2
-```
-
-- **Destaque:** Pode ser mais lento, nem sempre comprime melhor que o `gzip`.
-- **Analogia:** Um compressor manual — funciona bem, mas exige mais esforço.
-
----
-
-## ⚙️ 9.2.10/11 — Compactar com `xz` / Descompactar com `unxz`
-
-```bash
-xz words
-unxz words.xz
-```
-
-- **Destaque:** Compressão bem eficiente, mas também substitui o original.
-- **Analogia:** Um compressor industrial — pesado, mas econômico em espaço!
-
----
-
-## 🧳 9.2.12/13 — Compactar com `zip` e subpastas
-
-```bash
-zip words.zip words             # arquivo único
-zip -r udev.zip /etc/udev      # diretório com subpastas
-```
-
-- **Diferencial:** Mantém o arquivo original; muito usado no Windows.
-- **Analogia:** Uma mala com etiqueta organizada, fácil de abrir em qualquer lugar — especialmente no Windows!
-
----
-
-## 🔎 9.2.14 — Ver conteúdo de um `.zip`
-
-```bash
-unzip -l udev.zip
-```
-
-- **Função:** Lista tudo que está dentro, sem extrair.
-- **Analogia:** Passando raio-X na mala antes de abrir.
-
----
-
-## 🧯 9.2.15 — Extração com `unzip`
-
-```bash
-unzip udev.zip
-```
-
-- **Função:** Extrai todos os arquivos.
-- **Analogia:** Abrir a mala e organizar tudo no quarto atual.
-
----
-
-## 📊 **Tabela Comparativa Final:**
-
-| Ferramenta   | Arquiva | Comprime | Extensão        | Mantém original? | Subpastas automáticas? |
-| ------------ | ------- | -------- | --------------- | ---------------- | ---------------------- |
-| `tar`        | ✅      | ❌       | `.tar`          | ✅               | ✅                     |
-| `tar + gzip` | ✅      | ✅       | `.tar.gz`       | ✅               | ✅                     |
-| `gzip`       | ❌      | ✅       | `.gz`           | ❌               | ❌                     |
-| `bzip2`      | ❌      | ✅       | `.bz2`          | ❌               | ❌                     |
-| `xz`         | ❌      | ✅       | `.xz`           | ❌               | ❌                     |
-| `zip`        | ✅      | ✅       | `.zip`          | ✅               | ❌ (precisa `-r`)      |
-| `unzip`      | ❌      | ❌       | (extrai `.zip`) | —                | ✅                     |
-
----
-
-## 📁 **Capítulo 10 — Trabalhando com Texto e Redirecionamento**
-
-Imagine que o **terminal Linux é como uma sala cheia de canos e torneiras**. Os comandos são fontes de água (informação), e você pode canalizar essa água (a saída) para onde quiser — outro comando, um balde (arquivo), ou até filtrá-la com uma peneira (grep)! Vamos ver como:
-
----
-
-### 🔹 10.1 | **Introdução aos Arquivos de Texto e Redirecionamento**
-
-- **Linux é um mundo de arquivos texto** — quase tudo é um .txt disfarçado.
-- O terminal é como uma fábrica: você pode pegar dados, manipulá-los e entregar num relatório limpo usando comandos e redirecionamentos (`>`, `<`, `|`).
-
----
-
-### 🔹 10.1.1 | **Visualizando com `cat`**
-
-- `cat` é tipo um **megafone** — ele grita o conteúdo do arquivo direto no terminal.
-- Ideal para arquivos curtos. Pode também ser usado para **colar arquivos** ou criar novos rapidamente.
-
----
-
-### 🔹 10.1.2 | **Paginadores (`more` e `less`)**
-
-- `more` e `less` são como **elevadores**: você entra e desce (ou sobe) andar por andar em um texto gigante.
-- `less` é o modelo mais moderno, com mais botões (atalhos).
-
----
-
-### 🔹 10.1.2.1–2 | **Movimento e Busca com `less`**
-
-- Navegar com `less` = andar com **atalhos no teclado**: `Espaço`, `b`, `q`.
-- Buscar no `less` é como usar uma **lupa digital**: `/palavra` ou `?palavra`. Use `n` e `Shift+N` pra ir navegando nas ocorrências!
-
----
-
-### 🔹 10.1.3 | **`head` e `tail`**
-
-- Como se você lesse só o **começo ou o fim de um livro**.
-- `head`: primeiros capítulos. `tail`: os últimos.
-- Pode monitorar mudanças ao vivo com `tail -f`, tipo um **telão de log ao vivo**.
-
----
-
-### 🔹 10.2 | **Pipes `|`: Canos do Terminal**
-
-- O símbolo `|` é um **cano** que liga um comando ao outro.
-- Ex: `ls | head` → lista arquivos e mostra só os primeiros.
-- Pode encadear vários: tipo **um túnel de dados passando de mão em mão** até o resultado final.
-
----
-
-### 🔹 10.3 | **Redirecionamento: Mudando o Caminho do Fluxo**
-
-- Imagine que comandos são torneiras:
-  - `>` → manda a água (saída) para um balde (arquivo)
-  - `<` → o comando bebe de um arquivo, não do teclado
-  - `2>` → canaliza apenas os **erros** para outro balde
-  - `&>` → mistura tudo (água limpa e suja) e manda pro mesmo lugar
-
----
-
-### 🔹 10.4 | **`sort`: Organizando a Bagunça**
-
-- É o **alfabetizador do terminal**: reorganiza linhas em ordem alfabética ou numérica.
-- Com `-t`, `-k`, `-n`, você diz onde está a "etiqueta" a ser usada pra ordenar — como arrumar pastas por nome, data ou categoria.
-
----
-
-### 🔹 10.5 | **`wc`: O Estatístico**
-
-- `wc` é um contador esperto:
-  - Linhas (`-l`)
-  - Palavras (`-w`)
-  - Caracteres (`-c`)
-- Útil como um **inspetor** que checa quantos itens um relatório tem.
-
----
-
-### 🔹 10.6 | **`cut`: Cortador de Colunas**
-
-- Ele é a **faca de cozinha do terminal**: corta colunas por delimitador (`-d`) ou posição (`-c`).
-- Ideal para extrair só o que interessa de arquivos `.csv`, logs etc.
-
----
-
-### 🔹 10.7 | **`grep`: O Detector de Padrões**
-
-- O **detetive textual**: procura palavras ou padrões.
-- Opções:
-  - `-i` ignora maiúsculas
-  - `-c` conta ocorrências
-  - `-n` mostra número da linha
-  - `-v` inverte (mostra o que **não** bate)
-  - `-w` filtra apenas palavras inteiras
-
----
-
-### 🔹 10.8 | **Expressões Regulares (Regex): Máquinas de Padrão**
-
-- Regex é como ter **óculos de raio-X** para identificar padrões complexos!
-
-#### 🧩 Básicas:
-
-| Símbolo | Significado                        | Analogia                      |
-| ------- | ---------------------------------- | ----------------------------- |
-| `.`     | Qualquer caractere                 | "Um curinga"                  |
-| `[]`    | Lista ou intervalo de letras       | "Catálogo de opções"          |
-| `*`     | Repetição zero ou mais do anterior | "Estique até cansar"          |
-| `^`     | Início da linha                    | "Começo da fita"              |
-| `$`     | Fim da linha                       | "Finalzinho do texto"         |
-| `\`     | Escapa símbolo especial            | "Cinto de segurança do regex" |
-
-#### 🧠 Exemplo:
-
-- `'r..t'` → algo que comece com "r", tenha dois caracteres, e termine com "t"
-- `'colou?r'` → pega tanto `color` quanto `colour"
-
----
-
-### 📌 Dica de ouro:
-
-Use `grep -E` pra ativar os **superpoderes estendidos** do regex: `?` (opcional), `+` (um ou mais), `|` (ou).
-
----
-
-# 🧪 **Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux**
-
-Este laboratório é a oficina prática onde você bota pra funcionar tudo o que aprendeu no capítulo: desde visualizar arquivos imensos sem se perder, até fazer buscas com precisão cirúrgica usando expressões regulares. Vamos nessa? 🧰🐧💻
-
----
-
-## 📄 **10.2 – Quebrando, Ordenando e Controlando a Saída**
-
-### **`cut` + `sort` + `more` = Pipeline da Organização**
-
-- `cut`: como se cortasse colunas de uma tabela.
-- `sort`: coloca em ordem (alfabética ou numérica).
-- `more`: mostra aos poucos, sem atropelar a tela.
-
-🛠️ Exemplo:
-
-```bash
-cut -d: -f1 /etc/passwd | sort | more
-```
-
-📖 Analogia: É como organizar uma lista caótica de nomes em ordem A–Z e lê-la calmamente, página por página.
-
----
-
-## 📖 **10.3 – Visualizando Arquivos Grandes**
-
-### 🐘 `cat`, `more` e `less` — qual escolher?
-
-| Comando | Funciona como...                       | Quando usar?                     |
-| ------- | -------------------------------------- | -------------------------------- |
-| `cat`   | Derruba tudo de uma vez no terminal    | Arquivos pequenos                |
-| `more`  | Leitor de texto paginado               | Navegar para frente              |
-| `less`  | Kindle do terminal: rola, busca, volta | Navegação total, com controle 🔍 |
-
----
-
-### 🧩 Comandos-Chave do Laboratório:
-
-- `more /etc/passwd` → navegação simples
-- `less /etc/passwd` → rola, busca (`/palavra`) e volta (`b`, `N`)
-- `q` → sai do paginador
-- `h` → abre ajuda (no `more`)
-
----
-
-### ✂️ Comandos para fatias específicas:
-
-| Comando                   | O que faz                                             |
-| ------------------------- | ----------------------------------------------------- |
-| `head arquivo`            | Mostra as **10 primeiras linhas**                     |
-| `tail arquivo`            | Mostra as **10 últimas linhas**                       |
-| `head -n 5` / `tail -n 3` | Quantidade personalizada                              |
-| `tail -f arquivo.log`     | Exibe conteúdo **ao vivo** enquanto o arquivo muda 🔄 |
-| `head -n -20 arquivo`     | Exibe tudo **menos as últimas 20 linhas**             |
-
-📘 Analogia: `head` é o início do livro, `tail` é o final, e `tail -f` é como assistir alguém escrevendo ao vivo nas últimas páginas.
-
----
-
-## 🔍 **10.4 – Localizando padrões com expressões regulares**
-
-### 🛠️ `grep` — O scanner de padrões:
-
-```bash
-grep padrão arquivo
-```
-
-| Variante  | Função                                |
-| --------- | ------------------------------------- |
-| `grep`    | Regex básicas (BRE)                   |
-| `grep -E` | Regex estendidas (ERE)                |
-| `egrep`   | Igual a `grep -E`                     |
-| `fgrep`   | Busca literal (ignora metacaracteres) |
-
----
-
-### 🔠 Metacaracteres testados no laboratório:
-
-| Padrão       | Significado                     | Analogia                           |
-| ------------ | ------------------------------- | ---------------------------------- | ---------------------- | --- |
-| `^root`      | Início da linha                 | Linhas que **começam** com "root"  |
-| `sync$`      | Fim da linha                    | Linhas que **terminam** com "sync" |
-| `.y`         | Qualquer caractere antes de "y" | "cy", "my", "sy", etc.             |
-| `'sshd       | root'`                          | Não funciona sem `-E`              | "grep" não entende `   | `   |
-| `-E 'sshd    | root'`                          | Alternância correta com `grep -E`  | "um OU outro OU outro" |
-| `'no(b       | n)'`                            | Agrupamento com alternância        | "nob" ou "non"         |
-| `'[0-9]'`    | Qualquer número entre 0 e 9     | Detecta números simples            |
-| `'[0-9]{3}'` | Sequência de três dígitos       | Captura "100", "655", "123"        |
-
----
-
-### ✅ Dicas do laboratório:
-
-- Use **aspas simples** em expressões (`'regex'`), para evitar interferência do shell.
-- **Use `-E`** ao empregar `|`, `{}`, `()` e quantificadores.
-
----
-
-## 🧠 Conclusão prática:
-
-Com este laboratório, você treinou:
-
-- Leitura e navegação fluida por arquivos grandes
-- Aplicação de filtros com `head`, `tail` e `cut`
-- Uso de expressões regulares simples e avançadas
-- Alternância e agrupamento com `grep -E` ou `egrep`
-- Localização precisa de padrões dentro do `/etc/passwd`
-
----
+Aprender a **criar, visualizar, extrair, comprimir e descomprimir arquivos** usando ferramentas como `
