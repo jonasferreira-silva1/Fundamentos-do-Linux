@@ -12,7 +12,7 @@
 - [🧭 Capítulo 9 — Arquivamento e Compressão de Arquivos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-9--arquivamento-e-compress%C3%A3o-de-arquivos)
 - [🧪 Laboratório 9 — Arquivamento e Compressão na Prática](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-9--arquivamento-e-compress%C3%A3o-na-pr%C3%A1tica)
 - [📁 Capítulo 10 — Trabalhando com Texto e Redirecionamento](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-10--trabalhando-com-texto-e-redirecionamento)
-- [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio--cap%C3%ADtulo-10-visualizando-e-buscando-dados-de-texto-no-linux)
+- [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-10-trabalhando-com-texto-e-redirecionamento)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
