@@ -6,24 +6,37 @@ Este repositório é um **projeto de estudo pessoal** sobre o sistema operaciona
 
 - **Natureza:** Estudo pessoal, em constante desenvolvimento.
 - **Tema central:** Linux, suas distribuições, comandos, estrutura, filosofia open source e práticas de administração.
-- **Motivação:** Aprender, praticar e documentar o funcionamento do Linux, desde conceitos básicos até tópicos avançados, com foco em exemplos reais e analogias simples.
+- **Motivação:** Aprender, praticar e documentar o funcionamento do Linux, desde conceitos básicos até tópicos avançados, com foco em exemplos reais, analogias simples e laboratórios práticos.
 
 ## 📝 Estrutura do Material
 
-O principal conteúdo está no arquivo [`estudo-linux.md`](estudo-linux.md), organizado em capítulos temáticos:
+O principal conteúdo está no arquivo [`estudo-linux.md`](estudo-linux.md), organizado em capítulos temáticos e laboratórios práticos:
 
-- Introdução ao Linux e distribuições
-- Conceitos de sistemas operacionais
-- Navegação e uso do terminal (CLI)
-- Comandos essenciais, variáveis, operadores e funções
-- Ajuda e documentação no Linux
-- Estrutura de arquivos e diretórios
-- Arquivamento e compressão de arquivos (tar, gzip, zip, etc.) e laboratório prático
-- Trabalho com texto, redirecionamento e expressões regulares (grep, pipes, etc.) e laboratório prático
-- Práticas de laboratório e exercícios reais
-- Conceitos de código aberto, licenciamento e modelos de negócio
+- **Cada capítulo segue o padrão didático:**
+  - Pergunta → Resposta técnica → Analogia/Exemplo
+  - Separação clara entre teoria e prática
+  - Laboratórios práticos com comandos reais, perguntas, respostas e analogias
+- **Conteúdo abordado:**
+  - Introdução ao Linux e distribuições
+  - Conceitos de sistemas operacionais
+  - Navegação no desktop e uso do terminal (CLI)
+  - Comandos essenciais, variáveis, operadores, funções e histórico
+  - Ajuda e documentação no Linux (man, info, whereis, locate, --help)
+  - Estrutura de arquivos e diretórios, caminhos absolutos e relativos
+  - Manipulação de arquivos e diretórios (cp, mv, rm, mkdir, touch)
+  - Globbing (coringas), permissões e segurança
+  - Arquivamento e compressão de arquivos (tar, gzip, bzip2, xz, zip, unzip)
+  - Trabalho com texto, redirecionamento, pipes, busca e substituição (grep, sed, ack, head, tail, less, more, strings)
+  - Expressões regulares e buscas avançadas
+  - Conceitos de código aberto, licenciamento e modelos de negócio
+  - **Laboratórios práticos para cada capítulo**, como:
+    - Laboratório Capítulo 7: Navegando no Sistema de Arquivos
+    - Laboratório Capítulo 8: Gerenciando Arquivos e Diretórios
+    - Laboratório Capítulo 9: Arquivamento e Compressão na Prática
+    - Laboratório Capítulo 10: Trabalhando com Texto e Redirecionamento
+    - Laboratório Capítulo 11: Visualizando e Buscando Dados de Texto no Linux
 
-O material é enriquecido com analogias, exemplos práticos e comandos reais, tornando o aprendizado mais intuitivo e aplicável.
+O material é enriquecido com analogias, exemplos práticos, comandos reais e resumos objetivos, tornando o aprendizado mais intuitivo, envolvente e aplicável.
 
 ## 👤 Público-alvo
 
@@ -35,7 +48,7 @@ O material é enriquecido com analogias, exemplos práticos e comandos reais, to
 ## 🚧 Status
 
 > **Este projeto está em desenvolvimento contínuo!**
-> Novos capítulos, exemplos e laboratórios serão adicionados conforme avanço nos estudos.
+> Novos capítulos, exemplos e laboratórios são adicionados conforme avanço nos estudos.
 
 ## 🤝 Contribuição
 
