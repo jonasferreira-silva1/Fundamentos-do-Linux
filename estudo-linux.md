@@ -1204,255 +1204,190 @@ Essas práticas são a base para dominar o terminal e explorar o Linux com auton
 
 ## 📘 Capítulo 8 – Manipulando Arquivos e Diretorios
 
-✴️ 8.1 – Introdução
-O Linux é confidencial a autoridades e minúsculas: hello.txt≠ Hello.txt.
-Usa o padrão UTF-8 , com base na tabela ASCII.
-Dominar o terminal permite automação e controle fino sobre o sistema.
-🧠 Analogia: Diferenciar arquivos por capitalização é como saber que "João" e "joão" não são a mesma pessoa em uma chamada de presença.
+### ✴️ 8.1 – Introdução
 
-🎯 8.2 – Globbing (Uso de Coringas)
-Permite usar padrões de cura para manipular grupos de arquivos:
+**O que significa manipular arquivos e diretórios no Linux?**
+No Linux, arquivos e diretórios são sensíveis a maiúsculas e minúsculas: `hello.txt` ≠ `Hello.txt`. O sistema usa o padrão UTF-8, baseado na tabela ASCII. Dominar o terminal permite automação e controle fino sobre o sistema.
 
-Curinga Significado Exemplo Analogia
-
-- Qualquer número de caracteres *.txt→ todos os.txt Como selecionar "todos os livros com capa azul"
-  ? Um caractere exato a??.jpg→ arquivos com 3 letras após "a" Cada ?é uma lacuna obrigatória da palavra cruzada
-  [abc] Letras específicas [ab]*→ começa com aoub Filtro de nomes
-  [a-d] Intervalo de letras [a-d]* Da letra A até D
-  [!x] Nega o conjunto [!DP]*→ não começa com D ou P Dizendo: "qualquer um, menos esses"
-  ✅ Use echopara ver a expansão dos padrões , sem executar ações reais.
-
-📁 8.3 – Copiando Arquivos comcp
-Cópias arquivadas:
-cp origem destino
-Exemplo:
-cp /etc/hosts ~
-Modo detalhado:
-cp -v arquivo destino
-Evitando sobrescrita:
--i→ pergunta antes de escrever
--n→ nunca sobrescreva
-Copiar massas:
-cp -r pasta destino/
-🧠 Analogia: Copiar é como fazer uma fotocópia — o original permanece, a nova cópia vai pro local indicado.
-
-🔀 8.4 – Movendo e Renomeando commv
-Mover:
-mv arquivo pasta/
-Renomeia:
-mv antigo.txt novo.txt
-Opções úteis:
--i→ pergunta antes de escrever
--n→ impedir sobrescritas
--v→ mostra o que foi movido
-🧠 Analogia: Mover é como carregar a caixa de um cômodo para outro. Renomear é mudar a etiqueta dela.
-
-🆕 8.5 – Criando Arquivos comtouch
-Comando:
-touch novo_arquivo.txt
-Crie um arquivo vazio com 0 bytes.
-🧠 Analogia: Colocar uma folha em branco na mesa: pronta para ser usada depois.
-
-❌ 8.6 – Removendo Arquivos comrm
-Remover arquivos:
-rm nome.txt
-⚠️Não há lixeira. Apagou? Já era.
-Segurança:
--i→ confirme antes de excluir
-\*.txt→ cuidado com globbing destrutivo
-🧠 Analogia: Jogar no triturador: sem botão de desfazer . Com -i, o sistema pergunta "Tem certeza?".
-
-🗂️ 8.6.1 – Removendo diretórios
-rm -r→ apaga pasta e tudo dentro
-rm -ir→ versão mais segura
-rmdir pasta→ só remova se estiver vazio
-🧠 Analogia: rm -r retire a casa e tudo dentro . rmdirapenas remova uma caixa vazia .
-
-📦 8.7 – Criando Diretórios commkdir
-Cria massas:
-mkdir nova_pasta
-🧠 Analogia: Crie uma caixa vazia para organizar seus futuros arquivos.
-
-🧪 Laboratório Prático – Capítulo 8: Gerenciando Arquivos e Diretorios
-Este laboratório conduz as principais operações de manipulação de arquivos e pastas no Linux — como copiar, mover, renomear, remover e listar conteúdos — usando comandos essenciais com atenção a permissões, segurança e estrutura.
-
-🔹 8.3 – Copiar, mover e renomear arquivos e diretórios
-Você começa a trabalhar com os comandos fundamentais:
-
-cp→ cópia arquivada
-mv→ mover ou renomear arquivos e diretórios
-rm→ remover aréolas e pastas
-mkdir→ cria diretórios
-touch→ cria arquivos vazios
-🧠 Analogia: É como aprender a usar pastas físicas para guardar, mover e renomear documentos numa estante — com a diferença de que aqui, tudo acontece com digitação e resultados!
-
-🔸 8.3.1 – Copiar um Arquivo Simplesmente
-cp /etc/hosts hosts
-📌 Copie o arquivo original para seu diretório atual com o mesmo nome.
-
-🧠 Analogia: Faça uma fotocópia e guarde no seu armário pessoal.
-
-🔸 8.3.2 – Copiar com Visualização ( -v)
-cp -v /etc/hosts hosts
-📌Mostre o que está sendo copiado e para onde.
-
-🧠 Analogia: Um assistente narrando: "copiando isso para lá".
-
-🔸 8.3.3 – Usando .para indicar "aqui"
-cp -v /etc/hosts .
-📌 Usa o ponto .como destino, desça o diretório atual .
-
-🧠 Analogia: Dizer: "pode ​​deixar aqui mesmo na minha mesa".
-
-🔸 8.3.4 – Preservar Atributos com-p
-cp -p /etc/hosts ~
-📌 Mantém permissões, dono e dados de modificação do arquivo.
-
-🧠 Analogia: Cópia fiel do documento original, com selo e dados intactos.
-
-🔸 8.3.5 – Copiar com Nome Diferente
-cp hosts newname
-📌 Cria uma cópia com um novo nome , mas com novos dados , pois -pnão foi usada.
-
-🧠 Analogia: Fazer uma cópia e dar um novo título e carimbo de hora.
-
-🔸 8.3.6 – Copiar Diretório com -R(Recursivo)
-mkdir Myetc
-cp -R /etc/udev Myetc
-📌 Copie toda a estrutura do diretório /etc/udevpara dentro da pasta Myetc.
-
-🧠 Analogia: Transportar uma gaveta cheia, mantendo tudo nas mesmas divisórias.
-
-🔸 8.3.7 – Remover Diretórios comrm -r
-rm -r Myetc
-📌 Remova o diretório e todo o conteúdo dele.
-
-🧠 Analogia: Jogar fora uma caixa cheia — sem abrir para conferir.
-
-📌Lembrete : rmdir só funciona se a pasta estiver vazia .
-
-🔸 8.3.8 – Mover/Renomear Arquivo commv
-mv premove postmove
-
-## 🧭 **Capítulo 9 — Arquivamento e Compressão de Arquivos**
-
-Imagine que você precisa levar muitos livros (arquivos) em uma viagem:
-
-- Colocar cada livro em uma mala separada = **ineficiente**.
-- Juntar todos em uma mala só = **arquivamento**.
-- Tirar o ar da mala e reduzir seu volume = **compressão**.
-
-📌 **Conclusão:**  
-**Arquivar = juntar**  
-**Comprimir = encolher**
+👉 _Analogia:_ Diferenciar arquivos por capitalização é como saber que "João" e "joão" não são a mesma pessoa em uma chamada de presença.
 
 ---
 
-### 🔹 **9.1 Introdução**
+### 🎯 8.2 – Globbing (Uso de Coringas)
 
-📚 Você aprende o "porquê" de arquivar e comprimir:
+**O que é globbing e para que serve?**
+Globbing permite usar padrões (coringas) para manipular grupos de arquivos de uma só vez.
 
-- Organiza e agrupa muitos arquivos em **um só pacote**
-- Economiza espaço em disco 💾
-- Facilita backup, envio e cópia de pastas
-- Ideal para logs antigos e redes lentas
+| Curinga | Significado                   | Exemplo   | Analogia                                        |
+| ------- | ----------------------------- | --------- | ----------------------------------------------- |
+| `*`     | Qualquer número de caracteres | `*.txt`   | Selecionar "todos os livros com capa azul"      |
+| `?`     | Um caractere exato            | `a??.jpg` | Cada `?` é uma lacuna obrigatória da cruzadinha |
+| `[abc]` | Letras específicas            | `[ab]*`   | Filtro de nomes                                 |
+| `[a-d]` | Intervalo de letras           | `[a-d]*`  | Da letra A até D                                |
+| `[!x]`  | Nega o conjunto               | `[!DP]*`  | "Qualquer um, menos esses"                      |
 
-💡 _Analogia:_ Como transformar uma mochila bagunçada cheia de miudezas em uma única bolsa a vácuo pronta pra viagem.
-
----
-
-### 🔹 **9.2 Compressing Files**
-
-🌀 Você conhece os tipos de compressão e ferramentas básicas como `gzip`, `gunzip`, `bzip2`, `xz`.
-
-| Tipo                     | Significado                    | Exemplo            |
-| ------------------------ | ------------------------------ | ------------------ |
-| **Lossless** (sem perda) | Nenhuma informação se perde    | `gzip`, documentos |
-| **Lossy** (com perda)    | Algumas partes são descartadas | JPEG, MP3          |
-
-💡 _Analogia:_
-
-- **Lossless**: Guardar uma foto em HD num pen drive sem perder pixels.
-- **Lossy**: Reduzir a qualidade da foto pra caber no celular, mas ainda "bonita o suficiente".
+✅ _Dica:_ Use `echo` para ver a expansão dos padrões, sem executar ações reais.
 
 ---
 
-### 🔹 **9.3 Archiving Files**
+### 📁 8.3 – Copiando Arquivos com `cp`
 
-📦 Aqui entra o comando **tar**, o rei da organização de arquivos.
+**Como copiar arquivos e diretórios no Linux?**
+O comando `cp` faz cópias de arquivos e diretórios.
 
-- **`tar` = Tape Archive** (arquiva, não necessariamente comprime)
-- Formato popular: `.tar`, `.tar.gz`, `.tar.bz2`
+- `cp origem destino` — copia arquivo
+- Exemplo: `cp /etc/hosts ~`
+- `cp -v arquivo destino` — modo detalhado
+- `cp -i` — pergunta antes de sobrescrever
+- `cp -n` — nunca sobrescreve
+- `cp -r pasta destino/` — copia diretórios
 
-💡 _Analogia:_ O `tar` é como uma caixa de papelão onde você joga tudo dentro. Já o `gzip` é o plástico filme que aperta essa caixa pra ocupar menos espaço.
-
----
-
-### 🔸 **9.3.1 Modo de Criação (Create)**
-
-- Crie arquivos `.tar` com:
-  ```bash
-  tar -cf arquivo.tar meusarquivos/
-  ```
-- Adicione compressão com:
-  ```bash
-  tar -czf arquivo.tar.gz meusarquivos/
-  ```
-
-🧠 _Dica:_ `c` = create, `f` = file, `z` = gzip
+👉 _Analogia:_ Copiar é como fazer uma fotocópia — o original permanece, a nova cópia vai para o local indicado.
 
 ---
 
-### 🔸 **9.3.2 Modo de Listagem (List)**
+### 🔀 8.4 – Movendo e Renomeando com `mv`
 
-- Veja o conteúdo **sem extrair**:
-  ```bash
-  tar -tf arquivo.tar
-  ```
-  💡 _Analogia:_ Como chacoalhar a caixa pra ouvir o que tem dentro.
+**Como mover ou renomear arquivos e diretórios?**
+O comando `mv` move arquivos ou os renomeia.
 
----
+- `mv arquivo pasta/` — move arquivo
+- `mv antigo.txt novo.txt` — renomeia
+- `mv -i` — pergunta antes de sobrescrever
+- `mv -n` — impede sobrescritas
+- `mv -v` — mostra o que foi movido
 
-### 🔸 **9.3.3 Modo de Extração (Extract)**
-
-- Extraia arquivos do `.tar`:
-  ```bash
-  tar -xf arquivo.tar
-  ```
-
-💡 _Dica:_ `x` = extract  
-🛠️ Pode usar `-v` para ver o que está sendo extraído (verbose)
+👉 _Analogia:_ Mover é como carregar a caixa de um cômodo para outro. Renomear é mudar a etiqueta dela.
 
 ---
 
-### 🔹 **9.4 Arquivos ZIP**
+### 🆕 8.5 – Criando Arquivos com `touch`
 
-🧳 Aqui você encontra o formato mais usado no mundo Windows: **`.zip`**
+**Como criar arquivos vazios?**
+O comando `touch` cria um arquivo vazio com 0 bytes.
 
-- Para criar:
-  ```bash
-  zip arquivos.zip arquivo1 arquivo2
-  ```
-- Para extrair:
-  ```bash
-  unzip arquivos.zip
-  ```
-- Para listar:
-  ```bash
-  unzip -l arquivos.zip
-  ```
+- `touch novo_arquivo.txt`
 
-⚠️ Diferente do `tar`, o `zip` não entra em subpastas por padrão → use `-r` se quiser:
-
-```bash
-zip -r pacote.zip pasta/
-```
-
-💡 _Analogia:_ O `.zip` é como um zíper: fecha e junta tudo, mas se você não puxar o zíper todo (sem `-r`), as roupas de dentro ficam de fora!
+👉 _Analogia:_ Colocar uma folha em branco na mesa: pronta para ser usada depois.
 
 ---
 
-## 🎓 Resumo Final — "Kit do administrador Linux"
+### ❌ 8.6 – Removendo Arquivos com `rm`
+
+**Como remover arquivos e diretórios?**
+O comando `rm` remove arquivos e não há lixeira: apagou, já era!
+
+- `rm nome.txt` — remove arquivo
+- `rm -i` — confirma antes de excluir
+- `rm *.txt` — cuidado com globbing destrutivo
+
+👉 _Analogia:_ Jogar no triturador: sem botão de desfazer. Com `-i`, o sistema pergunta "Tem certeza?".
+
+#### 🗂️ 8.6.1 – Removendo Diretórios
+
+**Como remover diretórios?**
+
+- `rm -r` — apaga pasta e tudo dentro
+- `rm -ir` — versão mais segura
+- `rmdir pasta` — só remove se estiver vazia
+
+👉 _Analogia:_ `rm -r` retira a casa e tudo dentro. `rmdir` apenas remove uma caixa vazia.
+
+---
+
+### 📦 8.7 – Criando Diretórios com `mkdir`
+
+**Como criar diretórios?**
+O comando `mkdir` cria pastas para organizar arquivos.
+
+- `mkdir nova_pasta`
+
+👉 _Analogia:_ Crie uma caixa vazia para organizar seus futuros arquivos.
+
+---
+
+📌 **Resumo do Capítulo 8:**
+Neste capítulo, você aprendeu a manipular arquivos e diretórios no Linux usando comandos essenciais como `cp`, `mv`, `rm`, `touch` e `mkdir`, além de utilizar padrões globbing para automação e organização. O domínio desses comandos é fundamental para o uso eficiente do terminal e para a administração do sistema.
+
+---
+
+## 📦 Capítulo 9 — Arquivamento e Compressão de Arquivos
+
+### 9.1 – Introdução
+
+**Por que arquivar e comprimir arquivos no Linux?**
+Arquivar e comprimir arquivos facilita a organização, economiza espaço em disco, agiliza backups, envio e cópia de pastas, e é ideal para logs antigos e redes lentas.
+
+👉 _Analogia:_ É como juntar vários livros em uma única mala (arquivar) e depois usar um saco a vácuo para ocupar menos espaço (comprimir).
+
+---
+
+### 9.2 – Tipos de Compressão
+
+**Quais são os tipos de compressão de arquivos?**
+
+- **Lossless (sem perda):** Nenhuma informação se perde. Exemplo: `gzip`, documentos.
+- **Lossy (com perda):** Algumas partes são descartadas. Exemplo: JPEG, MP3.
+
+👉 _Analogia:_
+
+- **Lossless:** Guardar uma foto em HD num pen drive sem perder pixels.
+- **Lossy:** Reduzir a qualidade da foto para caber no celular, mas ainda "bonita o suficiente".
+
+---
+
+### 9.3 – Arquivando e Comprimindo com `tar` e `gzip`
+
+**Como arquivar e comprimir arquivos no Linux?**
+
+- O comando `tar` agrupa vários arquivos em um só pacote (arquiva), mas não necessariamente comprime.
+- O comando `gzip` comprime arquivos, reduzindo seu tamanho.
+- Juntos, criam arquivos como `.tar.gz`.
+
+👉 _Analogia:_ O `tar` é como uma caixa de papelão onde você coloca tudo dentro. O `gzip` é o plástico filme que aperta a caixa para ocupar menos espaço.
+
+#### 9.3.1 – Criando Arquivos `.tar` e `.tar.gz`
+
+**Como criar um arquivo `.tar` ou `.tar.gz`?**
+
+- `tar -cf arquivo.tar meusarquivos/` — cria um arquivo `.tar` com a pasta.
+- `tar -czf arquivo.tar.gz meusarquivos/` — cria e comprime com gzip.
+
+👉 _Dica:_ `c` = create, `f` = file, `z` = gzip.
+
+#### 9.3.2 – Listando Conteúdo de Arquivos `.tar`
+
+**Como ver o conteúdo de um arquivo `.tar` sem extrair?**
+
+- `tar -tf arquivo.tar`
+
+👉 _Analogia:_ Como chacoalhar a caixa para ouvir o que tem dentro.
+
+#### 9.3.3 – Extraindo Arquivos de um `.tar`
+
+**Como extrair arquivos de um `.tar`?**
+
+- `tar -xf arquivo.tar`
+- Use `-v` para ver o que está sendo extraído (verbose).
+
+👉 _Dica:_ `x` = extract.
+
+---
+
+### 9.4 – Trabalhando com Arquivos ZIP
+
+**Como criar, extrair e listar arquivos ZIP?**
+
+- Para criar: `zip arquivos.zip arquivo1 arquivo2`
+- Para extrair: `unzip arquivos.zip`
+- Para listar: `unzip -l arquivos.zip`
+- Para incluir subpastas: `zip -r pacote.zip pasta/`
+
+👉 _Analogia:_ O `.zip` é como um zíper: fecha e junta tudo, mas se não puxar o zíper todo (sem `-r`), as roupas de dentro ficam de fora!
+
+---
+
+### 9.5 – Resumo Final: Kit do Administrador Linux
 
 | Ferramenta   | Serve para?          | Comprime? | Recursivo?     | Formato típico |
 | ------------ | -------------------- | --------- | -------------- | -------------- |
@@ -1464,10 +1399,669 @@ zip -r pacote.zip pasta/
 
 ---
 
+📌 **Resumo do Capítulo 9:**
+Neste capítulo, você aprendeu a arquivar e comprimir arquivos no Linux usando ferramentas como `tar`, `gzip` e `zip`, entendendo a diferença entre arquivamento e compressão, e aplicando comandos práticos para organização, backup e economia de espaço.
+
 ---
 
-## 🧪 **Laboratório 9 — Arquivamento e Compressão na Prática**
+## 🧪 Laboratório Prático – Capítulo 9: Arquivamento e Compressão na Prática
 
-### 🎯 **Objetivo geral:**
+### 🎯 Qual o objetivo deste laboratório?
 
-Aprender a **criar, visualizar, extrair, comprimir e descomprimir arquivos** usando ferramentas como `
+Aprender a criar, visualizar, extrair, comprimir e descomprimir arquivos usando ferramentas como `tar`, `gzip`, `bzip2`, `xz`, `zip` e seus complementos.
+
+---
+
+### 📦 Como criar um arquivo `.tar`?
+
+**Pergunta:** Como arquivar (juntar) arquivos e pastas em um único pacote sem compressão?
+
+**Resposta técnica:**
+
+```bash
+tar -cvf mybackups/udev.tar /etc/udev
+```
+
+Esse comando arquiva todos os arquivos/pastas de `/etc/udev` em um pacote `.tar`, sem compressão.
+
+👉 _Analogia:_ É como embalar itens em uma caixa de papelão, sem se preocupar em economizar espaço ainda.
+
+---
+
+### 🔍 Como ver o conteúdo de um `.tar`?
+
+**Pergunta:** Como listar os arquivos arquivados sem extraí-los?
+
+**Resposta técnica:**
+
+```bash
+tar -tvf mybackups/udev.tar
+```
+
+Esse comando mostra o conteúdo do arquivo `.tar`.
+
+👉 _Analogia:_ Como olhar por uma janela para ver o que tem dentro da caixa.
+
+---
+
+### 🌀 Como arquivar e comprimir ao mesmo tempo?
+
+**Pergunta:** Como criar um arquivo `.tar.gz` (arquivar e comprimir)?
+
+**Resposta técnica:**
+
+```bash
+tar -zcvf mybackups/udev.tar.gz /etc/udev
+```
+
+Esse comando arquiva e comprime usando `gzip`.
+
+👉 _Analogia:_ A caixa de papelão agora está embalada com plástico a vácuo!
+
+---
+
+### 📂 Como extrair arquivos de um `.tar.gz`?
+
+**Pergunta:** Como descompactar e desarquivar arquivos no diretório atual?
+
+**Resposta técnica:**
+
+```bash
+tar -xvf udev.tar.gz
+```
+
+Esse comando extrai todos os arquivos do pacote para o diretório atual.
+
+👉 _Analogia:_ Você abre a caixa e espalha os itens no chão da sala atual — não devolve para o armário de origem!
+
+---
+
+### ➕ Como adicionar arquivos a um `.tar` já existente?
+
+**Pergunta:** Como incluir mais arquivos em um pacote `.tar`?
+
+**Resposta técnica:**
+
+```bash
+tar -rvf udev.tar /etc/hosts
+```
+
+Esse comando adiciona `/etc/hosts` ao arquivo `.tar` já existente.
+
+👉 _Analogia:_ Abriu a caixa só pra colocar mais um item.
+
+---
+
+### 🗜️ Como compactar e descompactar com `gzip`/`gunzip`?
+
+**Pergunta:** Como reduzir e restaurar arquivos individuais?
+
+**Resposta técnica:**
+
+```bash
+gzip words      # compacta
+gunzip words.gz # descompacta
+```
+
+👉 _Analogia:_ É como usar um saco de vácuo para guardar um cobertor — depois você o retira para usar de novo.
+
+---
+
+### 🧵 Como compactar e descompactar com `bzip2`/`bunzip2`?
+
+**Pergunta:** Como usar o `bzip2` para compressão?
+
+**Resposta técnica:**
+
+```bash
+bzip2 words
+bunzip2 words.bz2
+```
+
+Pode ser mais lento, nem sempre comprime melhor que o `gzip`.
+
+👉 _Analogia:_ Um compressor manual — funciona bem, mas exige mais esforço.
+
+---
+
+### ⚙️ Como compactar e descompactar com `xz`/`unxz`?
+
+**Pergunta:** Como usar o `xz` para compressão eficiente?
+
+**Resposta técnica:**
+
+```bash
+xz words
+unxz words.xz
+```
+
+Compressão bem eficiente, mas também substitui o original.
+
+👉 _Analogia:_ Um compressor industrial — pesado, mas econômico em espaço!
+
+---
+
+### 🧳 Como compactar com `zip` e incluir subpastas?
+
+**Pergunta:** Como criar arquivos `.zip` com ou sem subpastas?
+
+**Resposta técnica:**
+
+```bash
+zip words.zip words             # arquivo único
+zip -r udev.zip /etc/udev      # diretório com subpastas
+```
+
+O `zip` mantém o arquivo original; muito usado no Windows.
+
+👉 _Analogia:_ Uma mala com etiqueta organizada, fácil de abrir em qualquer lugar — especialmente no Windows!
+
+---
+
+### 🔎 Como ver o conteúdo de um `.zip`?
+
+**Pergunta:** Como listar o conteúdo de um arquivo `.zip` sem extrair?
+
+**Resposta técnica:**
+
+```bash
+unzip -l udev.zip
+```
+
+Esse comando mostra tudo que está dentro do `.zip`.
+
+👉 _Analogia:_ Passando raio-X na mala antes de abrir.
+
+---
+
+### 🧯 Como extrair arquivos de um `.zip`?
+
+**Pergunta:** Como extrair todos os arquivos de um `.zip`?
+
+**Resposta técnica:**
+
+```bash
+unzip udev.zip
+```
+
+Esse comando extrai todos os arquivos.
+
+👉 _Analogia:_ Abrir a mala e organizar tudo no quarto atual.
+
+---
+
+### 📊 Tabela Comparativa Final
+
+| Ferramenta   | Arquiva | Comprime | Extensão        | Mantém original? | Subpastas automáticas? |
+| ------------ | ------- | -------- | --------------- | ---------------- | ---------------------- |
+| `tar`        | ✅      | ❌       | `.tar`          | ✅               | ✅                     |
+| `tar + gzip` | ✅      | ✅       | `.tar.gz`       | ✅               | ✅                     |
+| `gzip`       | ❌      | ✅       | `.gz`           | ❌               | ❌                     |
+| `bzip2`      | ❌      | ✅       | `.bz2`          | ❌               | ❌                     |
+| `xz`         | ❌      | ✅       | `.xz`           | ❌               | ❌                     |
+| `zip`        | ✅      | ✅       | `.zip`          | ✅               | ❌ (precisa `-r`)      |
+| `unzip`      | ❌      | ❌       | (extrai `.zip`) | —                | ✅                     |
+
+---
+
+📌 **Resumo do Laboratório 9:**
+Neste laboratório, você praticou arquivamento e compressão de arquivos no Linux, usando diferentes ferramentas e compreendendo suas diferenças, vantagens e analogias práticas para o dia a dia do administrador.
+
+---
+
+## 🧪 Laboratório Prático – Capítulo 11: Visualizando e Buscando Dados de Texto no Linux
+
+### 🎯 Qual o objetivo deste laboratório?
+
+Praticar a visualização, busca e manipulação de dados de texto no Linux usando comandos como `less`, `more`, `grep`, `ack`, `strings` e expressões regulares.
+
+---
+
+### 📖 Como visualizar arquivos de texto de forma paginada?
+
+**Pergunta:** Como usar o `less` e o `more` para visualizar arquivos grandes?
+
+**Resposta técnica:**
+
+```bash
+less arquivo.txt
+more arquivo.txt
+```
+
+Esses comandos exibem o conteúdo do arquivo em páginas.
+
+👉 _Analogia:_ É como usar um livro digital com navegação por páginas.
+
+---
+
+### 🔍 Como buscar padrões de texto em arquivos?
+
+**Pergunta:** Como usar o `grep` e o `ack` para encontrar palavras ou padrões?
+
+**Resposta técnica:**
+
+```bash
+grep "erro" arquivo.txt
+ack "erro"
+```
+
+Esses comandos encontram todas as linhas que contêm "erro".
+
+👉 _Analogia:_ São como filtros que podem encontrar palavras ou padrões em um texto.
+
+---
+
+### 🗂️ Como buscar texto em arquivos binários?
+
+**Pergunta:** Como usar o `strings` para extrair texto de arquivos binários?
+
+**Resposta técnica:**
+
+```bash
+strings arquivo.bin
+```
+
+Esse comando extrai todas as strings de texto de um arquivo binário.
+
+👉 _Analogia:_ É como um editor de texto que pode ler dentro de arquivos que não são de texto.
+
+---
+
+### 🧩 Como buscar por expressões regulares?
+
+**Pergunta:** Como usar o `grep -E` para encontrar múltiplos padrões?
+
+**Resposta técnica:**
+
+```bash
+grep -E "erro|aviso" arquivo.txt
+```
+
+Esse comando encontra linhas que contêm "erro" ou "aviso".
+
+👉 _Analogia:_ É como um filtro que pode encontrar múltiplos padrões de texto.
+
+---
+
+📌 **Resumo do Laboratório 11:**
+Neste laboratório, você praticou a visualização e busca de dados de texto no Linux, usando comandos essenciais para análise, filtragem e extração de informações em arquivos grandes ou binários.
+
+---
+
+## 📁 Capítulo 10 — Trabalhando com Texto e Redirecionamento
+
+### 10.1 – Introdução
+
+**O que significa trabalhar com texto e redirecionamento no Linux?**
+O Linux é uma máquina de linha de comando, onde tudo é texto. Dominar o terminal permite acessar, editar, criar e manipular arquivos de texto de forma eficiente.
+
+👉 _Analogia:_ É como usar um editor de texto no computador — você digita, edita, salva e imprime.
+
+---
+
+### 10.2 – Redirecionamento de Entrada e Saída
+
+**O que são redirecionamentos?**
+Redirecionamentos permitem controlar a entrada e saída de dados de um comando.
+
+👉 _Exemplo:_ `ls > arquivo.txt` — lista os arquivos e salva em `arquivo.txt`.
+
+**Quais são os operadores de redirecionamento?**
+
+- `>` — Redireciona a saída (stdout) para um arquivo.
+- `>>` — Redireciona a saída para um arquivo, mas não sobrescreve.
+- `<` — Redireciona a entrada (stdin) de um arquivo para um comando.
+- `<<` — Redireciona a entrada de um arquivo para um comando, até encontrar um delimitador.
+- `|` — Redireciona a saída de um comando para a entrada de outro.
+
+👉 _Analogia:_
+
+- `>` é como redirecionar a água de um cano para outro.
+- `>>` é como encher um balde com água, mas não esvaziar o outro.
+- `<` é como encher um balde com água de outro cano.
+- `<<` é como encher um balde com água de outro cano, até que você digite um delimitador.
+- `|` é como encher um balde com água de um cano e jogar para outro.
+
+---
+
+### 10.3 – Edição de Texto
+
+**O que é um editor de texto?**
+Um editor de texto é um programa que permite criar, editar e modificar arquivos de texto. No Linux, existem diferentes editores, desde os simples até os mais avançados.
+
+**O que são Vim e Emacs?**
+Vim e Emacs são editores de texto avançados e poderosos, com muitas funcionalidades e atalhos de teclado. São muito populares entre programadores e administradores de sistema.
+
+👉 _Analogia:_ Como usar um estúdio profissional de edição — cheio de recursos, mas requer treinamento.
+
+**O que é o Nano?**
+Nano é um editor de texto simples e fácil de usar, ideal para iniciantes. Tem interface amigável e comandos básicos.
+
+👉 _Analogia:_ Como usar o Bloco de Notas — simples e direto.
+
+**Qual editor escolher para começar?**
+Para iniciantes, o Nano é a melhor opção por ser simples e intuitivo. Vim e Emacs são excelentes, mas têm uma curva de aprendizado mais íngreme.
+
+👉 _Dica:_ Se está começando, vá de Nano 😉
+
+---
+
+### 10.4 – Buscando e Substituindo Texto
+
+**O que é grep?**
+O comando `grep` é usado para buscar padrões de texto em arquivos.
+
+👉 _Exemplo:_ `grep "erro" arquivo.txt` — encontra todas as linhas que contêm "erro".
+
+**O que é sed?**
+O comando `sed` é um editor de fluxo de texto que permite fazer substituições e transformações em arquivos.
+
+👉 \_Exemplo:`sed 's/texto/substituto/g' arquivo.txt` — substitui todas as ocorrências de "texto" por "substituto".
+
+👉 \_Analogia:`sed` é como um editor de texto que pode fazer muitas coisas, mas requer um pouco de aprendizado.
+
+---
+
+### 10.5 – Formatação de Texto
+
+**O que é o comando `echo`?**
+O comando `echo` é usado para exibir textos, variáveis ou resultados de comandos.
+
+👉 \_Exemplo:`echo "Olá $USER"` — exibe "Olá nome_do_usuario".
+
+**O que é o comando `printf`?**
+O comando `printf` é usado para formatar e exibir texto de forma mais controlada.
+
+👉 \_Exemplo:`printf "%s\n" "Olá" "Mundo"` — exibe "Olá" e "Mundo" em linhas separadas.
+
+�� \_Analogia:`printf` é como um editor de texto que permite formatar a saída de forma mais precisa.
+
+---
+
+### 10.6 – Manipulação de Arquivos de Texto
+
+**O que é o comando `cat`?**
+O comando `cat` é usado para exibir o conteúdo de um arquivo.
+
+👉 \_Exemplo:`cat arquivo.txt` — exibe o conteúdo de `arquivo.txt`.
+
+**O que é o comando `head`?**
+O comando `head` exibe as primeiras linhas de um arquivo.
+
+👉 \_Exemplo:`head -n 5 arquivo.txt` — exibe as primeiras 5 linhas de `arquivo.txt`.
+
+**O que é o comando `tail`?**
+O comando `tail` exibe as últimas linhas de um arquivo.
+
+👉 \_Exemplo:`tail -n 5 arquivo.txt` — exibe as últimas 5 linhas de `arquivo.txt`.
+
+👉 \_Analogia:`head` e `tail` são como olhar o início e o fim de um livro, respectivamente.
+
+---
+
+### 10.7 – Resumo do Capítulo 10
+
+Neste capítulo, você aprendeu a:
+
+- Usar redirecionamentos de entrada e saída (`>`, `>>`, `<`, `<<`, `|`)
+- Editar texto com editores de texto (Vim, Emacs, Nano)
+- Buscar e substituir texto com `grep` e `sed`
+- Formatar e exibir texto com `echo` e `printf`
+- Manipular arquivos de texto com `cat`, `head` e `tail`
+
+Essas habilidades tornam você mais eficiente ao trabalhar com arquivos de texto no terminal!
+
+---
+
+## 🧪 Laboratório Prático – Capítulo 10: Trabalhando com Texto e Redirecionamento
+
+### 10.1 – Introdução
+
+**Por que praticar a edição de texto no terminal?**
+Saber usar o terminal é importante. Mas saber editar texto no terminal é essencial para muitas tarefas. Este laboratório mostra como usar, na prática, os comandos de edição de texto para criar, modificar e manipular arquivos de texto.
+
+---
+
+### 10.2 – Redirecionamento de Entrada e Saída
+
+**Como usar o redirecionamento de saída (`>`)?**
+
+```bash
+echo "Olá" > arquivo.txt
+```
+
+👉 _Analogia:_ Como escrever em um caderno, mas salvando no livro.
+
+**Como usar o redirecionamento de saída com append (`>>`)?**
+
+```bash
+echo "Olá" >> arquivo.txt
+```
+
+👉 _Analogia:_ Como escrever em um caderno, mas adicionando ao final do livro.
+
+**Como usar o redirecionamento de entrada (`<`)?**
+
+```bash
+cat < arquivo.txt
+```
+
+👉 _Analogia:_ Como ler um livro, mas usando um caderno como fonte.
+
+**Como usar o redirecionamento de entrada com delimitador (`<<`)?**
+
+```bash
+cat << FIM
+Olá
+Mundo
+FIM
+```
+
+👉 _Analogia:_ Como ler um livro, mas usando um caderno como fonte, mas só até encontrar um delimitador.
+
+**Como usar o pipe (`|`)?**
+
+```bash
+echo "Olá" | cat
+```
+
+👉 _Analogia:_ Como encher um balde com água de um cano e jogar para outro.
+
+---
+
+### 10.3 – Edição de Texto
+
+**Como usar o Vim?**
+
+```bash
+vim arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O Vim é um editor de texto poderoso, mas requer um pouco de aprendizado.
+
+**Como salvar e sair do Vim?**
+
+- `Esc` + `:w` → Salva e sai
+- `Esc` + `:q!` → Sai sem salvar
+- `Esc` + `:wq` → Salva e sai
+
+👉 _Analogia:_ O Vim é como um editor de texto que você pode personalizar, mas requer um pouco de treinamento.
+
+**Como usar o Nano?**
+
+```bash
+nano arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O Nano é um editor de texto simples e fácil de usar, ideal para iniciantes.
+
+**Como salvar e sair do Nano?**
+
+- `Ctrl + O` → Salva
+- `Ctrl + X` → Sai
+
+👉 _Analogia:_ O Nano é como um editor de texto que você pode usar sem precisar de muito treinamento.
+
+---
+
+### 10.4 – Buscando e Substituindo Texto
+
+**Como usar o grep?**
+
+```bash
+grep "erro" arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O grep é como um filtro que pode encontrar palavras ou padrões em um texto.
+
+**Como usar sed para substituir texto?**
+
+```bash
+sed 's/texto/substituto/g' arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O sed é como um editor de texto que pode fazer muitas substituições de forma eficiente.
+
+---
+
+### 10.5 – Formatação de Texto
+
+**Como usar o echo?**
+
+```bash
+echo "Olá $USER"
+```
+
+👨‍🏫 _Analogia:_ O echo é como um editor de texto que pode exibir mensagens simples.
+
+**Como usar o printf?**
+
+```bash
+printf "%s\n" "Olá" "Mundo"
+```
+
+👨‍🏫 _Analogia:_ O printf é como um editor de texto que permite formatar a saída de forma mais controlada.
+
+---
+
+### 10.6 – Manipulação de Arquivos de Texto
+
+**Como usar o cat?**
+
+```bash
+cat arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O cat é como um editor de texto que pode exibir o conteúdo de um arquivo.
+
+**Como usar o head?**
+
+```bash
+head -n 5 arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O head é como um editor de texto que pode exibir as primeiras linhas de um arquivo.
+
+**Como usar o tail?**
+
+```bash
+tail -n 5 arquivo.txt
+```
+
+👨‍🏫 _Analogia:_ O tail é como um editor de texto que pode exibir as últimas linhas de um arquivo.
+
+👉 _Analogia:_ O head e o tail são como olhar o início e o fim de um livro, respectivamente.
+
+---
+
+### 10.7 – Resumo do Capítulo 10
+
+Neste laboratório, você praticou:
+
+- Usar redirecionamentos de entrada e saída (`>`, `>>`, `<`, `<<`, `|`)
+- Editar texto com editores de texto (Vim, Emacs, Nano)
+- Buscar e substituir texto com `grep` e `sed`
+- Formatar e exibir texto com `echo` e `printf`
+- Manipular arquivos de texto com `cat`, `head` e `tail`
+
+Essas práticas tornam você mais eficiente ao trabalhar com arquivos de texto no terminal!
+
+---
+
+## 📘 Capítulo 11 – Visualizando e Buscando Dados de Texto no Linux
+
+### 11.1 – Introdução
+
+**O que significa visualizar e buscar dados de texto no Linux?**
+O Linux é uma máquina de linha de comando, onde tudo é texto. Dominar o terminal permite acessar, editar, criar e manipular arquivos de texto de forma eficiente.
+
+👉 _Analogia:_ É como usar um editor de texto no computador — você digita, edita, salva e imprime.
+
+---
+
+### 11.2 – Visualização de Arquivos de Texto
+
+**O que é o comando `less`?**
+O comando `less` é usado para visualizar arquivos de texto de forma paginada.
+
+👉 \_Exemplo:`less arquivo.txt` — exibe o conteúdo de `arquivo.txt` em páginas.
+
+**O que é o comando `more`?**
+O comando `more` é usado para visualizar arquivos de texto de forma paginada, mas com uma interface mais simples.
+
+👉 \_Exemplo:`more arquivo.txt` — exibe o conteúdo de `arquivo.txt` em páginas.
+
+👉 \_Analogia:`less` e `more` são como usar um livro digital com navegação por páginas.
+
+---
+
+### 11.3 – Buscando Texto
+
+**O que é o comando `grep`?**
+O comando `grep` é usado para buscar padrões de texto em arquivos.
+
+👉 \_Exemplo:`grep "erro" arquivo.txt` — encontra todas as linhas que contêm "erro".
+
+**O que é o comando `ack`?**
+O comando `ack` é um ferramenta de busca de texto que é muito rápida e eficiente.
+
+👉 \_Exemplo:`ack "erro"` — encontra todas as linhas que contêm "erro".
+
+👉 \_Analogia:`grep` e `ack` são como filtros que podem encontrar palavras ou padrões em um texto.
+
+---
+
+### 11.4 – Buscando em Arquivos Binários
+
+**O que é o comando `strings`?**
+O comando `strings` é usado para extrair strings de texto de arquivos binários.
+
+👉 \_Exemplo:`strings arquivo.bin` — extrai todas as strings de texto de `arquivo.bin`.
+
+👉 \_Analogia:`strings` é como um editor de texto que pode ler dentro de arquivos que não são de texto.
+
+---
+
+### 11.5 – Buscando por Expressões Regulares
+
+**O que é uma expressão regular?**
+Uma expressão regular é uma sequência de caracteres que define um padrão de busca.
+
+👉 \_Exemplo:`grep -E "erro|aviso"` — encontra linhas que contêm "erro" ou "aviso".
+
+👉 \_Analogia:`grep -E` é como um filtro que pode encontrar múltiplos padrões de texto.
+
+---
+
+### 11.6 – Resumo do Capítulo 11
+
+Neste capítulo, você aprendeu a:
+
+- Visualizar arquivos de texto com `less` e `more`
+- Buscar texto com `grep` e `ack`
+- Buscar em arquivos binários com `strings`
+- Buscar por expressões regulares com `grep -E`
+
+Essas habilidades tornam você mais eficiente ao trabalhar com arquivos de texto no terminal!
+
+---
