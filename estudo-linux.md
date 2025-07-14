@@ -14,6 +14,7 @@
 - [📁 Capítulo 10 — Trabalhando com Texto e Redirecionamento](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-10--trabalhando-com-texto-e-redirecionamento)
 - [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-10-trabalhando-com-texto-e-redirecionamento)
 - [📘 Capítulo 11 – Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-11--visualizando-e-buscando-dados-de-texto-no-linux).
+- [🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal](#-laboratório-prático--capítulo-11-scripts-e-comandos-interativos-no-terminal)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -1610,7 +1611,7 @@ Neste laboratório, você praticou arquivamento e compressão de arquivos no Lin
 
 ---
 
-## 🧪 Laboratório Prático – Capítulo 11: Visualizando e Buscando Dados de Texto no Linux
+## 🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal
 
 ### 🎯 Qual o objetivo deste laboratório?
 
@@ -1664,7 +1665,7 @@ strings arquivo.bin
 
 Esse comando extrai todas as strings de texto de um arquivo binário.
 
-👉 _Analogia:_ É como um editor de texto que pode ler dentro de arquivos que não são de texto.
+👉 \_Analogia:`strings` é como um editor de texto que pode ler dentro de arquivos que não são de texto.
 
 ---
 
