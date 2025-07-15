@@ -2070,7 +2070,7 @@ Essas habilidades tornam você mais eficiente ao trabalhar com arquivos de texto
 
 ---
 
-🧠 **Capítulo 12 — Entendendo o Hardware do Computador**
+## 🧠 **Capítulo 12 — Entendendo o Hardware do Computador**
 
 ---
 
