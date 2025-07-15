@@ -2211,7 +2211,7 @@ Neste capítulo você aprendeu a:
 🔹 Compreender a importância dos drivers e da compatibilidade  
 🔹 Saber como o Linux interage com hardware moderno e antigo
 
-🧪 **Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos**
+## 🧪 **Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos**
 
 ---
 
