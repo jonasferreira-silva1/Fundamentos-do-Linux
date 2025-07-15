@@ -15,6 +15,8 @@
 - [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-10-trabalhando-com-texto-e-redirecionamento)
 - [📘 Capítulo 11 – Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-11--visualizando-e-buscando-dados-de-texto-no-linux).
 - [🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal](#-laboratório-prático--capítulo-11-scripts-e-comandos-interativos-no-terminal)
+- [📘 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
+- [🧪 Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos](#-laboratório-prático--capítulo-12-explorando-o-hardware-do-computador-com-comandos)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -1293,7 +1295,7 @@ O comando `rm` remove arquivos e não há lixeira: apagou, já era!
 - `rm -ir` — versão mais segura
 - `rmdir pasta` — só remove se estiver vazia
 
-👉 _Analogia:_ `rm -r` retira a casa e tudo dentro. `rmdir` apenas remove uma caixa vazia.
+👉 \_Analogia:`rm -r` retira a casa e tudo dentro. `rmdir` apenas remove uma caixa vazia.
 
 ---
 
@@ -2067,3 +2069,248 @@ Neste capítulo, você aprendeu a:
 Essas habilidades tornam você mais eficiente ao trabalhar com arquivos de texto no terminal!
 
 ---
+
+🧠 **Capítulo 12 — Entendendo o Hardware do Computador**
+
+---
+
+## 🔹 **12.1 – Introdução**
+
+🧠 **Por que entender o hardware físico?**  
+Porque mesmo ambientes virtuais dependem de **componentes reais**. Sem compreender peças como CPU, RAM, disco e placa-mãe, não é possível instalar, configurar ou manter um sistema Linux corretamente.
+
+👉 **Analogia:** O hardware é como o **palco físico**, e as máquinas virtuais são as **encenações** que só existem porque esse palco existe.
+
+---
+
+## 🔹 **12.2 – Placa-mãe (Motherboard)**
+
+🧠 **Qual o papel da placa-mãe?**  
+Ela interconecta a CPU, a RAM e demais periféricos através de **barramentos**. Em notebooks, muitos componentes são soldados diretamente; em servidores ou desktops, há **slots para expansão**.
+
+👉 **Analogia:** É a **central elétrica da cidade** — todos os bairros (componentes) se conectam por ela.
+
+---
+
+## 🔹 **12.3 – Processador (CPU)**
+
+🧠 **O que o processador faz?**  
+É o **cérebro** do sistema. Executa instruções, faz cálculos e roda programas.  
+Principais tipos:
+
+- `x86` (32 bits)
+- `x86_64` (64 bits) → mais rápido, suporta mais memória, é compatível com 32 bits  
+  Ferramentas: `arch` e `lscpu`
+
+👉 **Analogia:** É como o **chef da cozinha**, preparando pratos (tarefas) com os ingredientes (dados). Mais núcleos = mais chefs = mais agilidade.
+
+---
+
+## 🔹 **12.4 – Memória RAM**
+
+🧠 **Para que serve a RAM?**  
+Armazena temporariamente os programas em execução. Quando ela se esgota, o sistema usa o **swap** (área no disco) como memória virtual.
+
+Ferramenta: `free -m` mostra RAM e swap.
+
+👉 **Analogia:** RAM é uma **mesa de trabalho**: quanto maior, mais tarefas cabem. O swap é a **gaveta de apoio**.
+
+---
+
+## 🔹 **12.5 – Barramentos e Periféricos**
+
+🧠 **O que são barramentos?**  
+Conexões internas (PCI) e externas (USB) que permitem a comunicação entre dispositivos e o sistema.  
+Comandos:
+
+- `lspci` → dispositivos PCI (placas internas)
+- `lsusb` → dispositivos USB (hot-plug)
+
+👉 **Analogia:** São as **estradas** que ligam componentes internos e externos ao sistema.
+
+---
+
+## 🔹 **12.6 – Discos Rígidos**
+
+🧠 **Como o Linux reconhece discos e partições?**  
+Cada disco recebe um nome, como `/dev/sda`, e cada partição tem um sufixo, como `/dev/sda1`.
+
+Tipos de partição:
+
+- **MBR** → até 2 TB e 4 partições
+- **GPT** → mais partições e mais capacidade
+
+Ferramentas: `fdisk`, `gdisk`, `parted`, `gparted`
+
+👉 **Analogia:** O disco é um **prédio** e cada **partição é um apartamento** com endereço próprio.
+
+---
+
+## 🔹 **12.7 – Discos SSD**
+
+🧠 **Qual a diferença entre HDD e SSD?**  
+SSDs são **mais rápidos**, sem partes móveis, usam chips e têm controlador embutido.  
+Vantagens: velocidade, menor consumo  
+Desvantagens: custo, menor capacidade
+
+👉 **Analogia:** HDD é um **toca-discos com agulha**, SSD é um **pendrive turbinado**: acesso imediato e silencioso.
+
+---
+
+## 🔹 **12.8 – Unidades Ópticas**
+
+🧠 **Como o Linux lida com CDs, DVDs e Blu-Ray?**  
+Discos são montados em `/media` ou `/mnt`.  
+Após o uso, devem ser desmontados com `umount`.
+
+👉 **Analogia:** É como **emprestar um livro**: você lê e devolve, mas precisa **fechar** antes de entregar.
+
+---
+
+## 🔹 **12.9 – Gerenciamento de Dispositivos**
+
+🧠 **Como o sistema Linux reconhece tantos tipos de hardware?**  
+Através de **drivers**, que podem ser embutidos no kernel, carregados como módulos ou ativados por aplicativos.
+
+Nem todo hardware é compatível, então:
+
+- Verifique se há suporte da distribuição (ex: Red Hat, SUSE)
+- Evite dispositivos muito novos ou específicos
+
+👉 **Analogia:** Drivers são **intérpretes** entre o sistema e o hardware — sem eles, não há comunicação.
+
+---
+
+## 🔹 **12.10 – Dispositivos de Vídeo**
+
+🧠 **Como o sistema exibe imagens no monitor?**  
+Placas de vídeo enviam sinais ao monitor via cabos: VGA, DVI, HDMI, DisplayPort.  
+Drivers proprietários são comuns, mas o Linux já suporta boa parte das placas modernas.
+
+👉 **Analogia:** A placa de vídeo é um **tradutor visual** — transforma dados em imagens na tela.
+
+---
+
+## 🔹 **12.11 – Fonte de Energia**
+
+🧠 **Qual a função da fonte?**  
+Converte corrente alternada (120V/240V) em corrente contínua (3.3V, 5V, 12V).  
+Fontes de qualidade protegem contra picos. Desktops e servidores são mais vulneráveis que laptops (que têm bateria).
+
+👉 **Analogia:** A fonte é como um **transformador pessoal** que entrega energia sob medida para cada componente.
+
+---
+
+## ✅ **Resumo Final do Capítulo 12**
+
+Neste capítulo você aprendeu a:
+
+🔹 Reconhecer os principais componentes físicos do computador  
+🔹 Entender como cada parte se conecta e se comunica  
+🔹 Identificar e gerenciar dispositivos via comandos (`lscpu`, `lspci`, `fdisk`, `free`)  
+🔹 Compreender a importância dos drivers e da compatibilidade  
+🔹 Saber como o Linux interage com hardware moderno e antigo
+
+🧪 **Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos**
+
+---
+
+## 🔹 **12.1 – Introdução ao Laboratório**
+
+🧠 **Por que executar este laboratório?**  
+Porque além de compreender a teoria sobre hardware, é essencial **saber inspecionar os componentes reais** do sistema via terminal. Você vai aprender a listar informações de CPU, memória, discos e dispositivos conectados — tudo com comandos práticos.
+
+👉 **Analogia:** É como abrir o capô de um carro e usar sensores para verificar peça por peça.
+
+---
+
+## 🔹 **12.2 – Listando o Hardware do Sistema**
+
+🧠 **Quais comandos serão usados para investigar o computador?**  
+Comandos como `lscpu`, `lsusb`, `lspci`, `fdisk`, `free`, `lsmod` revelam os componentes que estão ativos, instalados e funcionando no sistema Linux.
+
+👉 **Analogia:** O terminal vira seu **scanner de diagnóstico técnico** — como uma oficina mecânica digital.
+
+---
+
+## 🔹 **12.2.1 – Verificando o Tipo de CPU com `lscpu`**
+
+🧠 Mostra arquitetura, núcleos, threads, fabricante, velocidade, virtualização.
+
+👉 **Analogia:** É como olhar a ficha técnica do cérebro da máquina.
+
+---
+
+## 🔹 **12.2.2 – Explorando `/proc/cpuinfo` para Detalhes Avançados**
+
+🧠 Exibe campos avançados como "flags" que indicam instruções suportadas, virtualização, segurança, etc.
+
+👉 **Analogia:** É como acessar o histórico completo das habilidades do processador — inclusive talentos ocultos.
+
+---
+
+## 🔹 **12.2.3 – Verificando RAM e Swap com `free`**
+
+🧠 Exibe a quantidade de memória disponível, usada, cache e área de swap (memória virtual).
+
+👉 **Analogia:** A RAM é sua mesa de trabalho; o swap é a gaveta de apoio.
+
+---
+
+## 🔹 **12.2.4 – Listando Dispositivos PCI com `lspci`**
+
+🧠 Mostra placas de vídeo, rede, armazenamento e outros periféricos internos conectados ao barramento PCI.
+
+👉 **Analogia:** Como identificar os veículos que trafegam na rodovia interna do computador.
+
+---
+
+## 🔹 **12.2.5 – Verificando Módulos de Driver com `lspci -k`**
+
+🧠 Lista quais drivers do kernel estão ativos para cada dispositivo PCI.
+
+👉 **Analogia:** Identifica qual gerente está supervisionando cada funcionário (dispositivo) no sistema.
+
+---
+
+## 🔹 **12.2.6 – Listando Dispositivos USB com `lsusb`**
+
+🧠 Detecta periféricos externos como mouses, pendrives, webcams e hubs USB.
+
+👉 **Analogia:** É como olhar uma lista de convidados conectados à festa do barramento USB.
+
+---
+
+## 🔹 **12.2.7 – Listando Módulos do Kernel com `lsmod`**
+
+🧠 Mostra todos os módulos ativos, seu uso de memória e dependências.
+
+👉 **Analogia:** Visualiza quais peças de Lego estão encaixadas no sistema.
+
+---
+
+## 🔹 **12.2.8 – Introdução ao `fdisk` e Partições**
+
+🧠 Explica o uso do comando `fdisk` para listar e modificar partições, destacando a importância da BIOS e do SMBIOS como fontes de dados sobre o hardware.
+
+👉 **Analogia:** O BIOS é o porteiro do prédio; `fdisk` é o arquiteto que pode redesenhar os apartamentos (partições).
+
+---
+
+## 🔹 **12.2.9 – Usando `fdisk -l` para Listar Discos e Partições**
+
+🧠 Exibe o layout completo de dispositivos de armazenamento e partições existentes. Não altera nada — apenas investiga.
+
+👉 **Analogia:** Como ler a planta oficial do edifício de dados — mostrando tamanho, começo/fim e função de cada espaço.
+
+---
+
+## ✅ **Resumo Final do Laboratório Capítulo 12**
+
+Neste laboratório, você aprendeu a:
+
+🔹 Inspecionar CPU, memória, discos e periféricos com comandos essenciais  
+🔹 Verificar quais drivers estão ativos e como o kernel lida com módulos  
+🔹 Listar e interpretar informações reais do sistema físico ou virtual  
+🔹 Aplicar comandos com segurança para diagnóstico sem alterar dados  
+🔹 Entender profundamente a relação entre hardware e sistema operacional Linux
