@@ -17,7 +17,7 @@
 - [🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal](#-laboratório-prático--capítulo-11-scripts-e-comandos-interativos-no-terminal)
 - [📘 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
 - [🧪 Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos](#-laboratório-prático--capítulo-12-explorando-o-hardware-do-computador-com-comandos)
-- [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
+- [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](#cabe%C3%A7alho-para-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -2425,3 +2425,127 @@ Logs e dados variáveis: /var/log, /var/mail, /var/spool
 Neste capítulo você aprendeu a:
 
 🔹 Identificar como o kernel gerencia processos, memória e dispositivos 🔹 Usar comandos como ps, top, dmesg, free e journalctl para diagnóstico e monitoramento 🔹 Compreender o papel dos logs e da hierarquia de diretórios 🔹 Visualizar e organizar programas, bibliotecas e arquivos variáveis corretamente
+
+## 🧪 **Resumo Didático do Capítulo 13 laboratório — Linux Essentials: Gerenciando Processos e Logs**
+
+---
+
+### ❓ **O que é um processo em Linux, e como podemos gerenciá-los?**
+
+🔧 **Resposta técnica:**  
+Processos representam programas em execução. Linux oferece ferramentas como `jobs`, `kill`, `killall`, `pkill`, `ps`, `top`, `free` e acesso aos **logs do sistema** para monitorar, organizar e encerrar processos conforme a necessidade.
+
+🎯 **Analogia:**  
+Imagine que o sistema é uma fábrica. Os **processos** são operários que executam tarefas, e os comandos são como supervisores dando ordens — seja para acompanhar, realocar ou dispensar um trabalhador específico.
+
+---
+
+### 🪫 **13.3 — Finalizando Processos em Segundo Plano**
+
+🔧 Usamos:
+
+- `kill %n` → Encerra o processo com número de job `n`
+- `killall ping` → Finaliza todos os comandos `ping`
+- `jobs` → Lista todos os processos em segundo plano
+
+🎯 **Analogia:**  
+Você tem vários entregadores (`ping`) ativos. Com `kill %3`, você dispensa o terceiro. Com `killall ping`, você encerra todos os entregadores de uma vez só.
+
+---
+
+### 📊 **13.4 — Usando `top` para Visualizar e Encerrar Processos**
+
+🔧 `top`:
+
+- Exibe processos em tempo real
+- Permite ações interativas: `k` para matar, `R` para renice
+- Ordena por CPU (`Shift + P`) e memória (`Shift + M`)
+
+🎯 **Analogia:**  
+É como estar numa sala de controle com monitores ao vivo. Você vê quem está trabalhando demais e pode dar comandos diretamente da central.
+
+---
+
+### 💤 **13.5 — Usando `sleep` para Simular Processos e Encerrar com `kill` e `pkill`**
+
+🔧 Comandos:
+
+- `sleep 888888 &` → Cria processos longos
+- `kill PID` → Encerra um processo específico
+- `pkill sleep` → Encerra todos com nome `sleep`
+
+🎯 **Analogia:**  
+Dois vigias dormindo (`sleep`) precisam ser acordados. Com `kill`, você chama pelo número do crachá (PID). Com `pkill`, você manda uma mensagem geral: "Acordem e encerrem!"
+
+---
+
+### 📋 **13.6 — Usando `ps` para Inspecionar e Ordenar Processos**
+
+🔧 Comandos úteis:
+
+- `ps` → Mostra processos da shell atual
+- `ps -e` → Exibe todos os processos
+- `ps -o pid,%cpu,%mem,cmd` → Personaliza colunas
+- `ps --sort=-%mem` → Ordena por memória
+
+🎯 **Analogia:**  
+É como consultar uma planilha de funcionários: você escolhe colunas, ordena por produtividade, e encontra quem está consumindo mais recursos.
+
+---
+
+### 💾 **13.6.5 — Verificando Memória com o Comando `free`**
+
+🔧 Mostra:
+
+- Total, usado e livre de RAM e swap
+- `free -h` → Exibe com unidades legíveis (GB, MB)
+
+🎯 **Analogia:**  
+`ps` mostra quanto cada colaborador está ocupando. `free` mostra quanto espaço tem disponível na sala inteira.
+
+---
+
+### 🔚 **13.6.6 — Finalizando o Processo com `kill PID`**
+
+🔧 `kill 138` encerra o processo `ping` com PID 138  
+🔧 `jobs` confirma com status `Terminated`
+
+🎯 **Analogia:**  
+Você chama o colaborador número 138 e diz: "Sua tarefa está concluída.” O sistema confirma que ele saiu.
+
+---
+
+### 📁 **13.7 — Visualizando Logs do Sistema**
+
+🔧 Principais arquivos em `/var/log`:
+
+- `auth.log` → Autenticação e login
+- `dmesg` → Mensagens do kernel
+- `messages` / `syslog` → Eventos gerais
+- `httpd`, `cups`, `audit` → Logs específicos de serviços
+
+🎯 **Analogia:**  
+É como uma sala de arquivos administrativos: cada setor escreve seus relatórios. Você lê para entender falhas, acessos e histórico.
+
+---
+
+### 🔐 **13.7.2 — Autenticação no Log com `ssh` e `tail`**
+
+🔧 Após tentar login falho via `ssh localhost`, o sistema registra:
+
+- Tentativas de senha incorretas
+- Fonte do acesso
+- Data e horário
+
+🎯 **Analogia:**  
+A portaria digital registra cada tentativa de entrada no prédio. Se alguém insiste com senhas erradas, isso fica arquivado.
+
+---
+
+## ✅ **Resumo Final (simples e objetivo):**
+
+Capítulo 13 ensina a **iniciar, monitorar, finalizar e investigar processos** em Linux. Ferramentas como `kill`, `ps`, `top`, `free`, `pkill` e os arquivos de `/var/log` são essenciais para administrar recursos e segurança. O aprendizado une comandos práticos com entendimento técnico e analogias para facilitar a retenção.
+
+Se quiser, posso montar um mapa mental com esses comandos ou fazer um quiz para revisar. Bora explorar mais? 🧠💻��
+
+
