@@ -18,7 +18,8 @@
 - [📘 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
 - [🧪 Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos](#-laboratório-prático--capítulo-12-explorando-o-hardware-do-computador-com-comandos)
 - [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
-
+- [🧪 Laboratório Prático – Capítulo 13: Gerenciando Processos e Logs](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-resumo-did%C3%A1tico-do-cap%C3%ADtulo-13-laborat%C3%B3rio--linux-essentials-gerenciando-processos-e-logs
+)
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
