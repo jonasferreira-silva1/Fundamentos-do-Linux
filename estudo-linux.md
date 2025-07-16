@@ -17,6 +17,7 @@
 - [🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal](#-laboratório-prático--capítulo-11-scripts-e-comandos-interativos-no-terminal)
 - [📘 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
 - [🧪 Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos](#-laboratório-prático--capítulo-12-explorando-o-hardware-do-computador-com-comandos)
+- [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](#cabe%C3%A7alho-para-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
@@ -2314,3 +2315,113 @@ Neste laboratório, você aprendeu a:
 🔹 Listar e interpretar informações reais do sistema físico ou virtual  
 🔹 Aplicar comandos com segurança para diagnóstico sem alterar dados  
 🔹 Entender profundamente a relação entre hardware e sistema operacional Linux
+
+## 🧠 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna
+
+🔹 13.1 – Introdução ao Kernel e à Estrutura do Sistema
+🧠 O que forma o GNU/Linux? O sistema é composto pelo Kernel Linux (núcleo) e pelas ferramentas GNU. O kernel é carregado na inicialização e gerencia processos, memória, dispositivos, redes e arquivos virtuais.
+
+👉 Analogia: O kernel é o gerente geral invisível que coordena tudo por trás das cortinas.
+
+🔹 13.2 – Processos e o Diretório /proc
+🧠 Como visualizar processos ativos? O diretório /proc simula arquivos em memória que mostram processos em execução, status do kernel e informações do hardware.
+
+Comandos: ps, pstree, ps --forest, ps -ef, ps aux, grep, top
+
+👉 Analogia: Cada processo tem sua sala numerada — e o kernel mantém um caderno de registros para cada um.
+
+🔹 13.2.1 – Hierarquia de Processos
+🧠 Quem começa tudo? O processo init recebe PID 1 e inicia todos os outros processos em cascata. Sistemas modernos usam /bin/systemd.
+
+👉 Analogia: init é como o primogênito ancestral — todos os processos vêm dele.
+
+🔹 13.2.2 – Vendo Processos com ps
+🧠 Como capturar um retrato dos processos ativos? ps fornece uma foto instantânea. Pode ser ajustado para mostrar a árvore (--forest), todos os processos (-ef, aux) ou filtrado com grep.
+
+👉 Analogia: É como olhar a lista de funcionários do sistema em diferentes formatos.
+
+🔹 13.2.3 – Vendo Processos com top em Tempo Real
+🧠 Como monitorar em tempo real? top exibe processos, carga da CPU, uso de memória e swap dinamicamente. Atalhos úteis:
+
+K: mata processo
+
+R: muda prioridade Também mostra load average (média de carga do sistema).
+
+👉 Analogia: top é a câmera de segurança ao vivo da saúde do sistema.
+
+🔹 13.3 – Gerenciamento de Memória
+🧠 Como o Linux lida com a RAM? Utiliza endereçamento virtual, separando espaço do usuário e espaço do kernel. Pode acessar memória local, remota ou em dispositivos.
+
+👉 Analogia: A RAM é a mesa de trabalho e o sistema garante que cada processo tenha seu espaço reservado sem conflitos.
+
+🔹 13.3.1 – Visualizando Memória com free
+🧠 Como ver estatísticas de memória? Use free, com opções:
+
+-m, -g → unidades legíveis
+
+-s → monitoramento contínuo
+
+Exibe RAM, swap e buffers/cache, com ajustes para memória reaproveitável.
+
+👉 Analogia: É como revisar o inventário da mesa, gavetas e espaço disponível.
+
+🔹 13.4 – Arquivos de Log
+🧠 Onde estão os registros do sistema? Local: /var/log Gerados por daemons como:
+
+rsyslogd
+
+journald (usado com journalctl)
+
+Principais arquivos:
+
+messages, secure, cron, boot.log, maillog, dmesg, Xorg.0.log
+
+👉 Analogia: Os logs são os diários de bordo dos serviços — úteis para investigar problemas e segurança.
+
+🔹 13.5 – Mensagens do Kernel com dmesg
+🧠 Como ver o que o kernel reporta? dmesg exibe o ring buffer do kernel. Pode ser filtrado por grep, como:
+
+bash
+dmesg | grep -i usb
+👉 Analogia: É como ler os bilhetes internos que o kernel manda durante sua operação.
+
+🔹 13.6 – Padrão de Hierarquia de Sistema de Arquivos (FHS)
+🧠 Como os diretórios são organizados? O FHS classifica diretórios como:
+
+Shareable ou Not Shareable
+
+Static ou Variable
+
+Divididos em 4 hierarquias:
+
+Raiz /
+
+/usr
+
+/usr/local
+
+/var
+
+👉 Analogia: O FHS é o mapa urbano do Linux — cada diretório tem função, regras e comportamentos previstos.
+
+🔹 13.6.1 – Organização dos Diretórios
+🧠 Onde ficam arquivos e programas?
+
+Diretório pessoal: /home/<usuário>
+
+Binários de usuário: /bin, /usr/bin, /usr/local/bin
+
+Binários de root: /sbin, /usr/sbin, /usr/local/sbin
+
+Bibliotecas: /lib, /usr/lib, /opt/...
+
+Configurações: /etc, ~/.aplicação
+
+Logs e dados variáveis: /var/log, /var/mail, /var/spool
+
+👉 Analogia: O Linux distribui arquivos como uma cidade inteligente — serviços essenciais estão no centro e dados flutuantes nos arredores.
+
+✅ Resumo Final do Capítulo 13
+Neste capítulo você aprendeu a:
+
+🔹 Identificar como o kernel gerencia processos, memória e dispositivos 🔹 Usar comandos como ps, top, dmesg, free e journalctl para diagnóstico e monitoramento 🔹 Compreender o papel dos logs e da hierarquia de diretórios 🔹 Visualizar e organizar programas, bibliotecas e arquivos variáveis corretamente
