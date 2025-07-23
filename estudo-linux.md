@@ -22,7 +22,7 @@
 - [📘 Capítulo 14 — Rede no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-14--rede-no-linux)
 - [🧪 Laboratório Prático – Capítulo 14: Explorando a Rede no Linux com Diagnósticos e Ferramentas](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-142-explorando-a-rede-no-linux-com-diagn%C3%B3sticos-e-ferramentas)
 - [📘 Capítulo 15 – User Accounts](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-15--user-accounts)
-## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
+## 🏁 **Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
 Linux é um sistema operacional de código aberto, baseado em Unix, que serve como plataforma para executar programas e gerenciar recursos de hardware, como memória, processador e armazenamento. Ele é conhecido por sua estabilidade, segurança e flexibilidade, sendo amplamente usado em servidores, computadores pessoais, dispositivos móveis (como Android) e sistemas embarcados. Por ser gratuito e personalizável, é mantido por uma comunidade global de desenvolvedores.
