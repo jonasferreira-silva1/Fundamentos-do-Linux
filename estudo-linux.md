@@ -2547,6 +2547,234 @@ A portaria digital registra cada tentativa de entrada no prédio. Se alguém ins
 
 Capítulo 13 ensina a **iniciar, monitorar, finalizar e investigar processos** em Linux. Ferramentas como `kill`, `ps`, `top`, `free`, `pkill` e os arquivos de `/var/log` são essenciais para administrar recursos e segurança. O aprendizado une comandos práticos com entendimento técnico e analogias para facilitar a retenção.
 
-Se quiser, posso montar um mapa mental com esses comandos ou fazer um quiz para revisar. Bora explorar mais? 🧠💻��
+---
 
+# 💻 Capítulo 14 – Rede no Linux
+
+## 🔹 14.1 O que é rede em Linux?
+
+**❓ Pergunta:** Por que preciso configurar rede no Linux?
+
+**✅ Resposta técnica:** Porque todo navegador, cliente de e-mail ou serviço depende da capacidade do sistema em se comunicar com outras máquinas.
+
+👉 **Analogia:** Usar esses apps sem rede é como ter um celular sem sinal — bonito, mas inútil.
+
+💡 **Dica do dia a dia:** Sem rede, nem mesmo o comando de atualização do sistema (`sudo apt update`) funciona. Sempre verifique se sua conexão está ativa!
+
+---
+
+## 🌐 14.2 O que significam os principais termos de rede?
+
+**❓ Pergunta:** Quais são os conceitos básicos?
+
+| 📘 Termo     | 💡 Explicação                    | 🔍 Analogia                                        |
+| ------------ | -------------------------------- | -------------------------------------------------- |
+| **Host**     | Dispositivo conectado à rede     | Como uma casa em um bairro conectado por ruas      |
+| **Rede**     | Grupo de hosts que se comunicam  | Um bairro com várias casas                         |
+| **Internet** | Rede pública que conecta milhões | Um planeta com bairros interligados                |
+| **Wi-Fi**    | Rede sem fio                     | Comunicação via walkie-talkie                      |
+| **Servidor** | Host que fornece serviços        | Uma lanchonete que serve pedidos                   |
+| **Cliente**  | Host que consome serviços        | Quem entra na lanchonete                           |
+| **Serviço**  | Funcionalidade oferecida         | Um hambúrguer sendo servido                        |
+| **Roteador** | Conecta redes diferentes         | Um porteiro que direciona visitantes entre prédios |
+
+💡 **Dica do dia a dia:** Se você não consegue acessar sites, veja se o roteador está ligado ou tente reiniciá-lo. Ele é a ponte entre seu PC e a internet!
+
+---
+
+## 🛠 14.3 Quais são os termos técnicos usados nas configurações de rede?
+
+| 🔧 Termo            | 🧠 Função                       | 📌 Analogia                                   |
+| ------------------- | ------------------------------- | --------------------------------------------- |
+| **Pacote**          | Unidade de dados transmitida    | Como uma caixa postal enviada                 |
+| **IP Address**      | Identificação do host na rede   | Número da casa                                |
+| **Máscara de rede** | Define os limites da rede       | Mapa que delimita o bairro                    |
+| **Hostname**        | Nome do host                    | Nome do morador                               |
+| **URL**             | Endereço de recurso na internet | Endereço da loja                              |
+| **DHCP**            | Configuração automática de rede | Recepcionista que distribui números de quarto |
+| **DNS**             | Traduz nomes em IPs             | Lista telefônica                              |
+| **Ethernet**        | Rede com fio                    | Estrada física entre casas                    |
+| **TCP/IP**          | Regras de comunicação da rede   | Manual de conduta entre vizinhos              |
+
+💡 **Dica do dia a dia:** Quando seu navegador demora a carregar um site, pode ser problema no **DNS**. Trocar para o DNS do Google (`8.8.8.8`) muitas vezes resolve.
+
+---
+
+## 🔁 14.4 Qual a diferença entre IPv4 e IPv6?
+
+* **IPv4:** 32 bits, limitado a \~4.3 bilhões de IPs
+* **IPv6:** 128 bits, virtualmente ilimitado
+
+👉 **Analogia:** IPv4 é um estacionamento quase lotado; IPv6 é uma cidade inteira de garagens inteligentes.
+
+⚠️ **Problemas:** Ainda usamos IPv4 por causa do **NAT** (compartilhamento de IPs) e da dificuldade de migração (**porting**).
+
+💡 **Dica do dia a dia:** Não se preocupe se seu IP for IPv4 — a maioria dos sites ainda depende dele. Mas prepare-se: o futuro é IPv6!
+
+---
+
+## 📶 14.5 Como configurar dispositivos de rede?
+
+**❓ Perguntas chave:**
+
+1. É com fio ou sem fio?
+2. Usa DHCP ou IP estático?
+
+👉 **Analogia:** Desktop é como morador fixo com endereço próprio; laptop é viajante que precisa se registrar automaticamente em cada rede nova.
+
+💡 **Dica do dia a dia:** Se seu notebook não conectar ao Wi-Fi, tente ver se a placa está ativa com `ip a` ou verifique se o **serviço NetworkManager** está rodando.
+
+---
+
+### 📝 14.5.1.1 Como configurar IPv4 no CentOS?
+
+📄 Arquivo: `/etc/sysconfig/network-scripts/ifcfg-eth0`
+
+👉 **Analogia:** É como preencher um formulário manual com nome, endereço e número do quarto.
+
+💡 **Dica:** Prefira configurar por interface gráfica se for iniciante, ou use o `nmtui` (interface visual no terminal).
+
+---
+
+### 🌍 14.5.1.2 Como configurar IPv6?
+
+Mesmo arquivo: `ifcfg-eth0`, com:
+
+* `IPV6INIT=yes`
+* `IPV6ADDR=...`
+* `IPV6_DEFAULTGW=...`
+
+👉 **Analogia:** É como atualizar o GPS da casa com coordenadas futuras.
+
+---
+
+### 📚 14.5.1.3 Onde fica a configuração do DNS?
+
+Arquivo: `/etc/resolv.conf`
+
+👉 **Analogia:** O nameserver é como a operadora que te ajuda a descobrir o número da loja que você quer visitar.
+
+---
+
+### 🧠 14.5.1.4 Como o Linux resolve nomes?
+
+Arquivos envolvidos:
+
+* `/etc/hosts`: contatos locais
+* `/etc/resolv.conf`: operadoras (DNS)
+* `/etc/nsswitch.conf`: quem consultar primeiro
+
+👉 **Analogia:** Primeiro você olha sua agenda. Se não achar, liga para a operadora (DNS).
+
+💡 **Dica:** Em ambientes sem internet, você pode adicionar nomes ao `/etc/hosts` e simular uma resolução DNS local.
+
+---
+
+## 🧪 14.6 Quais ferramentas me ajudam com rede?
+
+👉 **Analogia:** São como instrumentos de diagnóstico — velocímetro, sensor, mapa e histórico.
+
+---
+
+### 📊 14.6.1 Como o `ifconfig` mostra rede?
+
+Exibe informações de interfaces.
+
+👉 **Analogia:** É o painel do carro: te mostra se está ligado, se está rodando, e se tem problemas.
+
+---
+
+### 🚗 14.6.2 Como o `ip` substitui o `ifconfig`?
+
+Ferramenta mais moderna e completa.
+
+👉 **Analogia:** É como trocar um carro velho por um novo com Wi-Fi e GPS embutido.
+
+💡 **Dica:** Use `ip a` em vez de `ifconfig` — é mais atualizado e vem por padrão na maioria das distros modernas.
+
+---
+
+### 🧭 14.6.3 Como visualizar rotas com `route`?
+
+Mostra para onde os pacotes são enviados.
+
+👉 **Analogia:** Como um Waze da rede — ele decide o melhor caminho de entrega.
+
+---
+
+### 🛎 14.6.4 Como testar conectividade com `ping`?
+
+Envio de pacotes para verificar resposta.
+
+👉 **Analogia:** É como bater palma na porta de alguém para ver se está em casa.
+
+💡 **Dica:** Sempre que desconfiar de problema na internet, use `ping 8.8.8.8`. Se responder, o problema não é a rede externa.
+
+---
+
+### 🌐 14.6.5 O que o `netstat` mostra?
+
+* Tráfego
+* Tabela de roteamento
+* Portas abertas
+
+👉 **Analogia:** É o painel de tráfego da cidade — quem entrou, quem saiu, e onde há congestionamento.
+
+---
+
+### 📡 14.6.6 Como usar o `ss` para sockets?
+
+Substituto moderno do `netstat`.
+
+👉 **Analogia:** Câmera inteligente que mostra cada conversa em andamento (conexões entre hosts).
+
+---
+
+### 🧪 14.6.7 Como testar DNS com `dig`?
+
+Consulta técnica direta ao servidor DNS.
+
+👉 **Analogia:** Como perguntar à operadora se ela tem o número da loja.
+
+💡 **Dica:** `dig google.com` te mostra se a internet está resolvendo nomes corretamente.
+
+---
+
+### 📱 14.6.8 Para que serve o `host`?
+
+Consulta simples entre nome e IP, ou IP e nome.
+
+👉 **Analogia:** É como procurar um contato pelo nome ou número no celular.
+
+---
+
+### 🔐 14.6.9 Como funciona o `ssh`?
+
+Conecta-se a outro computador remoto para trabalhar dentro dele.
+
+👉 **Analogia:** É como usar remotamente o PC de um amigo — você entra, mexe, e sai quando quiser.
+
+---
+
+### 🛡 14.6.9.1 O que é RSA Key Fingerprint?
+
+Identificador único do host remoto. A primeira vez você aceita, depois ele fica salvo. Se mudar, alerta sobre possível ataque.
+
+👉 **Analogia:** É como salvar a identidade de alguém. Se ela mudar de rosto sem avisar, você desconfia que não é mais a mesma pessoa.
+
+---
+
+## 📌 RESUMO FINAL
+
+A Unidade 14 te ensinou:
+
+✅ Como funciona a rede no Linux
+✅ Termos técnicos e práticos
+✅ Configurações manuais e automáticas
+✅ Como diagnosticar e monitorar conexões
+✅ Ferramentas modernas para testes e segurança
+
+🧠 Aprender isso é como se tornar o **mecânico da sua própria rede** — você entende, ajusta, corrige e domina.
+
+---
 
