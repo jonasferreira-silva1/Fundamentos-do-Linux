@@ -2429,7 +2429,7 @@ Neste capítulo você aprendeu a:
 
 🔹 Identificar como o kernel gerencia processos, memória e dispositivos 🔹 Usar comandos como ps, top, dmesg, free e journalctl para diagnóstico e monitoramento 🔹 Compreender o papel dos logs e da hierarquia de diretórios 🔹 Visualizar e organizar programas, bibliotecas e arquivos variáveis corretamente
 
-## 🧪 **Resumo Didático do Capítulo 13 laboratório — Linux Essentials: Gerenciando Processos e Logs
+## 🧪 Resumo Didático do Capítulo 13 laboratório — Linux Essentials: Gerenciando Processos e Logs
 
 ---
 
