@@ -2778,3 +2778,103 @@ A Unidade 14 te ensinou:
 
 ---
 
+## 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas
+
+🔹 **14.2.1 – Qual é o meu endereço IP?**  
+**Resposta técnica:** Use o comando `ifconfig` para visualizar os endereços IPv4 e IPv6 das interfaces de rede da máquina (ex: eth0 e lo).  
+**Analogia:** É como olhar no espelho para ver sua própria aparência — você vê seu nome (localhost), número da casa (IP), e o tipo de conexão (com fio ou loopback).  
+💡 **Dica adicional:** Em distros modernas, prefira `ip a` ao invés de `ifconfig`. Ele é mais preciso e padronizado.
+
+---
+
+🔹 **14.2.2 – Como minha máquina envia dados para outras redes?**  
+**Resposta técnica:** Use `route` para visualizar a tabela de roteamento e entender para onde os pacotes são enviados.  
+**Analogia:** É como ver o mapa do bairro: se o destino for próximo, você vai direto; se for longe, passa pelo porteiro (gateway).  
+💡 **Dica adicional:** Use `ip route` para uma visualização mais moderna e clara das rotas.
+
+---
+
+🔹 **14.2.3 – A máquina reconhece a si mesma?**  
+**Resposta técnica:** Verifique se `127.0.0.1` está associado ao `localhost` no arquivo `/etc/hosts` com `grep`.  
+**Analogia:** É como saber seu próprio nome na sua agenda — sem isso, você não se reconhece ao se olhar no espelho.  
+💡 **Dica adicional:** Esse teste é útil antes de configurar servidores locais como Apache ou Nginx.
+
+---
+
+🔹 **14.2.4 – O localhost responde ao ping?**  
+**Resposta técnica:** Execute `ping -c 4 localhost` para testar a conexão interna da máquina.  
+**Analogia:** É como gritar "tem alguém aí?" e ouvir sua própria voz ecoando — confirma que sua rede interna está funcionando.  
+💡 **Dica adicional:** Isso ajuda a verificar se os serviços internos estão rodando corretamente.
+
+---
+
+🔹 **14.2.5 – Tenho um servidor DNS configurado?**  
+**Resposta técnica:** Use `cat /etc/resolv.conf` para ver se há uma linha `nameserver`, indicando que sua máquina pode resolver nomes de domínio.  
+**Analogia:** É como ter acesso à lista telefônica — você sabe para quem ligar quando precisa encontrar um endereço.  
+💡 **Dica adicional:** Se não houver nenhum `nameserver`, você pode adicionar manualmente o DNS do Google (`8.8.8.8`) para testes.
+
+---
+
+🔹 **14.2.6 – O nome localhost.localdomain resolve para um IP?**  
+**Resposta técnica:** Use `dig localhost.localdomain` para verificar se o DNS retorna o IP correto (`127.0.0.1`).  
+**Analogia:** É como perguntar à operadora "Qual é o número da loja chamada localhost?" e ela responder "É você mesmo!"  
+💡 **Dica adicional:** Verifique se você tem o pacote `dnsutils` instalado para usar `dig`.
+
+---
+
+🔹 **14.2.7 – Posso resolver um nome FQDN como cserver.example.com?**  
+**Resposta técnica:** Use `dig cserver.example.com` para verificar o IP associado a esse nome completo (FQDN).  
+**Analogia:** É como procurar um nome completo na lista telefônica: “João da empresa Exemplo”.  
+💡 **Dica adicional:** Testes com nomes reais como `google.com` ajudam a confirmar se há acesso à internet.
+
+---
+
+🔹 **14.2.8 – E se eu tiver o IP e quiser saber o nome?**  
+**Resposta técnica:** Use `dig -x 192.168.1.2` para fazer uma resolução reversa e descobrir o hostname.  
+**Analogia:** É como ligar para a operadora e dizer: “Esse número pertence a quem?” — ela responde com o nome.  
+💡 **Dica adicional:** Pode falhar se não houver entrada de PTR configurada no DNS — isso depende da rede.
+
+---
+
+🔹 **14.2.9 – Quais são as opções do comando netstat?**  
+**Resposta técnica:** Use `netstat --help` para ver todas as funcionalidades, como visualização de conexões, rotas e estatísticas.  
+**Analogia:** É como ver a ficha técnica de um painel de controle que te mostra tudo sobre o trânsito da cidade (rede).  
+💡 **Dica adicional:** Em sistemas modernos, o `ss` substitui o `netstat` com mais eficiência e detalhamento.
+
+---
+
+🔹 **14.2.10 – A porta 22 está aberta para conexões SSH?**  
+**Resposta técnica:** Use `netstat -tl` ou `netstat -tln` para verificar se a porta 22 está em escuta (LISTEN).  
+**Analogia:** É como checar se a porta da sala de vídeo chamada está aberta e o recepcionista está esperando convidados.  
+💡 **Dica adicional:** Se não estiver, verifique se o serviço `sshd` está ativo com `systemctl status sshd`.
+
+---
+
+🔹 **14.2.11 – Como limito a saída de netstat apenas para TCP escutando?**  
+**Resposta técnica:** Combine `-t`, `-l` e `-n` para ver conexões TCP abertas, sem traduzir nomes.  
+**Analogia:** É como pedir um relatório só das salas com gente esperando, mostrando os números reais das portas.  
+💡 **Dica adicional:** Isso é útil para detectar se há servidores web, FTP ou SSH ativos sem depender de firewall.
+
+---
+
+🔹 **14.2.12 – Como vejo conexões ativas com o comando moderno ss?**  
+**Resposta técnica:** Use o comando `ss` após iniciar tráfego com `start_webserver`, para visualizar conexões e seus estados (`CLOSE-WAIT`, `FIN-WAIT-2`).  
+**Analogia:** É como ver a lista de chamadas ainda ativas ou encerrando numa central telefônica — mostra quem está falando com quem e o que falta para a conversa acabar.  
+💡 **Dica adicional:** Use `ss -tuna` para ver conexões TCP e UDP com detalhes completos, incluindo portas e estados.
+
+---
+
+## 🧾 Resumo Final Objetivo  
+Na seção 14.2 do Lab 14, você aprendeu a:
+
+✅ Explorar e entender a configuração de rede da máquina Linux  
+✅ Identificar IPs, rotas, conexões e portas abertas  
+✅ Utilizar ferramentas como `ifconfig`, `ip`, `route`, `ping`, `netstat`, `ss`, `dig` e `grep`  
+✅ Interpretar respostas de DNS, tabelas de roteamento e estados de conexão  
+
+🧠 **Tudo isso te torna capaz de diagnosticar e configurar redes com precisão.**
+
+---
+
+
+
