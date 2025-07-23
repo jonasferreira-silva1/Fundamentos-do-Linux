@@ -2429,7 +2429,7 @@ Neste capítulo você aprendeu a:
 
 🔹 Identificar como o kernel gerencia processos, memória e dispositivos 🔹 Usar comandos como ps, top, dmesg, free e journalctl para diagnóstico e monitoramento 🔹 Compreender o papel dos logs e da hierarquia de diretórios 🔹 Visualizar e organizar programas, bibliotecas e arquivos variáveis corretamente
 
-## 🧪 **Resumo Didático do Capítulo 13 laboratório — Linux Essentials: Gerenciando Processos e Logs**
+## 🧪 **Resumo Didático do Capítulo 13 laboratório — Linux Essentials: Gerenciando Processos e Logs
 
 ---
 
@@ -2551,7 +2551,7 @@ Capítulo 13 ensina a **iniciar, monitorar, finalizar e investigar processos** e
 
 ---
 
-# 💻 Capítulo 14 – Rede no Linux
+## 💻 Capítulo 14 – Rede no Linux
 
 ## 🔹 14.1 O que é rede em Linux?
 
@@ -2780,7 +2780,7 @@ A Unidade 14 te ensinou:
 
 ---
 
-### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas ##
+### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas 
 
 🔹 **14.2.1 – Qual é o meu endereço IP?**  
 **Resposta técnica:** Use o comando `ifconfig` para visualizar os endereços IPv4 e IPv6 das interfaces de rede da máquina (ex: eth0 e lo).  
