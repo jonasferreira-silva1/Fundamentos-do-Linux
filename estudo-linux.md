@@ -2779,7 +2779,7 @@ A Unidade 14 te ensinou:
 
 ---
 
-### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas
+### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas ##
 
 🔹 **14.2.1 – Qual é o meu endereço IP?**  
 **Resposta técnica:** Use o comando `ifconfig` para visualizar os endereços IPv4 e IPv6 das interfaces de rede da máquina (ex: eth0 e lo).  
