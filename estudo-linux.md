@@ -20,6 +20,7 @@
 - [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
 - [🧪 Laboratório Prático – Capítulo 13: Gerenciando Processos e Logs](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-resumo-did%C3%A1tico-do-cap%C3%ADtulo-13-laborat%C3%B3rio--linux-essentials-gerenciando-processos-e-logs)
 - [📘 Capítulo 14 — Rede no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-14--rede-no-linux)
+- [🧪 Laboratório Prático – Capítulo 14: Explorando a Rede no Linux com Diagnósticos e Ferramentas](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-142-explorando-a-rede-no-linux-com-diagn%C3%B3sticos-e-ferramentas)
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
@@ -2778,7 +2779,7 @@ A Unidade 14 te ensinou:
 
 ---
 
-## 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas
+### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas
 
 🔹 **14.2.1 – Qual é o meu endereço IP?**  
 **Resposta técnica:** Use o comando `ifconfig` para visualizar os endereços IPv4 e IPv6 das interfaces de rede da máquina (ex: eth0 e lo).  
