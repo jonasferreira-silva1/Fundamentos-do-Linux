@@ -2876,7 +2876,7 @@ Na seção 14.2 do Lab 14, você aprendeu a:
 
 ---
 
-## 📘 Capítulo 15 – User Accounts ##
+## 📘 Capítulo 15 – User Accounts 
 
 🧩 **15.1 Introduction**  
 🔸 **Pergunta:** O que são contas de usuário e para que servem no Linux?
