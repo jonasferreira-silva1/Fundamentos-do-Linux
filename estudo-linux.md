@@ -2873,9 +2873,171 @@ Na seção 14.2 do Lab 14, você aprendeu a:
 ✅ Utilizar ferramentas como `ifconfig`, `ip`, `route`, `ping`, `netstat`, `ss`, `dig` e `grep`  
 ✅ Interpretar respostas de DNS, tabelas de roteamento e estados de conexão  
 
-🧠 **Tudo isso te torna capaz de diagnosticar e configurar redes com precisão.**
+---
+
+## 📘 Capítulo 15 – User Accounts ##
+
+🧩 **15.1 Introduction**  
+🔸 **Pergunta:** O que são contas de usuário e para que servem no Linux?
+
+🔧 **Resposta técnica:**  
+Contas de usuário controlam quem pode acessar o sistema e o que pode fazer. Os direitos de acesso são definidos por permissões de arquivos, atribuídas a:
+
+- Usuário dono  (Owner) – o usuário que criou o arquivo e é o principal responsável por ele.
+- Grupo ao qual pertence  (Group) - usuarios que pertence ao mesmo grupo e podem ter permissoes especificas.
+- Outros usuários (Others) – todos os outros usuários do sistema que não são o dono nem fazem parte do grupo.
+
+Essas permissões podem ser modificadas pelo usuário root. Cada usuário pertence a pelo menos um grupo, facilitando o compartilhamento de arquivos. As informações de usuários e grupos ficam em arquivos internos do sistema. Comandos como `id`, `groups`, `su`, `passwd` ajudam a visualizar e controlar esses acessos.
+
+🧠 **Analogia:**  
+Seu computador é como um prédio. As contas são moradores com chaves específicas, que abrem determinadas salas. O síndico (root) pode mudar as fechaduras e quem entra onde.
+
+🧩 **15.2 Administrative Accounts**  
+🔸 **Pergunta:** Como funciona a conta root e quais os cuidados ao usá-la?
+
+🔧 **Resposta técnica:**  
+A conta root tem acesso irrestrito, mas é perigosa se usada diretamente, especialmente em ambientes gráficos. → Melhor usar `sudo` para comandos pontuais, ou `su` se for necessário assumir o root. O `sudo` solicita a senha do próprio usuário e registra as ações para auditoria.
+
+🧠 **Analogia:**  
+Usar root direto é como andar com uma chave mestra o tempo todo — qualquer descuido pode ser fatal. O `sudo` é como pedir autorização controlada para tarefas específicas.
+
+🧩 **15.2.2 Executing Privileged Commands**  
+🔸 **Pergunta:** Como o comando `sudo` ajuda na segurança administrativa?
+
+🔧 **Resposta técnica:**  
+`sudo` executa comandos como root sem trocar de usuário. Pede a senha do usuário atual, válida por 5 minutos. Registra a ação em logs, com:
+- Quem executou  
+- O que executou  
+- Quando executou
+
+🧠 **Analogia:**  
+É como assinar uma autorização temporária para mexer em áreas restritas — tudo fica documentado.
+
+🧩 **15.3 User Accounts**  
+🔸 **Pergunta:** O que é o arquivo `/etc/passwd` e como ele organiza os dados dos usuários?
+
+🔧 **Resposta técnica:**  
+Cada linha representa um usuário, com campos como:
+- Nome de login  
+- UID  
+- GID primário  
+- Descrição  
+- Diretório pessoal  
+- Shell padrão
+
+🧾 **Exemplo:**  
+`sysadmin:x:1001:1001:System Administrator,,,,:/home/sysadmin:/bin/bash`
+
+🧠 **Analogia:**  
+É como uma ficha cadastral com nome, função, setor e sala de trabalho de cada funcionário.
+
+🧩 **15.3.1 Passwords**  
+🔸 **Pergunta:** Como o Linux armazena senhas de forma segura?
+
+🔧 **Resposta técnica:**  
+As senhas criptografadas ficam no arquivo `/etc/shadow`. Campos importantes:
+- Senha criptografada  
+- Data da última troca  
+- Prazo mínimo/máximo  
+- Avisos, inatividade, expiração
+
+🧾 **Exemplo:**  
+`sysadmin:$6$...:16874:5:30:7:60:15050:`
+
+🧠 **Analogia:**  
+É como guardar a senha em um cofre inviolável e definir políticas de vencimento como em um cartão bancário.
+
+🧩 **15.4 System Accounts**  
+🔸 **Pergunta:** O que são contas do sistema e como elas funcionam?
+
+🔧 **Resposta técnica:**  
+Contas com UID entre 1 e 499 que representam serviços do sistema, não pessoas reais.  
+→ Não têm home nem shell de login (`/usr/sbin/nologin`)  
+→ Senha marcada com `*` ou `!`
+
+🧠 **Analogia:**  
+São como engrenagens do sistema — essenciais para o funcionamento, mas não interagem diretamente com o usuário.
+
+🧩 **15.5 Group Accounts**  
+🔸 **Pergunta:** Como funciona o agrupamento de usuários e onde ele é configurado?
+
+🔧 **Resposta técnica:**  
+O arquivo `/etc/group` lista os grupos, GID e membros suplementares.
+
+🧾 **Exemplo:**  
+`mail:x:12:mail,postfix`
+
+- Nome do grupo  
+- Senha (geralmente desativada)  
+- GID  
+- Membros
+
+🧠 **Analogia:**  
+É como uma equipe — todos têm acesso aos mesmos recursos compartilhados.
+
+🧩 **15.6 Viewing User Information**  
+🔸 **Pergunta:** Como identificar a conta e grupos do usuário logado?
+
+🔧 **Resposta técnica:**  
+Use o comando `id`.  
+Sem argumentos: mostra dados do usuário atual.  
+Com opções:
+- `-g`: grupo primário  
+- `-G`: grupos suplementares
+
+🧾 **Exemplo:**  
+`id sysadmin` → `uid=1001(sysadmin) gid=1001(sysadmin) groups=1001(sysadmin),4(adm),27(sudo)`
+
+🧠 **Analogia:**  
+É como consultar sua identidade, setor e projetos paralelos numa intranet.
+
+🧩 **15.7 Viewing Current Users**  
+🔸 **Pergunta:** Como ver quem está logado no sistema?
+
+🔧 **Resposta técnica:**  
+Use o comando `who` para listar:
+- Nome  
+- Terminal (tty ou pts)  
+- Data/hora  
+- Origem
+
+🧾 **Exemplo:**  
+`sysadmin  pts/1  10:00 (example.com)`  
+→ `-b` mostra data de boot  
+→ `-r` mostra runlevel
+
+Para mais detalhes, use o comando `w`, que inclui tempo ocioso, uso de CPU e comando em execução.
+
+🧠 **Analogia:**  
+É como ver em tempo real quem está em qual sala e o que está fazendo.
+
+🧩 **15.8 Viewing Login History**  
+🔸 **Pergunta:** Como ver o histórico de logins e logouts?
+
+🔧 **Resposta técnica:**  
+Use o comando `last`, que lê do arquivo `/var/log/wtmp` e mostra:
+- Sessões anteriores  
+- Origem  
+- Duração  
+- Kernel em reinicializações
+
+🧾 **Exemplo:**  
+`last → sysadmin console Tue Sep 18 02:31 still logged in`  
+→ `who` lê o atual `/var/log/utmp`, enquanto `last` acessa o histórico completo
+
+🧠 **Analogia:**  
+`last` é o livro de ponto arquivado. `who` é o painel de presença atual.
 
 ---
+
+## ✅ **Resumo final simples e objetivo**
+
+O **Capítulo 15 – Contas de Usuário** mostra como o Linux administra usuários e grupos de forma segura e eficiente.
+
+- Comandos como `id`, `sudo`, `su`, `who`, `w`, `last` ajudam a controlar e auditar acessos.
+- Arquivos como `/etc/passwd`, `/etc/shadow`, `/etc/group`, `/var/log/wtmp` guardam dados essenciais sobre permissões e sessões.
+- Conhecer esses recursos permite ao administrador manter o sistema organizado, rastreável e protegido.
+
 
 
 
