@@ -23,7 +23,7 @@
 - [🧪 Laboratório Prático – Capítulo 14: Explorando a Rede no Linux com Diagnósticos e Ferramentas](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-142-explorando-a-rede-no-linux-com-diagn%C3%B3sticos-e-ferramentas)
 - [📘 Capítulo 15 – Contas de Usuário](#-capítulo-15--contas-de-usuário)
 - [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-15-system-and-user-security)
-
+- [📘 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
