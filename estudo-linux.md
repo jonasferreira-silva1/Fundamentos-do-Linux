@@ -21,8 +21,7 @@
 - [🧪 Laboratório Prático – Capítulo 13: Gerenciando Processos e Logs](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-resumo-did%C3%A1tico-do-cap%C3%ADtulo-13-laborat%C3%B3rio--linux-essentials-gerenciando-processos-e-logs)
 - [📘 Capítulo 14 — Rede no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-14--rede-no-linux)
 - [🧪 Laboratório Prático – Capítulo 14: Explorando a Rede no Linux com Diagnósticos e Ferramentas](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-142-explorando-a-rede-no-linux-com-diagn%C3%B3sticos-e-ferramentas)
-- [📘 Capítulo 15 – User Accounts](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-15--user-accounts)
-## 🏁 **Introdução ao Linux (Módulo 1 – Capítulo 01)**
+## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
 Linux é um sistema operacional de código aberto, baseado em Unix, que serve como plataforma para executar programas e gerenciar recursos de hardware, como memória, processador e armazenamento. Ele é conhecido por sua estabilidade, segurança e flexibilidade, sendo amplamente usado em servidores, computadores pessoais, dispositivos móveis (como Android) e sistemas embarcados. Por ser gratuito e personalizável, é mantido por uma comunidade global de desenvolvedores.
@@ -2604,8 +2603,8 @@ Capítulo 13 ensina a **iniciar, monitorar, finalizar e investigar processos** e
 
 ## 🔁 14.4 Qual a diferença entre IPv4 e IPv6?
 
-* **IPv4:** 32 bits, limitado a \~4.3 bilhões de IPs
-* **IPv6:** 128 bits, virtualmente ilimitado
+- **IPv4:** 32 bits, limitado a \~4.3 bilhões de IPs
+- **IPv6:** 128 bits, virtualmente ilimitado
 
 👉 **Analogia:** IPv4 é um estacionamento quase lotado; IPv6 é uma cidade inteira de garagens inteligentes.
 
@@ -2642,9 +2641,9 @@ Capítulo 13 ensina a **iniciar, monitorar, finalizar e investigar processos** e
 
 Mesmo arquivo: `ifcfg-eth0`, com:
 
-* `IPV6INIT=yes`
-* `IPV6ADDR=...`
-* `IPV6_DEFAULTGW=...`
+- `IPV6INIT=yes`
+- `IPV6ADDR=...`
+- `IPV6_DEFAULTGW=...`
 
 👉 **Analogia:** É como atualizar o GPS da casa com coordenadas futuras.
 
@@ -2662,9 +2661,9 @@ Arquivo: `/etc/resolv.conf`
 
 Arquivos envolvidos:
 
-* `/etc/hosts`: contatos locais
-* `/etc/resolv.conf`: operadoras (DNS)
-* `/etc/nsswitch.conf`: quem consultar primeiro
+- `/etc/hosts`: contatos locais
+- `/etc/resolv.conf`: operadoras (DNS)
+- `/etc/nsswitch.conf`: quem consultar primeiro
 
 👉 **Analogia:** Primeiro você olha sua agenda. Se não achar, liga para a operadora (DNS).
 
@@ -2716,9 +2715,9 @@ Envio de pacotes para verificar resposta.
 
 ### 🌐 14.6.5 O que o `netstat` mostra?
 
-* Tráfego
-* Tabela de roteamento
-* Portas abertas
+- Tráfego
+- Tabela de roteamento
+- Portas abertas
 
 👉 **Analogia:** É o painel de tráfego da cidade — quem entrou, quem saiu, e onde há congestionamento.
 
@@ -2780,7 +2779,7 @@ A Unidade 14 te ensinou:
 
 ---
 
-## 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas 
+### 🧪 Laboratório Prático – Capítulo 14.2: Explorando a Rede no Linux com Diagnósticos e Ferramentas ##
 
 🔹 **14.2.1 – Qual é o meu endereço IP?**  
 **Resposta técnica:** Use o comando `ifconfig` para visualizar os endereços IPv4 e IPv6 das interfaces de rede da máquina (ex: eth0 e lo).  
@@ -2826,14 +2825,14 @@ A Unidade 14 te ensinou:
 
 🔹 **14.2.7 – Posso resolver um nome FQDN como cserver.example.com?**  
 **Resposta técnica:** Use `dig cserver.example.com` para verificar o IP associado a esse nome completo (FQDN).  
-**Analogia:** É como procurar um nome completo na lista telefônica: “João da empresa Exemplo”.  
+**Analogia:** É como procurar um nome completo na lista telefônica: "João da empresa Exemplo".  
 💡 **Dica adicional:** Testes com nomes reais como `google.com` ajudam a confirmar se há acesso à internet.
 
 ---
 
 🔹 **14.2.8 – E se eu tiver o IP e quiser saber o nome?**  
 **Resposta técnica:** Use `dig -x 192.168.1.2` para fazer uma resolução reversa e descobrir o hostname.  
-**Analogia:** É como ligar para a operadora e dizer: “Esse número pertence a quem?” — ela responde com o nome.  
+**Analogia:** É como ligar para a operadora e dizer: "Esse número pertence a quem?" — ela responde com o nome.  
 💡 **Dica adicional:** Pode falhar se não houver entrada de PTR configurada no DNS — isso depende da rede.
 
 ---
@@ -2866,17 +2865,18 @@ A Unidade 14 te ensinou:
 
 ---
 
-## 🧾 Resumo Final Objetivo  
+## 🧾 Resumo Final Objetivo
+
 Na seção 14.2 do Lab 14, você aprendeu a:
 
 ✅ Explorar e entender a configuração de rede da máquina Linux  
 ✅ Identificar IPs, rotas, conexões e portas abertas  
 ✅ Utilizar ferramentas como `ifconfig`, `ip`, `route`, `ping`, `netstat`, `ss`, `dig` e `grep`  
-✅ Interpretar respostas de DNS, tabelas de roteamento e estados de conexão  
+✅ Interpretar respostas de DNS, tabelas de roteamento e estados de conexão
 
 ---
 
-## 📘 Capítulo 15 – User Accounts 
+## 📘 Capítulo 15 – User Accounts ##
 
 🧩 **15.1 Introduction**  
 🔸 **Pergunta:** O que são contas de usuário e para que servem no Linux?
@@ -2884,8 +2884,8 @@ Na seção 14.2 do Lab 14, você aprendeu a:
 🔧 **Resposta técnica:**  
 Contas de usuário controlam quem pode acessar o sistema e o que pode fazer. Os direitos de acesso são definidos por permissões de arquivos, atribuídas a:
 
-- Usuário dono  (Owner) – o usuário que criou o arquivo e é o principal responsável por ele.
-- Grupo ao qual pertence  (Group) - usuarios que pertence ao mesmo grupo e podem ter permissoes especificas.
+- Usuário dono (Owner) – o usuário que criou o arquivo e é o principal responsável por ele.
+- Grupo ao qual pertence (Group) - usuarios que pertence ao mesmo grupo e podem ter permissoes especificas.
 - Outros usuários (Others) – todos os outros usuários do sistema que não são o dono nem fazem parte do grupo.
 
 Essas permissões podem ser modificadas pelo usuário root. Cada usuário pertence a pelo menos um grupo, facilitando o compartilhamento de arquivos. As informações de usuários e grupos ficam em arquivos internos do sistema. Comandos como `id`, `groups`, `su`, `passwd` ajudam a visualizar e controlar esses acessos.
@@ -2907,8 +2907,9 @@ Usar root direto é como andar com uma chave mestra o tempo todo — qualquer de
 
 🔧 **Resposta técnica:**  
 `sudo` executa comandos como root sem trocar de usuário. Pede a senha do usuário atual, válida por 5 minutos. Registra a ação em logs, com:
-- Quem executou  
-- O que executou  
+
+- Quem executou
+- O que executou
 - Quando executou
 
 🧠 **Analogia:**  
@@ -2919,11 +2920,12 @@ Usar root direto é como andar com uma chave mestra o tempo todo — qualquer de
 
 🔧 **Resposta técnica:**  
 Cada linha representa um usuário, com campos como:
-- Nome de login  
-- UID  
-- GID primário  
-- Descrição  
-- Diretório pessoal  
+
+- Nome de login
+- UID
+- GID primário
+- Descrição
+- Diretório pessoal
 - Shell padrão
 
 🧾 **Exemplo:**  
@@ -2937,9 +2939,10 @@ Cada linha representa um usuário, com campos como:
 
 🔧 **Resposta técnica:**  
 As senhas criptografadas ficam no arquivo `/etc/shadow`. Campos importantes:
-- Senha criptografada  
-- Data da última troca  
-- Prazo mínimo/máximo  
+
+- Senha criptografada
+- Data da última troca
+- Prazo mínimo/máximo
 - Avisos, inatividade, expiração
 
 🧾 **Exemplo:**  
@@ -2968,9 +2971,9 @@ O arquivo `/etc/group` lista os grupos, GID e membros suplementares.
 🧾 **Exemplo:**  
 `mail:x:12:mail,postfix`
 
-- Nome do grupo  
-- Senha (geralmente desativada)  
-- GID  
+- Nome do grupo
+- Senha (geralmente desativada)
+- GID
 - Membros
 
 🧠 **Analogia:**  
@@ -2983,7 +2986,8 @@ O arquivo `/etc/group` lista os grupos, GID e membros suplementares.
 Use o comando `id`.  
 Sem argumentos: mostra dados do usuário atual.  
 Com opções:
-- `-g`: grupo primário  
+
+- `-g`: grupo primário
 - `-G`: grupos suplementares
 
 🧾 **Exemplo:**  
@@ -2997,9 +3001,10 @@ Com opções:
 
 🔧 **Resposta técnica:**  
 Use o comando `who` para listar:
-- Nome  
-- Terminal (tty ou pts)  
-- Data/hora  
+
+- Nome
+- Terminal (tty ou pts)
+- Data/hora
 - Origem
 
 🧾 **Exemplo:**  
@@ -3017,9 +3022,10 @@ Para mais detalhes, use o comando `w`, que inclui tempo ocioso, uso de CPU e com
 
 🔧 **Resposta técnica:**  
 Use o comando `last`, que lê do arquivo `/var/log/wtmp` e mostra:
-- Sessões anteriores  
-- Origem  
-- Duração  
+
+- Sessões anteriores
+- Origem
+- Duração
 - Kernel em reinicializações
 
 🧾 **Exemplo:**  
@@ -3040,5 +3046,93 @@ O **Capítulo 15 – Contas de Usuário** mostra como o Linux administra usuári
 - Conhecer esses recursos permite ao administrador manter o sistema organizado, rastreável e protegido.
 
 
+## 🧪 Laboratório Prático – Capítulo 15: System and User Security
 
+Este capítulo apresenta práticas essenciais de **segurança e administração de usuários** no Linux, com foco em acesso, permissões, históricos e execução segura de comandos.
+
+---
+
+### 📌 **15.1 – Introdução**
+
+Você aprenderá a:
+
+- Monitorar **quem tenta fazer login** no sistema.
+- Verificar **permissões de usuários e grupos**.
+
+🔧 **Analogia**: É como ser o porteiro digital do sistema: você controla quem entra e quais áreas cada pessoa pode acessar.
+
+---
+
+### 🛠️ **15.2 – Executando Comandos como Administrador**
+
+#### ⚙️ Dois métodos principais:
+
+1. `su -` → Troca de usuário para `root`. Abre uma shell administrativa completa.
+2. `sudo` → Executa **apenas um comando** como root, usando sua própria senha.
+
+💡 `sudo` é preferido por segurança: expira automaticamente após 15 minutos no Ubuntu.
+
+🔧 **Analogia**: Usar `su` é como vestir o uniforme do gerente; usar `sudo` é como receber um crachá temporário.
+
+---
+
+### 👥 **15.3 – Contas de Usuário**
+
+#### 🗂️ Arquivos principais:
+
+- `/etc/passwd` → Informações públicas sobre contas.
+- `/etc/shadow` → Senhas criptografadas e políticas.
+- `/etc/group` → Grupos e seus membros.
+
+#### 🧮 Comandos úteis:
+
+- `grep nome` → Busca uma linha específica.
+- `getent passwd nome` → Busca local e remota.
+- `id` → Mostra UID, GID e grupos do usuário.
+
+🔧 **Analogia**: Cada usuário tem um RG digital que define onde mora (home), que equipe pertence (grupos) e como se comunica com o sistema (shell).
+
+---
+
+### 🔐 **15.4 – Senhas**
+
+#### 📁 `/etc/shadow`
+
+Contém:
+
+- Senhas criptografadas (ex: SHA-512)
+- Datas de expiração
+- Controles de bloqueio e aviso
+
+#### ⚠️ Segurança:
+
+- Somente `root` ou `sudo` podem visualizar o arquivo.
+- Permissões definidas para o grupo `shadow`.
+
+#### 📘 Documentação:
+
+Use `man 5 passwd` para ver detalhes dos campos.
+
+🔧 **Analogia**: O `/etc/shadow` é como um cofre com os códigos de acesso dos moradores.
+
+---
+
+### 👤 **15.5 – Quem Está no Sistema**
+
+#### Comandos:
+
+- `who` → Lista quem está logado e o terminal.
+- `w` → Mostra o que cada usuário está fazendo.
+- `users` → Exibe nomes ativos.
+- `last` → Histórico completo de logins e reinicializações.
+
+🔧 **Analogia**: É como monitorar o painel de presença de um prédio — quem entrou, quando, onde está, e se ainda está lá.
+
+---
+
+## ✅ **Resumo Final – O que Aprendemos no Laboratório Prático – Capítulo 15**
+
+> Aprendemos a **administrar usuários com segurança**, executar comandos como root de forma controlada, visualizar informações de contas e senhas com responsabilidade, e **monitorar a atividade no sistema** em tempo real e retrospectivamente.
+
+💡 **Em outras palavras**: você se tornou o guardião do sistema — sabe **quem entra, o que fazem, como são definidos, e como garantir que tudo esteja seguro** 🔒💻
 
