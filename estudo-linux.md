@@ -3139,3 +3139,208 @@ Use `man 5 passwd` para ver detalhes dos campos.
 
 💡 **Em outras palavras**: você se tornou o guardião do sistema — sabe **quem entra, o que fazem, como são definidos, e como garantir que tudo esteja seguro** 🔒💻
 
+## 🧾 **Capítulo 16 – Gerenciando Usuários e Grupos**
+
+---
+
+### 📌 **16.1 Introdução**
+
+🗣️ **Tradução**: Sistemas Linux são normalmente instalados com um usuário comum que pode executar tarefas de administração via `sudo` ou pelo acesso à conta `root`. Se o computador for usado por mais pessoas, o ideal é criar contas separadas para cada usuário.
+
+🧠 **Explicação técnica**:
+- Cada conta pode ter permissões próprias, grupos e pastas pessoais.
+- O comando `sudo` permite executar tarefas administrativas de forma segura e rastreável.
+
+🔧 **Analogia prática**:
+Criar uma conta de usuário no Linux é como dar a cada pessoa uma chave individual da casa — com acesso só ao seu quarto e autorização especial (sudo) para entrar na área de manutenção, se necessário.
+
+---
+
+### 🧑‍🤝‍🧑 **16.2 Grupos**
+
+📁 **Tradução**: Grupos servem para permitir que usuários compartilhem arquivos e permissões comuns.
+
+🧠 **Explicação técnica**:
+- Os grupos são definidos em `/etc/group`.
+- O comando `groupadd` é usado para criar grupos.
+
+🔧 **Analogia prática**:
+Um grupo é como um "clube" onde os membros têm uma chave compartilhada para entrar numa sala em comum.
+
+---
+
+#### 🔠 **16.2.1 Criando Grupos**
+
+📌 Use `groupadd` com `-g` para definir o GID manualmente, ou deixe o sistema atribuir automaticamente.
+
+🔧 **Exemplo**:
+```bash
+groupadd -g 1005 pesquisa
+groupadd desenvolvedores
+```
+
+---
+
+#### 🧮 **16.2.1.1 Considerações sobre GID**
+
+🧠 Evite GIDs que possam entrar em conflito com UIDs de usuários (sobretudo se a distribuição usar UPG). Os GIDs abaixo de 500 ou 1000 são reservados.
+
+🔧 **Exemplo**:
+```bash
+groupadd -r vendas
+```
+
+---
+
+#### 🏷️ **16.2.1.2 Nomeação de Grupos**
+
+🧠 Siga boas práticas:
+- Nome começa com letra minúscula ou "_"
+- Máximo recomendado: 16 caracteres
+- Evite hífen no final
+
+🔧 **Analogia**: Escolher o nome de um grupo é como nomear pastas em um sistema que precisa funcionar em vários tipos de computador — nomes estranhos podem causar problemas.
+
+---
+
+#### 🛠️ **16.2.2 Modificando Grupos**
+
+📌 Use `groupmod` para:
+- Renomear grupo (`-n`)
+- Alterar GID (`-g`)
+
+⚠️ Mudar o GID pode tornar arquivos órfãos!
+
+---
+
+#### 🗑️ **16.2.3 Excluindo Grupos**
+
+📌 Use `groupdel nome_do_grupo`, desde que **não seja o grupo primário de algum usuário**.
+
+---
+
+### 👤 **16.3 Usuários**
+
+🧠 Informações ficam nos arquivos:
+- `/etc/passwd`: dados públicos da conta
+- `/etc/shadow`: senhas criptografadas
+
+⚠️ Nunca edite esses arquivos manualmente — use `useradd`!
+
+---
+
+#### 📁 **16.3.1 Arquivo `/etc/default/useradd`**
+
+Define padrões como:
+- Grupo padrão (`GROUP`)
+- Diretório base (`HOME`)
+- Shell de login (`SHELL`)
+- Diretório esqueleto (`SKEL`)
+- Expiração e inatividade
+
+🔧 Exemplo:
+```bash
+useradd -D -f 30
+```
+
+---
+
+#### 🧾 **16.3.2 Arquivo `/etc/login.defs`**
+
+Define políticas mais amplas:
+- Duração de senha
+- UID/GID mínimo e máximo
+- Criptografia usada (ex: `SHA512`)
+- Criação automática de diretório pessoal (`CREATE_HOME=yes`)
+
+---
+
+#### 🧩 **16.3.3 Considerações para Criar Usuário**
+
+Planeje:
+- Nome único
+- UID
+- Grupo primário e suplementares
+- Diretório pessoal
+- Shell e comentários
+
+---
+
+#### 🛠️ **16.3.4 Criando Usuário**
+
+Exemplo:
+```bash
+useradd -u 1009 -g users -G vendas,pesquisa -m -c "Jane Doe" jane
+```
+
+Cria a conta `jane` com UID, grupo, pastas e comentários personalizados.
+
+---
+
+#### 🔐 **16.3.5 Senhas**
+
+🧠 Boa senha:
+- Não usar dados pessoais
+- Misturar letras, números e símbolos
+- Ter comprimento equilibrado
+- Ser trocada periodicamente
+
+---
+
+#### 🧰 **16.3.5.1 Definindo senha**
+
+Usuário comum usa:
+```bash
+passwd
+```
+
+Administrador define com:
+```bash
+passwd jane
+```
+
+---
+
+#### ⏳ **16.3.5.2 Envelhecimento da Senha**
+
+Use `chage` para controlar validade, aviso e expiração.
+
+🔧 Exemplo:
+```bash
+chage -M 60 jane
+chage -l jane
+```
+
+---
+
+### 🔄 **16.3.6 Modificando Usuário**
+
+Com `usermod` você pode:
+- Mudar o shell, UID, grupos, nome, etc.
+- Lembre-se: usar `-G` sem `-a` substitui os grupos antigos!
+- Pode bloquear a conta com `-L`, sem apagar os arquivos
+
+---
+
+### 🧹 **16.3.7 Deletando Usuário**
+
+Use `userdel` para apagar a conta. O `-r` apaga também o diretório pessoal e caixa de correio.
+
+⚠️ Arquivos fora da pasta do usuário podem ficar órfãos!
+
+🔧 Exemplo:
+```bash
+userdel -r jane
+```
+
+---
+
+## 🧠 **Resumo Final – O que aprendemos?**
+
+> **Capítulo 16 nos ensina a criar, modificar, organizar e apagar usuários e grupos com segurança e responsabilidade.** Aprendemos:
+- Como planejar contas e permissões.
+- A importância de manter boa organização e seguir boas práticas.
+- A gerenciar senhas com atenção à segurança.
+- A usar comandos como `useradd`, `groupadd`, `usermod`, `chage`, e `userdel`.
+
+🔧 É como ser o síndico de um prédio digital: cada usuário tem sua chave, grupo de acesso, regras de convivência e prazo para renovar a senha. Seu papel é manter tudo organizado, seguro e funcional!
