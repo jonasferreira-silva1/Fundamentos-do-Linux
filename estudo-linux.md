@@ -3344,3 +3344,112 @@ userdel -r jane
 - A usar comandos como `useradd`, `groupadd`, `usermod`, `chage`, e `userdel`.
 
 🔧 É como ser o síndico de um prédio digital: cada usuário tem sua chave, grupo de acesso, regras de convivência e prazo para renovar a senha. Seu papel é manter tudo organizado, seguro e funcional!
+
+## 🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos
+
+## 16.1 Introdução
+### 🛠️ Explicação técnica:
+Este laboratório ensina como **criar e gerenciar usuários e grupos** no Linux, usando comandos como `groupadd`, `useradd`, `passwd`, `usermod`, `groupmod` e `groupdel`.
+
+### 🧠 Analogia:
+É como montar uma empresa: você cria departamentos (grupos), contrata funcionários (usuários) e controla quem pode entrar em cada sala (permissões).
+
+## 16.2 Criando Grupos
+
+### 🛠️ `su -`
+Torna-se o usuário root para administrar contas.
+
+💡 *Analogia:* Você assume o crachá de chefe para ter acesso a todas as configurações do sistema.
+
+### 🛠️ `groupadd -r research` e `groupadd -r sales`
+Cria grupos reservados com GIDs entre 1-999.
+
+💡 *Analogia:* Monta salas específicas (departamentos) com número oficial de porta.
+
+### 🛠️ `getent group research` e `grep sales /etc/group`
+Verifica se os grupos foram registrados corretamente.
+
+💡 *Analogia:* Confirma se os nomes das salas estão na planilha de departamentos.
+
+### 🛠️ `groupmod -n clerks sales` e `groupmod -g 10003 clerks`
+Renomeia o grupo e altera seu GID.
+
+💡 *Analogia:* Muda a placa da porta da sala e o número interno do departamento.
+
+### 🛠️ `groupdel clerks`
+Remove o grupo — seus arquivos ficam órfãos.
+
+💡 *Analogia:* Você fecha uma sala, mas documentos que estavam lá ficam espalhados sem dono.
+
+## 16.3 Configuração de Usuário
+
+### 🛠️ `useradd -D`
+Mostra os valores padrão ao criar usuários, incluindo grupo, diretório pessoal e shell.
+
+💡 *Analogia:* Define o modelo de contrato que será usado para cada novo funcionário.
+
+### 🛠️ `useradd -D -f 30`
+Permite que usuários com senha expirada ainda façam login por 30 dias.
+
+💡 *Analogia:* Dá um prazo para renovar o crachá antes de bloquear o acesso.
+
+### 🛠️ `nano /etc/default/useradd`
+Edita o arquivo de configuração padrão.
+
+💡 *Analogia:* Altera o contrato padrão do RH sobre o que cada funcionário novo recebe.
+
+### 🛠️ Modificar `CREATE_MAIL_SPOOL=no` para `yes`
+Permite que o sistema crie uma caixa de e-mail automaticamente para novos usuários.
+
+💡 *Analogia:* Dá uma conta de e-mail corporativo assim que o funcionário é contratado.
+
+### 🛠️ `useradd -G research -c 'Linux Student' -m student`
+Cria o usuário `student`, com grupo secundário `research` e diretório pessoal.
+
+💡 *Analogia:* Funciona como admitir alguém no setor de pesquisa e dar uma mesa com nome personalizado.
+
+### 🛠️ `usermod -aG research sysadmin`
+Adiciona o usuário `sysadmin` ao grupo `research`.
+
+💡 *Analogia:* O crachá dele ganha acesso à sala de pesquisa também.
+
+### 🛠️ `getent group research` e `getent group student`
+Mostra os membros e dados dos grupos.
+
+💡 *Analogia:* Confere se os funcionários estão listados nos departamentos corretos.
+
+### 🛠️ `getent passwd student` e `getent shadow student`
+Verifica detalhes da conta e senha criptografada.
+
+💡 *Analogia:* Checa se o funcionário já recebeu sua chave de entrada e se está ativa.
+
+### 🛠️ `passwd student`
+Define a senha para o usuário.
+
+💡 *Analogia:* Entrega oficialmente a chave do armário pessoal.
+
+### 🛠️ `last student` e `lastb`
+Mostra se o usuário já fez login e verifica tentativas falhas.
+
+💡 *Analogia:* Consulta o livro de ponto e registro de acessos bloqueados.
+
+### 🛠️ `usermod -L student` e `usermod -U student`
+Bloqueia ou desbloqueia a conta do usuário.
+
+💡 *Analogia:* Tranca ou libera o crachá de acesso do funcionário.
+
+### 🛠️ `userdel -r student`
+Remove completamente o usuário e sua pasta pessoal.
+
+💡 *Analogia:* Demite o funcionário e limpa sua mesa e arquivos da empresa.
+
+# 📌 **Resumo Final – O que você aprendeu:**
+
+✅ Como criar, modificar e remover **grupos** e **usuários**  
+✅ Como configurar valores padrão e permissões usando comandos do Linux  
+✅ Como verificar registros e entender os arquivos `/etc/passwd`, `/etc/group` e `/etc/shadow`  
+✅ Como aplicar boas práticas de administração de sistema de forma segura e eficiente
+
+💬 **Em resumo:**  
+Você aprendeu a montar toda a estrutura de acesso e usuários de um sistema Linux — como se tivesse organizado uma empresa do zero, com departamentos, funcionários, permissões, senhas e registros de entrada. Um verdadeiro administrador de sistemas!
+
