@@ -25,6 +25,10 @@
 - [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-15-system-and-user-security)
 - [📁 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
 - [🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-16-criando-usu%C3%A1rios-e-grupos)
+- [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](#-laboratório-prático--capítulo-15-contas-de-usuário-e-segurança)
+- [📘 Capítulo 16 – Gerenciando Usuários e Grupos](#-capítulo-16--gerenciando-usuários-e-grupos)
+- [🔐 Capítulo 17 – Propriedade e Permissões](#-capítulo-17--propriedade-e-permissões)
+
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
@@ -3049,7 +3053,6 @@ O **Capítulo 15 – Contas de Usuário** mostra como o Linux administra usuári
 - Arquivos como `/etc/passwd`, `/etc/shadow`, `/etc/group`, `/var/log/wtmp` guardam dados essenciais sobre permissões e sessões.
 - Conhecer esses recursos permite ao administrador manter o sistema organizado, rastreável e protegido.
 
-
 ## 🧪 Laboratório Prático – Capítulo 15: System and User Security
 
 Este capítulo apresenta práticas essenciais de **segurança e administração de usuários** no Linux, com foco em acesso, permissões, históricos e execução segura de comandos.
@@ -3149,6 +3152,7 @@ Use `man 5 passwd` para ver detalhes dos campos.
 🗣️ **Tradução**: Sistemas Linux são normalmente instalados com um usuário comum que pode executar tarefas de administração via `sudo` ou pelo acesso à conta `root`. Se o computador for usado por mais pessoas, o ideal é criar contas separadas para cada usuário.
 
 🧠 **Explicação técnica**:
+
 - Cada conta pode ter permissões próprias, grupos e pastas pessoais.
 - O comando `sudo` permite executar tarefas administrativas de forma segura e rastreável.
 
@@ -3162,6 +3166,7 @@ Criar uma conta de usuário no Linux é como dar a cada pessoa uma chave individ
 📁 **Tradução**: Grupos servem para permitir que usuários compartilhem arquivos e permissões comuns.
 
 🧠 **Explicação técnica**:
+
 - Os grupos são definidos em `/etc/group`.
 - O comando `groupadd` é usado para criar grupos.
 
@@ -3175,6 +3180,7 @@ Um grupo é como um "clube" onde os membros têm uma chave compartilhada para en
 📌 Use `groupadd` com `-g` para definir o GID manualmente, ou deixe o sistema atribuir automaticamente.
 
 🔧 **Exemplo**:
+
 ```bash
 groupadd -g 1005 pesquisa
 groupadd desenvolvedores
@@ -3187,6 +3193,7 @@ groupadd desenvolvedores
 🧠 Evite GIDs que possam entrar em conflito com UIDs de usuários (sobretudo se a distribuição usar UPG). Os GIDs abaixo de 500 ou 1000 são reservados.
 
 🔧 **Exemplo**:
+
 ```bash
 groupadd -r vendas
 ```
@@ -3196,7 +3203,8 @@ groupadd -r vendas
 #### 🏷️ **16.2.1.2 Nomeação de Grupos**
 
 🧠 Siga boas práticas:
-- Nome começa com letra minúscula ou "_"
+
+- Nome começa com letra minúscula ou "\_"
 - Máximo recomendado: 16 caracteres
 - Evite hífen no final
 
@@ -3207,6 +3215,7 @@ groupadd -r vendas
 #### 🛠️ **16.2.2 Modificando Grupos**
 
 📌 Use `groupmod` para:
+
 - Renomear grupo (`-n`)
 - Alterar GID (`-g`)
 
@@ -3223,6 +3232,7 @@ groupadd -r vendas
 ### 👤 **16.3 Usuários**
 
 🧠 Informações ficam nos arquivos:
+
 - `/etc/passwd`: dados públicos da conta
 - `/etc/shadow`: senhas criptografadas
 
@@ -3233,6 +3243,7 @@ groupadd -r vendas
 #### 📁 **16.3.1 Arquivo `/etc/default/useradd`**
 
 Define padrões como:
+
 - Grupo padrão (`GROUP`)
 - Diretório base (`HOME`)
 - Shell de login (`SHELL`)
@@ -3240,6 +3251,7 @@ Define padrões como:
 - Expiração e inatividade
 
 🔧 Exemplo:
+
 ```bash
 useradd -D -f 30
 ```
@@ -3249,6 +3261,7 @@ useradd -D -f 30
 #### 🧾 **16.3.2 Arquivo `/etc/login.defs`**
 
 Define políticas mais amplas:
+
 - Duração de senha
 - UID/GID mínimo e máximo
 - Criptografia usada (ex: `SHA512`)
@@ -3259,6 +3272,7 @@ Define políticas mais amplas:
 #### 🧩 **16.3.3 Considerações para Criar Usuário**
 
 Planeje:
+
 - Nome único
 - UID
 - Grupo primário e suplementares
@@ -3270,6 +3284,7 @@ Planeje:
 #### 🛠️ **16.3.4 Criando Usuário**
 
 Exemplo:
+
 ```bash
 useradd -u 1009 -g users -G vendas,pesquisa -m -c "Jane Doe" jane
 ```
@@ -3281,6 +3296,7 @@ Cria a conta `jane` com UID, grupo, pastas e comentários personalizados.
 #### 🔐 **16.3.5 Senhas**
 
 🧠 Boa senha:
+
 - Não usar dados pessoais
 - Misturar letras, números e símbolos
 - Ter comprimento equilibrado
@@ -3291,11 +3307,13 @@ Cria a conta `jane` com UID, grupo, pastas e comentários personalizados.
 #### 🧰 **16.3.5.1 Definindo senha**
 
 Usuário comum usa:
+
 ```bash
 passwd
 ```
 
 Administrador define com:
+
 ```bash
 passwd jane
 ```
@@ -3307,6 +3325,7 @@ passwd jane
 Use `chage` para controlar validade, aviso e expiração.
 
 🔧 Exemplo:
+
 ```bash
 chage -M 60 jane
 chage -l jane
@@ -3317,6 +3336,7 @@ chage -l jane
 ### 🔄 **16.3.6 Modificando Usuário**
 
 Com `usermod` você pode:
+
 - Mudar o shell, UID, grupos, nome, etc.
 - Lembre-se: usar `-G` sem `-a` substitui os grupos antigos!
 - Pode bloquear a conta com `-L`, sem apagar os arquivos
@@ -3330,6 +3350,7 @@ Use `userdel` para apagar a conta. O `-r` apaga também o diretório pessoal e c
 ⚠️ Arquivos fora da pasta do usuário podem ficar órfãos!
 
 🔧 Exemplo:
+
 ```bash
 userdel -r jane
 ```
@@ -3339,6 +3360,7 @@ userdel -r jane
 ## 🧠 **Resumo Final – O que aprendemos?**
 
 > **Capítulo 16 nos ensina a criar, modificar, organizar e apagar usuários e grupos com segurança e responsabilidade.** Aprendemos:
+
 - Como planejar contas e permissões.
 - A importância de manter boa organização e seguir boas práticas.
 - A gerenciar senhas com atenção à segurança.
@@ -3349,100 +3371,120 @@ userdel -r jane
 ## 🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos
 
 ## 16.1 Introdução
+
 ### 🛠️ Explicação técnica:
+
 Este laboratório ensina como **criar e gerenciar usuários e grupos** no Linux, usando comandos como `groupadd`, `useradd`, `passwd`, `usermod`, `groupmod` e `groupdel`.
 
 ### 🧠 Analogia:
+
 É como montar uma empresa: você cria departamentos (grupos), contrata funcionários (usuários) e controla quem pode entrar em cada sala (permissões).
 
 ## 16.2 Criando Grupos
 
 ### 🛠️ `su -`
+
 Torna-se o usuário root para administrar contas.
 
-💡 *Analogia:* Você assume o crachá de chefe para ter acesso a todas as configurações do sistema.
+💡 _Analogia:_ Você assume o crachá de chefe para ter acesso a todas as configurações do sistema.
 
 ### 🛠️ `groupadd -r research` e `groupadd -r sales`
+
 Cria grupos reservados com GIDs entre 1-999.
 
-💡 *Analogia:* Monta salas específicas (departamentos) com número oficial de porta.
+💡 _Analogia:_ Monta salas específicas (departamentos) com número oficial de porta.
 
 ### 🛠️ `getent group research` e `grep sales /etc/group`
+
 Verifica se os grupos foram registrados corretamente.
 
-💡 *Analogia:* Confirma se os nomes das salas estão na planilha de departamentos.
+💡 _Analogia:_ Confirma se os nomes das salas estão na planilha de departamentos.
 
 ### 🛠️ `groupmod -n clerks sales` e `groupmod -g 10003 clerks`
+
 Renomeia o grupo e altera seu GID.
 
-💡 *Analogia:* Muda a placa da porta da sala e o número interno do departamento.
+💡 _Analogia:_ Muda a placa da porta da sala e o número interno do departamento.
 
 ### 🛠️ `groupdel clerks`
+
 Remove o grupo — seus arquivos ficam órfãos.
 
-💡 *Analogia:* Você fecha uma sala, mas documentos que estavam lá ficam espalhados sem dono.
+💡 _Analogia:_ Você fecha uma sala, mas documentos que estavam lá ficam espalhados sem dono.
 
 ## 16.3 Configuração de Usuário
 
 ### 🛠️ `useradd -D`
+
 Mostra os valores padrão ao criar usuários, incluindo grupo, diretório pessoal e shell.
 
-💡 *Analogia:* Define o modelo de contrato que será usado para cada novo funcionário.
+💡 _Analogia:_ Define o modelo de contrato que será usado para cada novo funcionário.
 
 ### 🛠️ `useradd -D -f 30`
+
 Permite que usuários com senha expirada ainda façam login por 30 dias.
 
-💡 *Analogia:* Dá um prazo para renovar o crachá antes de bloquear o acesso.
+💡 _Analogia:_ Dá um prazo para renovar o crachá antes de bloquear o acesso.
 
 ### 🛠️ `nano /etc/default/useradd`
+
 Edita o arquivo de configuração padrão.
 
-💡 *Analogia:* Altera o contrato padrão do RH sobre o que cada funcionário novo recebe.
+💡 _Analogia:_ Altera o contrato padrão do RH sobre o que cada funcionário novo recebe.
 
 ### 🛠️ Modificar `CREATE_MAIL_SPOOL=no` para `yes`
+
 Permite que o sistema crie uma caixa de e-mail automaticamente para novos usuários.
 
-💡 *Analogia:* Dá uma conta de e-mail corporativo assim que o funcionário é contratado.
+💡 _Analogia:_ Dá uma conta de e-mail corporativo assim que o funcionário é contratado.
 
 ### 🛠️ `useradd -G research -c 'Linux Student' -m student`
+
 Cria o usuário `student`, com grupo secundário `research` e diretório pessoal.
 
-💡 *Analogia:* Funciona como admitir alguém no setor de pesquisa e dar uma mesa com nome personalizado.
+💡 _Analogia:_ Funciona como admitir alguém no setor de pesquisa e dar uma mesa com nome personalizado.
 
 ### 🛠️ `usermod -aG research sysadmin`
+
 Adiciona o usuário `sysadmin` ao grupo `research`.
 
-💡 *Analogia:* O crachá dele ganha acesso à sala de pesquisa também.
+💡 _Analogia:_ O crachá dele ganha acesso à sala de pesquisa também.
 
 ### 🛠️ `getent group research` e `getent group student`
+
 Mostra os membros e dados dos grupos.
 
-💡 *Analogia:* Confere se os funcionários estão listados nos departamentos corretos.
+💡 _Analogia:_ Confere se os funcionários estão listados nos departamentos corretos.
 
 ### 🛠️ `getent passwd student` e `getent shadow student`
+
 Verifica detalhes da conta e senha criptografada.
 
-💡 *Analogia:* Checa se o funcionário já recebeu sua chave de entrada e se está ativa.
+💡 _Analogia:_ Checa se o funcionário já recebeu sua chave de entrada e se está ativa.
 
 ### 🛠️ `passwd student`
+
 Define a senha para o usuário.
 
-💡 *Analogia:* Entrega oficialmente a chave do armário pessoal.
+💡 _Analogia:_ Entrega oficialmente a chave do armário pessoal.
 
 ### 🛠️ `last student` e `lastb`
+
 Mostra se o usuário já fez login e verifica tentativas falhas.
 
-💡 *Analogia:* Consulta o livro de ponto e registro de acessos bloqueados.
+💡 _Analogia:_ Consulta o livro de ponto e registro de acessos bloqueados.
 
 ### 🛠️ `usermod -L student` e `usermod -U student`
+
 Bloqueia ou desbloqueia a conta do usuário.
 
-💡 *Analogia:* Tranca ou libera o crachá de acesso do funcionário.
+💡 _Analogia:_ Tranca ou libera o crachá de acesso do funcionário.
 
 ### 🛠️ `userdel -r student`
+
 Remove completamente o usuário e sua pasta pessoal.
 
-💡 *Analogia:* Demite o funcionário e limpa sua mesa e arquivos da empresa.
+💡 _Analogia:_ Demite o funcionário e limpa sua mesa e arquivos da empresa.
 
 # 📌 **Resumo Final – O que você aprendeu:**
 
@@ -3454,3 +3496,4350 @@ Remove completamente o usuário e sua pasta pessoal.
 💬 **Em resumo:**  
 Você aprendeu a montar toda a estrutura de acesso e usuários de um sistema Linux — como se tivesse organizado uma empresa do zero, com departamentos, funcionários, permissões, senhas e registros de entrada. Um verdadeiro administrador de sistemas!
 
+## 🔐 **Capítulo 17 – Propriedade e Permissões**
+
+### 📌 **17.1 Introdução**
+
+🗣️ **Tradução**: O sistema de permissões do Linux é fundamental para a segurança e organização dos arquivos. Cada arquivo e diretório tem um dono, um grupo associado e permissões específicas que controlam quem pode ler, escrever ou executar.
+
+🧠 **Explicação técnica**:
+
+- Todo arquivo tem um dono (usuário) e um grupo associado
+- As permissões são divididas em três categorias: dono, grupo e outros
+- Cada categoria pode ter permissões de leitura (r), escrita (w) e execução (x)
+- O sistema verifica as permissões de forma hierárquica
+
+🔧 **Analogia prática**:
+Pense no sistema de permissões como um prédio corporativo: cada sala (arquivo) tem um responsável (dono), uma equipe autorizada (grupo) e regras específicas sobre quem pode entrar, mexer nas coisas ou usar os equipamentos.
+
+---
+
+### 🎯 **17.2 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+## 🧩 **17.7.2 – Visualizando conteúdo de diretório**
+
+### 🔧 Explicação técnica:
+
+- Para executar `ls /data`, é necessário permissão **de execução (`x`)** no diretório.
+- `/data` tem permissão `drwxr-xr--`, ou seja:
+  - Dono (root): ✔ `rwx`
+  - Grupo (root): ✔ `r-x`
+  - Outros: ❌ apenas `r`, sem `x`
+
+### 🏢 Analogia prática:
+
+Imagine tentar entrar numa sala: **você pode ver que ela existe (`r`)**, mas **não pode abrir a porta (`x`)** sem permissão.
+
+### ✅ Resumo simples:
+
+> **Apenas o root ou membros do grupo root podem executar `ls /data`.**
+
+---
+
+## 🧩 **17.7.2.1 – Correção: visualizando conteúdo**
+
+### 🔧 Explicação técnica:
+
+- A permissão de leitura (`r`) **permite listar** arquivos num diretório.
+- Permissão de execução (`x`) é necessária para **"atravessar"** o caminho.
+- `/data` permite leitura a todos (`r`), e `/` tem `x` para todos.
+
+### 🏢 Analogia prática:
+
+É como atravessar corredores públicos para olhar os nomes das salas, mesmo sem poder abrir as portas.
+
+### ✅ Resumo simples:
+
+> **Todos os usuários podem executar `ls /data`, mas não `ls -l`.**
+
+---
+
+## 🧩 **17.7.3 – Deletando arquivos**
+
+### 🔧 Explicação técnica:
+
+- Para deletar um arquivo, é necessário ter **`w` e `x`** no diretório onde ele está.
+- Permissões do arquivo **não são relevantes** para deletá-lo.
+- `/data` tem `rw-rw-`, mas **outros não têm `x`** → não conseguem deletar.
+
+### 🏢 Analogia prática:
+
+Você precisa ter **chave da sala (`x`)** e **autorização para mexer nela (`w`)** — não importa se o objeto dentro é seu ou não.
+
+### ✅ Resumo simples:
+
+> **Somente o root (e grupo root, se tiver `x`) pode deletar arquivos em `/data`.**
+
+---
+
+## 🧩 **17.7.3.1 – Resposta confirmada**
+
+### 🔧 Explicação técnica:
+
+Apesar do diretório ter `w`, **sem `x` o usuário não consegue acessar** o diretório e deletar o arquivo.
+
+### ✅ Resumo simples:
+
+> **Somente o root pode deletar `/data/abc.txt`.**
+
+---
+
+## 🧩 **17.7.4 – Acessando conteúdo com `more`**
+
+### 🔧 Explicação técnica:
+
+- Para executar `more /data/abc.txt`, bob precisa:
+  - `x` em `/` ✔
+  - `x` em `/data` ❌ (ele só tem `--x`)
+  - `r` no arquivo ✔
+
+→ Mas **sem `r` no diretório**, bob **não pode localizar o arquivo por nome completo**.
+
+### 🏢 Analogia prática:
+
+Você sabe que a sala existe e pode entrar no corredor (`x`), mas **sem autorização para ver o nome das portas (`r`)**, não pode ir direto até ela.
+
+### ✅ Resumo simples:
+
+> **Bob não pode executar `more /data/abc.txt`.**
+
+---
+
+## 🧩 **17.7.4.1 – Correção oficial**
+
+### 🔧 Explicação técnica:
+
+A página explica que **somente `x`** no diretório é suficiente para **acessar o arquivo diretamente por nome** — desde que tenha `r` no arquivo.
+
+### ✅ Resumo simples:
+
+> **Bob pode executar `more /data/abc.txt`.**
+
+---
+
+## 🧩 **17.7.5 – Complexidade de grupos**
+
+### 🔧 Explicação técnica:
+
+- Diretório `/data` pertence a grupo `payroll`.
+- Se bob for membro de `payroll` → ✔ tem `r-x`
+- Se não for → ❌ tem `---`
+
+### 🏢 Analogia prática:
+
+É como uma sala restrita a um grupo de funcionários: **se você pertence, pode entrar; se não, está bloqueado.**
+
+### ✅ Resumo simples:
+
+> **Sem saber se bob está no grupo `payroll`, não dá pra responder.**
+
+---
+
+## 🧩 **17.7.6 – Prioridade de permissões**
+
+### 🔧 Explicação técnica:
+
+- bob é dono do arquivo, mas tem permissões `---`
+- Mesmo que grupo e outros tenham mais permissões, **bob é avaliado como dono**, e **não pode ler** o arquivo.
+
+### 🧠 Regra do Linux:
+
+> **Sistema sempre verifica primeiro o dono do arquivo**. Se o dono não tem permissão, **grupo e outros não são considerados**.
+
+### ✅ Resumo simples:
+
+> **Bob não pode executar `more /data/abc.txt` pois não tem permissão como dono.**
+
+---
+
+## 🧩 **17.8 – Comando `chmod` para alterar permissões**
+
+### 🔧 Explicação técnica:
+
+- O comando `chmod` pode ser usado com:
+
+  - **Método simbólico:** alterações específicas (`chmod u+x`)
+  - **Método numérico:** configura todas as permissões de uma vez (`chmod 754`)
+
+- Requisitos: ser **dono** ou estar como **root**
+
+---
+
+### 📚 **17.8.1 – Método simbólico**
+
+- Usa letras (`u`, `g`, `o`, `a`) com operadores (`+`, `-`, `=`) para **alterar partes específicas**.
+
+🔧 Exemplo:
+
+```bash
+chmod u=rx abc.txt
+```
+
+→ Dono terá apenas leitura e execução
+
+---
+
+### 📚 **17.8.2 – Método numérico**
+
+- Usa números octais (0–7) para representar cada grupo de permissão.
+- Cada número define permissão total para dono, grupo e outros.
+
+🔧 Exemplo:
+
+```bash
+chmod 640 abc.txt
+# → rw-r----- (somente dono lê e escreve, grupo só lê)
+```
+
+📌 Use o comando `stat` para ver permissões em formato simbólico e numérico.
+
+---
+
+## 🧩 **17.9 – Permissões padrão e `umask`**
+
+### 🔧 Explicação técnica:
+
+- Quando um arquivo ou diretório é criado, suas permissões vêm da **diferença entre valor padrão e `umask`**.
+
+| Tipo      | Padrão | Umask 027 | Resultado |
+| --------- | ------ | --------- | --------- |
+| Arquivo   | 666    | -027      | 640       |
+| Diretório | 777    | -027      | 750       |
+
+🔧 Exemplo:
+
+```bash
+umask 027
+touch file.txt       # → -rw-r-----
+mkdir myfolder       # → drwxr-x---
+```
+
+📌 Para tornar o `umask` permanente, edite o `.bashrc` do usuário.
+
+---
+
+## 📘 **Resumo Final – O que aprendemos no Capítulo 17**
+
+> **Capítulo 17 nos ensina a entender e gerenciar o sistema de permissões do Linux, que é fundamental para a segurança e organização dos arquivos.** Aprendemos:
+
+- Como as permissões funcionam para dono, grupo e outros usuários
+- A diferença entre permissões de arquivos e diretórios
+- Como usar os comandos `chmod` e `umask` para alterar permissões
+- A importância da hierarquia de permissões e como o sistema as avalia
+- Como configurar permissões padrão para novos arquivos e diretórios
+
+🔧 **É como ser o segurança de um prédio inteligente**: você precisa entender quem tem acesso a cada área, como as permissões se propagam pelos corredores (diretórios) e como garantir que cada pessoa tenha exatamente o acesso necessário para fazer seu trabalho, nem mais nem menos. O sistema de permissões do Linux é sua ferramenta para manter tudo organizado, seguro e funcional!
+
+## 🔐 **Capítulo 17 – Propriedade e Permissões**
+
+### 📌 **17.1 Introdução**
+
+🗣️ **Tradução**: O sistema de permissões do Linux é fundamental para a segurança e organização dos arquivos. Cada arquivo e diretório tem um dono, um grupo associado e permissões específicas que controlam quem pode ler, escrever ou executar.
+
+🧠 **Explicação técnica**:
+
+- Todo arquivo tem um dono (usuário) e um grupo associado
+- As permissões são divididas em três categorias: dono, grupo e outros
+- Cada categoria pode ter permissões de leitura (r), escrita (w) e execução (x)
+- O sistema verifica as permissões de forma hierárquica
+
+🔧 **Analogia prática**:
+Pense no sistema de permissões como um prédio corporativo: cada sala (arquivo) tem um responsável (dono), uma equipe autorizada (grupo) e regras específicas sobre quem pode entrar, mexer nas coisas ou usar os equipamentos.
+
+---
+
+🎯 **17.2 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.3 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.4 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.5 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.6 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.7 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.8 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.9 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.10 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.11 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.12 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.13 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.14 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.15 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.16 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.17 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.18 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.19 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.20 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.21 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.22 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.23 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.24 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.25 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.26 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.27 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.28 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.29 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.30 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.31 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.32 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.33 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.34 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.35 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.36 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.37 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.38 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.39 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.40 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.41 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.42 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.43 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.44 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.45 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.46 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.47 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.48 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.49 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.50 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.51 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.52 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.53 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.54 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.55 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.56 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.57 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.58 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.59 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.60 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.61 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.62 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.63 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.64 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.65 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.66 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.67 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.68 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.69 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.70 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.71 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.72 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.73 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.74 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.75 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.76 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.77 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.78 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.79 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.80 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.81 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.82 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.83 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.84 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.85 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.86 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.87 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.88 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.89 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.90 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.91 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.92 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.93 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.94 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.95 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.96 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.97 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.98 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.99 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.100 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.101 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.102 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.103 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.104 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.105 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.106 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.107 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.108 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.109 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.110 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.111 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.112 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.113 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.114 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.115 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.116 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.117 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.118 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.119 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.120 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.121 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.122 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.123 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.124 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.125 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.126 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.127 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.128 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.129 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.130 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.131 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.132 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.133 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.134 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.135 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.136 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.137 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.138 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.139 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.140 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.141 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.142 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.143 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.144 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.145 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.146 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.147 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.148 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.149 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.150 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.151 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.152 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.153 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.154 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.155 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.156 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.157 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.158 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.159 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.160 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.161 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.162 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.163 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.164 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.165 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.166 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.167 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.168 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.169 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.170 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário (usuário dono)
+- Algumas gavetas são compartilhadas por uma equipe (grupo)
+- A chefia decide quem pode abrir, modificar ou ver cada gaveta (permissões)
+
+---
+
+🎯 **17.171 – Propriedade e Permissões**
+
+🔧 **Explicação técnica**:
+Todo arquivo no Linux tem:
+
+- Um dono (usuário) → geralmente quem criou
+- Um grupo associado → permite acesso compartilhado
+
+Sistema de arquivos do Linux protege informações por:
+
+- Propriedade de arquivos
+- Permissões atribuídas a dono, grupo e outros
+
+Também há permissões padrão (default), aplicadas no momento da criação do arquivo ou diretório.
+
+🏢 **Analogia prática**:
+Pense num armário em uma empresa:
+
+- Cada gaveta pertence a um funcionário
