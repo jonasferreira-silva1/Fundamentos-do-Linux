@@ -15,15 +15,16 @@
 - [🧪 Laboratório – Capítulo 10: Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-10-trabalhando-com-texto-e-redirecionamento)
 - [📘 Capítulo 11 – Visualizando e Buscando Dados de Texto no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-11--visualizando-e-buscando-dados-de-texto-no-linux).
 - [🧪 Laboratório Prático – Capítulo 11: Scripts e Comandos Interativos no Terminal](#-laboratório-prático--capítulo-11-scripts-e-comandos-interativos-no-terminal)
-- [📘 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
+- [📁 Capítulo 12 — Entendendo o Hardware do Computador](#-capítulo-12--entendendo-o-hardware-do-computador)
 - [🧪 Laboratório Prático – Capítulo 12: Explorando o Hardware do Computador com Comandos](#-laboratório-prático--capítulo-12-explorando-o-hardware-do-computador-com-comandos)
 - [📘 Capítulo 13 — Funcionamento do Linux com Base no Kernel e Organização Interna](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-13--funcionamento-do-linux-com-base-no-kernel-e-organiza%C3%A7%C3%A3o-interna)
 - [🧪 Laboratório Prático – Capítulo 13: Gerenciando Processos e Logs](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-resumo-did%C3%A1tico-do-cap%C3%ADtulo-13-laborat%C3%B3rio--linux-essentials-gerenciando-processos-e-logs)
-- [📘 Capítulo 14 — Rede no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-14--rede-no-linux)
+- [🧭 Capítulo 14 — Rede no Linux](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-14--rede-no-linux)
 - [🧪 Laboratório Prático – Capítulo 14: Explorando a Rede no Linux com Diagnósticos e Ferramentas](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-142-explorando-a-rede-no-linux-com-diagn%C3%B3sticos-e-ferramentas)
 - [📘 Capítulo 15 – Contas de Usuário](#-capítulo-15--contas-de-usuário)
 - [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-15-system-and-user-security)
-- [📘 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
+- [📁 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
+- [🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-16-criando-usu%C3%A1rios-e-grupos)
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
