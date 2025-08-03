@@ -26,7 +26,7 @@
 - [📁 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
 - [🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-16-criando-usu%C3%A1rios-e-grupos)
 - [🔐 Capítulo 17 – Propriedade e Permissões](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-17--propriedade-e-permiss%C3%B5es)
-
+- [🔐 Capítulo 18 – Permissões Especiais e Links](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-18--permiss%C3%B5es-especiais-e-links)
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
