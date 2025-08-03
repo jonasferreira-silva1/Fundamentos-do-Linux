@@ -3725,3 +3725,95 @@ mkdir myfolder       # → drwxr-x---
 - **Permissões no diretório** afetam o que pode ser feito com os arquivos dentro.
 - `chmod` e `umask` são ferramentas para **definir e controlar** essas permissões.
 - **O dono é sempre avaliado primeiro** — mesmo que outras categorias tenham mais acesso, elas não valem se o dono for restrito.
+
+# 🧪 **Capítulo 17 – Laboratório: Ownerships and Permissions**
+
+Este capítulo é um guia prático para lidar com permissões e propriedade de arquivos e diretórios no Linux. Você experimentará comandos essenciais como `chmod`, `chown`, `chgrp`, `ls`, `stat` e verá na prática como controlar quem pode acessar, modificar ou executar recursos no sistema.
+
+---
+
+## 🔹 **Seção 17.1 – Introduction**
+
+### 📚 Explicação Técnica:
+Introdução ao laboratório com foco nos comandos:
+- `chmod` (altera permissões)
+- `chown` (altera usuário dono)
+- `chgrp` (altera grupo dono)
+- `ls` e `stat` (visualizam detalhes e permissões)
+
+### 🎒 Analogia Prática:
+Imagine uma empresa com armários (diretórios) e documentos (arquivos). Este laboratório ensina como **trancar ou destrancar gavetas**, **mudar o responsável** por um documento e **definir quem da equipe pode mexer no que**.
+
+### 🎯 Estilo Didático:
+Você vai aplicar comandos como se fosse “colocando crachás de acesso” em arquivos. Começa vendo quem pode fazer o quê e termina controlando tudo com precisão.
+
+---
+
+## 🔹 **Seção 17.2 – File Permissions (Etapas 1 a 12)**
+
+### 📚 Explicação Técnica:
+Você irá:
+1. Criar arquivos e diretórios (`mkdir`, `touch`)
+2. Visualizar permissões (`ls -l`, `ls -la`)
+3. Modificar permissões com `chmod` (simbólico e octal)
+4. Testar scripts executáveis
+5. Usar `stat` para visualizar propriedades avançadas
+
+### 🎒 Analogia Prática:
+Como se fosse criar pastas pessoais e públicas:
+- 📁 `priv-dir`: uma gaveta privada que só você abre
+- 📁 `pub-dir`: uma gaveta compartilhada com sua equipe
+- Você testa comandos que **abrem, bloqueiam ou delegam acesso**
+
+### 🎯 Estilo Didático:
+A cada etapa, você “vê” a estrutura do Linux se formar e aprende como **habilitar ou restringir ações** com um simples comando.
+
+---
+
+### 🧾 Resumo do que aprendemos na Seção 17.2:
+- Como visualizar permissões e entender símbolos como `rw-r--r--`
+- Usar `chmod` para alterar acesso: leitura, escrita e execução
+- Diferenciar método **simbólico (u,g,o,a)** e **octal (chmod 764)**
+- Tornar arquivos executáveis e identificar erros por falta de permissão
+- Compreender permissões detalhadas com `stat`
+
+---
+
+## 🔹 **Seção 17.3 – File Ownership (Etapas 1 a 6)**
+
+### 📚 Explicação Técnica:
+Você aprende a:
+- Alterar dono de arquivos com `chown`
+- Alterar grupo com `chgrp`
+- Fazer mudanças **recursivas** com `-R` para aplicar em massa
+
+### 🎒 Analogia Prática:
+Imagine mudar quem é **responsável por cada pasta** no escritório:
+- 🧑 Você pode mudar o dono de uma gaveta (`chown`)
+- 👥 Ou trocar a equipe associada a ela (`chgrp`)
+- 🔁 Pode aplicar isso a toda uma estante (`-R`)
+
+### 🎯 Estilo Didático:
+Você age como um “gestor de acessos”, reorganizando quem controla o quê e como, com comandos simples e diretos.
+
+---
+
+### 🧾 Resumo do que aprendemos na Seção 17.3:
+- `chown` altera dono e grupo, mas **só root pode usar livremente**
+- `chgrp` altera o grupo, e pode ser usado pelo dono ou root
+- Verificamos propriedade atual com `ls -l` e `ls -ld`
+- Aplicamos alterações **recursivas** com `chgrp -R grupo pasta`
+
+---
+
+# 🎓 **Resumo Final – Capítulo 17**
+
+### ✅ Aprendizado simples e direto:
+
+- No Linux, cada **arquivo e diretório tem dono e grupo**.
+- Existem **permissões específicas** para leitura, escrita e execução, separadas por dono, grupo e outros.
+- Com `chmod`, `chown`, e `chgrp`, você **controla quem pode ver, editar ou executar** algo.
+- Usar `ls` e `stat` te dá uma visão completa do acesso.
+- Scripts precisam de permissão `x` para rodar — sem isso, nada acontece.
+- Você agora consegue **gerenciar segurança e colaboração em arquivos**, com precisão e clareza.
+
