@@ -26,7 +26,7 @@
 - [📁 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
 - [🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-16-criando-usu%C3%A1rios-e-grupos)
 - [🔐 Capítulo 17 – Propriedade e Permissões](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-17--propriedade-e-permiss%C3%B5es)
-- [🧪 Laboratório Prático – Capítulo 17: Propriedades e Permissões](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-17--laborat%C3%B3rio-ownerships-and-permissions)
+
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
 **O que é Linux?**  
@@ -3728,29 +3728,31 @@ mkdir myfolder       # → drwxr-x---
 
 Este capítulo é um guia prático para lidar com permissões e propriedade de arquivos e diretórios no Linux. Você experimentará comandos essenciais como `chmod`, `chown`, `chgrp`, `ls`, `stat` e verá na prática como controlar quem pode acessar, modificar ou executar recursos no sistema.
 
----
-
 ## 🔹 **Seção 17.1 – Introduction**
 
 ### 📚 Explicação Técnica:
+
 Introdução ao laboratório com foco nos comandos:
+
 - `chmod` (altera permissões)
 - `chown` (altera usuário dono)
 - `chgrp` (altera grupo dono)
 - `ls` e `stat` (visualizam detalhes e permissões)
 
 ### 🎒 Analogia Prática:
+
 Imagine uma empresa com armários (diretórios) e documentos (arquivos). Este laboratório ensina como **trancar ou destrancar gavetas**, **mudar o responsável** por um documento e **definir quem da equipe pode mexer no que**.
 
 ### 🎯 Estilo Didático:
-Você vai aplicar comandos como se fosse “colocando crachás de acesso” em arquivos. Começa vendo quem pode fazer o quê e termina controlando tudo com precisão.
 
----
+Você vai aplicar comandos como se fosse “colocando crachás de acesso" em arquivos. Começa vendo quem pode fazer o quê e termina controlando tudo com precisão.
 
 ## 🔹 **Seção 17.2 – File Permissions (Etapas 1 a 12)**
 
 ### 📚 Explicação Técnica:
+
 Você irá:
+
 1. Criar arquivos e diretórios (`mkdir`, `touch`)
 2. Visualizar permissões (`ls -l`, `ls -la`)
 3. Modificar permissões com `chmod` (simbólico e octal)
@@ -3758,51 +3760,53 @@ Você irá:
 5. Usar `stat` para visualizar propriedades avançadas
 
 ### 🎒 Analogia Prática:
+
 Como se fosse criar pastas pessoais e públicas:
+
 - 📁 `priv-dir`: uma gaveta privada que só você abre
 - 📁 `pub-dir`: uma gaveta compartilhada com sua equipe
 - Você testa comandos que **abrem, bloqueiam ou delegam acesso**
 
 ### 🎯 Estilo Didático:
-A cada etapa, você “vê” a estrutura do Linux se formar e aprende como **habilitar ou restringir ações** com um simples comando.
 
----
+A cada etapa, você "vê" a estrutura do Linux se formar e aprende como **habilitar ou restringir ações** com um simples comando.
 
 ### 🧾 Resumo do que aprendemos na Seção 17.2:
+
 - Como visualizar permissões e entender símbolos como `rw-r--r--`
 - Usar `chmod` para alterar acesso: leitura, escrita e execução
 - Diferenciar método **simbólico (u,g,o,a)** e **octal (chmod 764)**
 - Tornar arquivos executáveis e identificar erros por falta de permissão
 - Compreender permissões detalhadas com `stat`
 
----
-
 ## 🔹 **Seção 17.3 – File Ownership (Etapas 1 a 6)**
 
 ### 📚 Explicação Técnica:
+
 Você aprende a:
+
 - Alterar dono de arquivos com `chown`
 - Alterar grupo com `chgrp`
 - Fazer mudanças **recursivas** com `-R` para aplicar em massa
 
 ### 🎒 Analogia Prática:
+
 Imagine mudar quem é **responsável por cada pasta** no escritório:
+
 - 🧑 Você pode mudar o dono de uma gaveta (`chown`)
 - 👥 Ou trocar a equipe associada a ela (`chgrp`)
 - 🔁 Pode aplicar isso a toda uma estante (`-R`)
 
 ### 🎯 Estilo Didático:
-Você age como um “gestor de acessos”, reorganizando quem controla o quê e como, com comandos simples e diretos.
 
----
+Você age como um "gestor de acessos", reorganizando quem controla o quê e como, com comandos simples e diretos.
 
 ### 🧾 Resumo do que aprendemos na Seção 17.3:
+
 - `chown` altera dono e grupo, mas **só root pode usar livremente**
 - `chgrp` altera o grupo, e pode ser usado pelo dono ou root
 - Verificamos propriedade atual com `ls -l` e `ls -ld`
 - Aplicamos alterações **recursivas** com `chgrp -R grupo pasta`
-
----
 
 # 🎓 **Resumo Final – Capítulo 17**
 
@@ -3815,3 +3819,97 @@ Você age como um “gestor de acessos”, reorganizando quem controla o quê e 
 - Scripts precisam de permissão `x` para rodar — sem isso, nada acontece.
 - Você agora consegue **gerenciar segurança e colaboração em arquivos**, com precisão e clareza.
 
+
+## 🔗 **Capítulo 18 – Permissões Especiais e Links**
+
+### 📌 **18.1 Introdução**
+
+🗣️ **Tradução**: Além das permissões básicas de leitura, escrita e execução, o Linux oferece permissões especiais que permitem comportamentos mais avançados. Estas permissões especiais (setuid, setgid, sticky bit) são essenciais para ambientes colaborativos e controle de acesso temporário com privilégios elevados.
+
+🧠 **Explicação técnica**:
+
+- **Setuid**: Permite executar um programa com permissões do dono
+- **Setgid**: Herda permissões do grupo ou força herança de grupo em diretórios
+- **Sticky bit**: Impede que usuários deletem arquivos de outros em diretórios compartilhados
+- **Links**: Permitem referenciar arquivos sem duplicar dados
+
+🔧 **Analogia prática**:
+Pense nas permissões especiais como "crachás temporários" em um prédio corporativo: você pode ter acesso especial a uma área específica por um tempo limitado, ou usar um "carimbo de equipe" que marca automaticamente tudo que você cria, ou ainda uma "trava de segurança" que impede que outros mexam nas suas coisas em áreas compartilhadas.
+
+### 🔐 **18.2 – Setuid (Set User ID)**
+
+🔧 **Explicação técnica**:
+Permite que um programa seja executado com as permissões do dono do arquivo (geralmente root).
+
+**Exemplo**: O comando `passwd` que modifica `/etc/shadow`.
+
+📎 **Analogia prática**:
+Você é estagiário, mas o botão que você aperta executa uma ação como se fosse o gerente — apenas naquele contexto específico.
+
+### 👥 **18.3 – Setgid (Set Group ID)**
+
+🔧 **Explicação técnica**:
+
+**📄 Em arquivos:**
+Executa o programa com permissões do grupo dono do arquivo.
+
+**📁 Em diretórios:**
+Arquivos criados herdam o grupo do diretório, não do usuário.
+
+📎 **Analogia prática**:
+Entrar numa sala e tudo que você cria ali recebe o carimbo da equipe do projeto — mantendo a organização automática.
+
+### 🧰 **18.4 – Sticky Bit**
+
+🔧 **Explicação técnica**:
+Impede que outros usuários deletem arquivos que não são seus em diretórios compartilhados.
+
+**Muito comum em `/tmp`**
+
+📎 **Analogia prática**:
+Uma geladeira de escritório: todos colocam alimentos, mas só o dono pode tirar o que trouxe.
+
+### 🔗 **18.5 – Links**
+
+#### 🔗 **18.5.1 Hard Links**
+
+🔧 **Explicação técnica**:
+Apontam para o mesmo inode (mesma identidade no sistema).
+
+Mesmo que um nome seja removido, os dados permanecem.
+
+📎 **Analogia prática**:
+É como colocar várias etiquetas no mesmo objeto físico.
+
+#### 🔗 **18.5.2 Symbolic Links (Soft)**
+
+🔧 **Explicação técnica**:
+Atalhos para o caminho de um arquivo.
+
+Se o original for removido, o link quebra.
+
+📎 **Analogia prática**:
+Um atalho na área de trabalho que leva ao arquivo original.
+
+#### ⚖️ **18.5.3 Comparando Links**
+
+| Característica              | Hard Link | Symbolic Link              |
+| --------------------------- | --------- | -------------------------- |
+| Aponta para o inode         | ✅        | ❌ (aponta para o caminho) |
+| Visível com `ls -l`         | ❌        | ✅                         |
+| Funciona entre partições    | ❌        | ✅                         |
+| Pode apontar para diretório | ❌        | ✅                         |
+| Depende do original         | ❌        | ✅                         |
+
+
+## 📘 **Resumo Final – O que aprendemos no Capítulo 18**
+
+> **Capítulo 18 nos ensina a usar permissões especiais e links para controlar comportamentos avançados do sistema Linux.** Aprendemos:
+
+- Como usar setuid para executar programas com privilégios elevados de forma segura
+- Como o setgid funciona em arquivos e diretórios para herança de permissões
+- Como o sticky bit protege arquivos em diretórios compartilhados
+- A diferença entre hard links e symbolic links e quando usar cada um
+- Como criar e gerenciar links para organizar arquivos sem duplicação
+
+🔧 **É como ser o mestre dos acessos especiais**: você agora sabe como dar "crachás temporários" para tarefas específicas, usar "carimbos de equipe" para manter organização automática, aplicar "travas de segurança" em áreas compartilhadas, e criar "atalhos inteligentes" que facilitam o acesso sem desperdiçar espaço. As permissões especiais e links são suas ferramentas para um sistema Linux mais flexível, seguro e organizado!
