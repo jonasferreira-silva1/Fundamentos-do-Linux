@@ -3821,7 +3821,7 @@ Você age como um "gestor de acessos", reorganizando quem controla o quê e como
 - Você agora consegue **gerenciar segurança e colaboração em arquivos**, com precisão e clareza.
 
 
-## 🔗 **Capítulo 18 – Permissões Especiais e Links**
+## 🔗🧠 **Capítulo 18 – Permissões Especiais e Links**
 
 ### 📌 **18.1 Introdução**
 
