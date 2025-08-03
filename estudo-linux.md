@@ -25,9 +25,7 @@
 - [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-15-system-and-user-security)
 - [📁 Capítulo 16 – Gerenciando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-16--gerenciando-usu%C3%A1rios-e-grupos)
 - [🧪 Laboratório Prático – Capítulo 16: Criando Usuários e Grupos](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-laborat%C3%B3rio-pr%C3%A1tico--cap%C3%ADtulo-16-criando-usu%C3%A1rios-e-grupos)
-- [🧪 Laboratório Prático – Capítulo 15: Contas de Usuário e Segurança](#-laboratório-prático--capítulo-15-contas-de-usuário-e-segurança)
-- [📘 Capítulo 16 – Gerenciando Usuários e Grupos](#-capítulo-16--gerenciando-usuários-e-grupos)
-- [🔐 Capítulo 17 – Propriedade e Permissões](#-capítulo-17--propriedade-e-permissões)
+- [🔐 Capítulo 17 – Propriedade e Permissões](https://github.com/jonasferreira-silva1/Fundamentos-do-Linux/blob/main/estudo-linux.md#-cap%C3%ADtulo-17--propriedade-e-permiss%C3%B5es)
 
 ## 🏁 **Antes de começar e Introdução ao Linux (Módulo 1 – Capítulo 01)**
 
